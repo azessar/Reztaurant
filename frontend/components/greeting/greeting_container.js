@@ -4,7 +4,8 @@ import GreetingHeader from './greeting';
 
 const mSTP = (state) => {
     return {
-        currentUser: state.entities.users[state.session.id]
+        currentUser: state.entities.users[state.session.id],
+        errors: state.errors
     }
 }
 

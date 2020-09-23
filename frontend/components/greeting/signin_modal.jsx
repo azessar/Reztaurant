@@ -12,13 +12,30 @@ class SigninModal extends React.Component {
             primary_dining_location: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
     }
 
     handleSubmit(e) {
         e.preventDefault();
         const { signin } = this.props;
         const { first_name, last_name, email, password, primary_dining_location } = this.state;
-        signup({ first_name, last_name, email, password, primary_dining_location })
+        signin({ first_name, last_name, email, password, primary_dining_location });
+        this.setState({
+            first_name: '',
+            last_name: '',
+            email: '',
+            password: '',
+            primary_dining_location: ''
+        });
+    }
+
+    handleDemoSubmit(e) {
+        e.preventDefault();
+        const { signin } = this.props;
+        const { first_name, last_name, email, password, primary_dining_location } = this.state;
+        const demoUser = { first_name: "Gordon", last_name: "Ramsay", email: "gramsay@gmail.com", password: "rubbish", primary_dining_location: "London" }
+        signin(demoUser);
+        e.target.reset();
     }
 
     update(field) {
@@ -30,16 +47,20 @@ class SigninModal extends React.Component {
     render(){
         return (
             <div>
-                hi can you see this i'm signin modal
                 <form onSubmit={this.handleSubmit}>
-                    Signup Form
+                    Signin Form
                     <br></br>
                     Enter email*
                     <input type="text" value={this.state.email} onChange={this.update('email')}></input>
                     <br></br>
                     Enter password*
-                    <input type="password" value={this.state.password} onChange={this.update('password')}></input>
-                    <button type='submit'>Sign up</button>
+                    <input type="password" value={this.state.password} onChange={this.update('password')} autoComplete="password"></input>
+                    <button type='submit'>Sign in</button>
+                </form>
+                <br></br>
+                this is for demo user:
+                <form onSubmit={this.handleDemoSubmit}>
+                    <button type='submit'>Demo user enter here</button>
                 </form>
             </div>
         )

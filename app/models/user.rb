@@ -1,9 +1,10 @@
 class User < ApplicationRecord
 
-    validates :email, :password_digest, :session_token, presence: true
+    validates :password_digest, :session_token, presence: true
+    validates :email, presence: {message: "custom error message test"}
     validates :primary_dining_location, presence: true #dropdown to make sure it's a preselected city???
     validates :email, uniqueness: true
-    validates :password, length: {minimum: 6}, allow_nil: true
+    validates :password, length: {minimum: 6}, allow_nil: true, presence: true
 
     attr_reader :password
     after_initialize :ensure_session_token

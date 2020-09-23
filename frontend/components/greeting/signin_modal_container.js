@@ -4,7 +4,7 @@ import { signup, signin } from '../../actions/session_actions';
 
 const mSTP = (state) => {
     return {
-        errors: state,
+        errors: state.errors,
         currentUser: state.entities.users[state.session.id]
     }
 }

@@ -4,16 +4,16 @@ export const RECEIVE_USER = 'RECEIVE_USER';
 export const SIGNOUT_USER = 'SIGNOUT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 
-const receiveUser = user => ({
+export const receiveUser = user => ({
     type: RECEIVE_USER,
     user
 });
 
-const signoutUser = () => ({
+export const signoutUser = () => ({
     type: SIGNOUT_USER,
 });
 
-const receiveSessionErrors = errors => ({
+export const receiveSessionErrors = errors => ({
     type: RECEIVE_SESSION_ERRORS,
     errors
 });
@@ -41,3 +41,4 @@ export const signout = () => dispatch => {
             dispatch(signoutUser())
         ))
 };
+
