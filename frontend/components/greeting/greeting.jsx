@@ -1,21 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const GreetingHeader = ( {currentUser, logout} ) => {
+const GreetingHeader = ( { currentUser, signout, signin, signup } ) => {
 
     const userButtons = () => {
         return (
-            <div>
-                USER BUTTONS
-            </div>
+            <nav>
+                Hello (user)!
+                <button className="signout-button" onClick={signout}>Sign out</button>
+            </nav>
         )
     };
 
     const sessionButtons = () => {
         return (
-            <div>
-                SESSION BUTTONS
-            </div>
+            <nav>
+                <button className="signup-button" onClick={signup}>Sign up</button>
+                <button className="signin-button" onClick={signin}>Sign in</button>
+            </nav>
         )
     };
 

@@ -29,8 +29,6 @@ class User < ApplicationRecord
         self.session_token
     end
 
-    private
-
     def ensure_session_token
         self.session_token ||= generate_session_token
     end

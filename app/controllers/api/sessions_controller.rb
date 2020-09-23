@@ -7,21 +7,20 @@ class Api::SessionsController < ApplicationController
         )
 
         if @user
-            login!(@user)
+            signin!(@user)
             render "api/users/show"
         else
             render json: ["This email and password do not match."], status: 401
         end
+    end
 
-        def destroy
-            @user = current_user
-            if @user
-                logout!
-                render {}
-            else
-                render json: ["Please sign in."], status: 404
-            end
+    def destroy
+        @user = current_user
+        if @user
+            signout!
+            render json: {}
+        else
+            render json: ["Please sign in."], status: 404
         end
-
     end
 end

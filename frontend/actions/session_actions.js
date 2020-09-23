@@ -1,19 +1,19 @@
 import * as APIUtil from '../util/session_api_util';
 
 export const RECEIVE_USER = 'RECEIVE_USER';
-export const LOGOUT_USER = 'LOGOUT_USER';
+export const SIGNOUT_USER = 'SIGNOUT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 
-export const receiveUser = user => ({
+const receiveUser = user => ({
     type: RECEIVE_USER,
     user
 });
 
-export const logoutUser = () => ({
-    type: LOGOUT_USER,
+const signoutUser = () => ({
+    type: SIGNOUT_USER,
 });
 
-export const receiveSessionErrors = errors => ({
+const receiveSessionErrors = errors => ({
     type: RECEIVE_SESSION_ERRORS,
     errors
 });
@@ -28,16 +28,16 @@ export const signup = user => dispatch => {
         ))
 };
 
-export const login = user => dispatch => {
-    return APIUtil.login(user).then(user => (
+export const signin = user => dispatch => {
+    return APIUtil.signin(user).then(user => (
             dispatch(receiveUser(user))
         ), errorObject => (
             dispatch(receiveSessionErrors(errorObject.responseJSON))
         ))
 };
 
-export const logout = () => dispatch => {
-    return APIUtil.logout().then(user => (
-            dispatch(logoutUser())
+export const signout = () => dispatch => {
+    return APIUtil.signout().then(user => (
+            dispatch(signoutUser())
         ))
 };
