@@ -1,0 +1,52 @@
+.header-nav {
+    display: flex;
+    padding: 20px;
+    position: relative;
+}
+
+.logo-and-location {
+    display: flex;
+    left: 20%;
+}
+
+.open-table-logo {
+    margin-right: 10px;
+}
+
+.signup-signin-search {
+    display: flex;
+    position: absolute;
+    left: 65%;
+}
+
+.demo-signin {
+    margin-right: 5px;
+}
+
+.signup-button {
+    margin-right: 5px;
+}
+
+.signin-button {
+    margin-right: 5px;
+}
+
+.signup-form-modal {
+    display: none;
+    flex-direction: column;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.signin-form-modal {
+    display: none;
+    flex-direction: column;
+}
+
+.signin-form {
+    display: flex;
+    flex-direction: column;
+}

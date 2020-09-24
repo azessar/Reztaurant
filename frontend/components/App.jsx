@@ -6,7 +6,6 @@ import SigninModal from "./greeting/signin_modal_container";
 const App = () => (
     <div>
         <header>
-            <h1 className="open-table-logo">OpenTable</h1>
             <GreetingHeader />
             <SignupModal />
             <SigninModal />

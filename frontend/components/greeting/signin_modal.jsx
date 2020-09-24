@@ -44,24 +44,33 @@ class SigninModal extends React.Component {
         }
     }
 
+    renderErrors() {
+        const errorArray = Array.from(this.props.errors);
+        return (
+            <ul>
+                {errorArray.map((err, id) => (
+                    <li key={`error ${id}`}>
+                        {err}
+                    </li>
+                ))}
+            </ul>
+        )
+    }
+
     render(){
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    Signin Form
-                    <br></br>
-                    Enter email*
-                    <input type="text" value={this.state.email} onChange={this.update('email')}></input>
-                    <br></br>
-                    Enter password*
-                    <input type="password" value={this.state.password} onChange={this.update('password')} autoComplete="password"></input>
+            <div className="signin-form-modal">
+                <h1>Please sign in</h1>
+                <div>{this.renderErrors()}</div>
+                <form className="signin-form" onSubmit={this.handleSubmit}>
+                    <input type="text" value={this.state.email} placeholder="Email" onChange={this.update('email')}></input>
+                    <input type="password" value={this.state.password} placeholder="Password" onChange={this.update('password')} autoComplete="password"></input>
                     <button type='submit'>Sign in</button>
+                    <form className="demo-signin" onSubmit={this.handleDemoSubmit}>
+                        <button type='submit'>Demo user enter here</button>
+                    </form>
                 </form>
-                <br></br>
-                this is for demo user:
-                <form onSubmit={this.handleDemoSubmit}>
-                    <button type='submit'>Demo user enter here</button>
-                </form>
+               
             </div>
         )
     }

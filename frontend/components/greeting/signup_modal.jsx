@@ -50,25 +50,15 @@ class SignupModal extends React.Component {
 
     render(){
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    Signup Form
-                    {this.renderErrors()}
-                    <br></br>
-                    First Name*
-                    <input type="text" value={this.state.first_name} onChange={this.update('first_name')}></input>
-                    <br></br>
-                    Last Name*
-                    <input type="text" value={this.state.last_name} onChange={this.update('last_name')}></input>
-                    <br></br>
-                    Enter email*
-                    <input type="text" value={this.state.email} onChange={this.update('email')}></input>
-                    <br></br>
-                    Enter password*
-                    <input type="password" value={this.state.password} onChange={this.update('password')} autoComplete="password"></input>
-                    Primary Dining Location*
-                    <input type="text" value={this.state.primary_dining_location} onChange={this.update('primary_dining_location')}></input>
-                    <br></br>
+            <div className="signup-form-modal">
+                <h1>Welcome to Reztaurant!</h1>
+                <div>{this.renderErrors()}</div>
+                <form className="signup-form" onSubmit={this.handleSubmit}>
+                    <input type="text" value={this.state.first_name} placeholder="First Name" onChange={this.update('first_name')}></input>
+                    <input type="text" value={this.state.last_name} placeholder="Last Name" onChange={this.update('last_name')}></input>
+                    <input type="text" value={this.state.email} placeholder="Email" onChange={this.update('email')}></input>
+                    <input type="password" value={this.state.password} placeholder="Password" onChange={this.update('password')} autoComplete="password"></input>
+                    <input type="text" value={this.state.primary_dining_location} placeholder="Primary Dining Location" onChange={this.update('primary_dining_location')}></input>
                     <button type='submit'>Sign up</button>
                 </form>
             </div>
