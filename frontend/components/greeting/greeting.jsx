@@ -49,8 +49,7 @@ class GreetingHeader extends React.Component {
 
     userButtons() {
         return (
-            <div>
-                Hello (user)!
+            <div className="user-buttons">
                 <button className="signout-button" onClick={this.props.signout}>Sign out</button>
             </div>
         )
@@ -59,6 +58,8 @@ class GreetingHeader extends React.Component {
     signupModalAppears(){
         let signupModal = document.querySelector(".signup-form-modal");
         signupModal.style.display = "flex";
+        // let everythingElse = document.querySelector(".whole-thing");
+        // everythingElse.style.opacity = "50%";
     }
 
     signinModalAppears() {
@@ -68,28 +69,21 @@ class GreetingHeader extends React.Component {
 
     sessionButtons() {
         return (
-            <div>
+            <span className="signup-signin-search">
+                <button className="demo-signin-button" onClick={this.handleDemoSubmit}>Demo user enter here</button>
                 <button className="signup-button" onClick={this.signupModalAppears}>Sign up</button>
                 <button className="signin-button" onClick={this.signinModalAppears}>Sign in</button>
-            </div>
+            </span>
         )
     };
 
     render() {
         return (
             <nav className="header-nav">
-                <nav className="logo-and-location">
-                    <div className="open-table-logo">OpenTableLogo</div>
-                    <div>LocationDropdown</div>
-                </nav>
-                
-                <nav className="signup-signin-search">
-                    <form className="demo-signin" onSubmit={this.handleDemoSubmit}>
-                        <button type='submit'>Demo user enter here</button>
-                    </form>
-                    <div>{this.props.currentUser ? this.userButtons() : this.sessionButtons()}</div>
-                    <div>Search</div>
-                </nav>
+
+                <img className="logo" src={window.logo} />
+                <img className="location-dropdown" src={window.location_dropdown} />
+                {this.props.currentUser ? this.userButtons() : this.sessionButtons()}
             </nav>
         )
     }

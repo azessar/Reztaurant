@@ -29,6 +29,14 @@ class SignupModal extends React.Component {
         });
     }
 
+    closeForm(event){
+        let signupModal = document.querySelector(".signup-form-modal");
+        if (event.target == signupModal) {
+            signupModal.style.display = "none";
+        }
+        
+    }
+
     update(field) {
         return e => {
             this.setState({ [field]: e.currentTarget.value })
@@ -40,7 +48,7 @@ class SignupModal extends React.Component {
         return (
             <ul>
                 {errorArray.map((err, id) => (
-                    <li key={`error ${id}`}>
+                    <li key={`sign up error #${id}`}>
                         {err}
                     </li>
                 ))}
@@ -50,16 +58,16 @@ class SignupModal extends React.Component {
 
     render(){
         return (
-            <div className="signup-form-modal">
-                <h1>Welcome to Reztaurant!</h1>
+            <div className="signup-form-modal" onClick={this.closeForm}>
+                <h1 className="welcome">Welcome to Reztaurant!</h1>
                 <div>{this.renderErrors()}</div>
                 <form className="signup-form" onSubmit={this.handleSubmit}>
-                    <input type="text" value={this.state.first_name} placeholder="First Name" onChange={this.update('first_name')}></input>
-                    <input type="text" value={this.state.last_name} placeholder="Last Name" onChange={this.update('last_name')}></input>
-                    <input type="text" value={this.state.email} placeholder="Email" onChange={this.update('email')}></input>
-                    <input type="password" value={this.state.password} placeholder="Password" onChange={this.update('password')} autoComplete="password"></input>
-                    <input type="text" value={this.state.primary_dining_location} placeholder="Primary Dining Location" onChange={this.update('primary_dining_location')}></input>
-                    <button type='submit'>Sign up</button>
+                    <input type="text" value={this.state.first_name} placeholder="First Name *" onChange={this.update('first_name')}></input>
+                    <input type="text" value={this.state.last_name} placeholder="Last Name *" onChange={this.update('last_name')}></input>
+                    <input type="text" value={this.state.email} placeholder="Email *" onChange={this.update('email')}></input>
+                    <input type="password" value={this.state.password} placeholder="Password *" onChange={this.update('password')} autoComplete="password"></input>
+                    <input type="text" value={this.state.primary_dining_location} placeholder="Primary Dining Location *" onChange={this.update('primary_dining_location')}></input>
+                    <button className="account-submit-button" type='submit'>Create Account</button>
                 </form>
             </div>
         )

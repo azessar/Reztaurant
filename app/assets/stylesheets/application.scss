@@ -14,3 +14,17 @@
  @import "./splash/splash_header.scss";
 
 
+div, header, h1, h2, h3, button, span, nav {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+    cursor: pointer;
+    border-radius: 6px;
+    border: 1px solid #31d3bd;
+    font-weight: 100;
+}
+
+.whole-thing {
+    opacity: 100%;
+}

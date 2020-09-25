@@ -1,18 +1,20 @@
 import { connect } from 'react-redux';
 import SigninModal from './signin_modal';
+import React from 'react';
 import { signup, signin } from '../../actions/session_actions';
 
 const mSTP = (state) => {
     return {
-        errors: state.errors,
-        currentUser: state.entities.users[state.session.id]
+        errors: state.errors.session,
+        currentUser: state.entities.users[state.session.id],
     }
 }
 
 const mDTP = dispatch => {
     return {
         signin: (user) => dispatch(signin(user)),
-        signup: (user) => dispatch(signup(user))
+        signup: (user) => dispatch(signup(user)),
+
     }
 }
 

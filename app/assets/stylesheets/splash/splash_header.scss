@@ -1,12 +1,32 @@
+
+
 .header-nav {
     display: flex;
     padding: 20px;
     position: relative;
+    width: 100%;
+}
+
+.logo {
+    position: absolute;
+    height: 60px;
+    top: 10px;
+    border: 0;
+}
+
+.location-dropdown {
+    position: absolute;
+    height: 40px;
+    top: 20px;
+    left: 180px;
+    border: 0;
 }
 
 .logo-and-location {
-    display: flex;
-    left: 20%;
+    display: inline-block;
+    position: absolute;
+    margin: auto;
+    padding: 10px;
 }
 
 .open-table-logo {
@@ -14,17 +34,28 @@
 }
 
 .signup-signin-search {
-    display: flex;
+    display: inline-block;
     position: absolute;
-    left: 65%;
+    left: 63%;
+    justify-content: flex-end;
 }
 
-.demo-signin {
+.top-right-search {
+    margin: auto;
+}
+
+.signup-signin-search button {
+    padding: 10px;
+}
+
+.demo-signin-button {
     margin-right: 5px;
 }
 
 .signup-button {
     margin-right: 5px;
+    background-color: #336699;
+    color: white;
 }
 
 .signin-button {
@@ -34,19 +65,102 @@
 .signup-form-modal {
     display: none;
     flex-direction: column;
-}
-
-.signup-form {
-    display: flex;
-    flex-direction: column;
+    background-color: white;
+    width: 50%;
+    max-width: 400px;
+    margin: auto;
+    border: 2px solid black;
+    border-radius: 6px;
+    padding: 15px;
+    position: absolute;
+    left: 30%;
+    z-index: 10;
 }
 
 .signin-form-modal {
     display: none;
     flex-direction: column;
+    background-color: white;
+    width: 50%;
+    max-width: 400px;
+    margin: auto;
+    border: 2px solid black;
+    border-radius: 6px;
+    padding: 15px;
+    position: absolute;
+    left: 30%;
+    z-index: 10;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+
 }
 
 .signin-form {
     display: flex;
     flex-direction: column;
+}
+
+h1.welcome {
+    border-bottom: 1px solid #D3D3D3;
+    font-size: 25px;
+}
+
+form > input, form > button {
+    padding: 20px;
+    border: 1px solid #D3D3D3;
+    margin-bottom: 15px;
+}
+
+.account-submit-button {
+    background-color: #ff3340;
+    color: white;
+    font-size: 15px;
+}
+
+.splash-image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 425px;
+    position: absolute;
+    top: 80px;
+    text-align: center;
+    min-width: 100%;
+    background-size: cover;
+}
+
+.splash-image {
+    height: 425px;
+    min-width: 100%;
+    object-fit: cover;
+    filter: brightness(50%);
+    background-size: cover;
+
+}
+
+.find-your-table-text {
+    position: absolute;
+    top: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    z-index: 3;
+
+}
+
+.user-buttons {
+    display: inline-block;
+    align-items: flex-end;    
+}
+
+.main-search-form {
+    position: absolute;
+    z-index: 3;
+    bottom: 150px;
 }

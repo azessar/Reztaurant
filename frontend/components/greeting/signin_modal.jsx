@@ -49,7 +49,7 @@ class SigninModal extends React.Component {
         return (
             <ul>
                 {errorArray.map((err, id) => (
-                    <li key={`error ${id}`}>
+                    <li key={`signin error #${id}`}>
                         {err}
                     </li>
                 ))}
@@ -60,17 +60,16 @@ class SigninModal extends React.Component {
     render(){
         return (
             <div className="signin-form-modal">
-                <h1>Please sign in</h1>
+                <h1 className="welcome">Please sign in</h1>
                 <div>{this.renderErrors()}</div>
                 <form className="signin-form" onSubmit={this.handleSubmit}>
                     <input type="text" value={this.state.email} placeholder="Email" onChange={this.update('email')}></input>
                     <input type="password" value={this.state.password} placeholder="Password" onChange={this.update('password')} autoComplete="password"></input>
-                    <button type='submit'>Sign in</button>
-                    <form className="demo-signin" onSubmit={this.handleDemoSubmit}>
-                        <button type='submit'>Demo user enter here</button>
-                    </form>
+                    <button className="account-submit-button" type='submit'>Sign In</button>
                 </form>
-               
+                <form className="demo-signin" onSubmit={this.handleDemoSubmit}>
+                    <button type='submit'>Demo user enter here</button>
+                </form>
             </div>
         )
     }

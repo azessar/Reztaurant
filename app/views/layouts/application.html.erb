@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html class="whole-thing">
   <head>
     <title>Reztaurant</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script type="text/javascript">
+      window.restaurantURL = "<%= image_url('restaurant_background.jpg') %>"
+      window.logo = "<%= image_url('logo.png') %>"
+      window.location_dropdown = "<%= image_url('location_dropdown.png') %>"
+    </script>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
