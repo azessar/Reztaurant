@@ -11,7 +11,9 @@
  * It is generally better to create a new file per style scope.
  *
  */
- @import "./splash/splash_header.scss";
+@import "./splash/splash_header.scss";
+@import "./reset.scss";
+
 
 
 div, header, h1, h2, h3, button, span, nav {
@@ -27,4 +29,24 @@ button {
 
 .whole-thing {
     opacity: 100%;
+}
+
+html {
+    min-width: 100%;
+}
+
+.top-line {
+    height: 25px;
+    background-color: rgb(212, 237, 241);
+    text-align: right;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row-reverse;
+    
+}
+
+.top-line-social {
+    margin: auto 0;
+    margin-right: 7px;
+    font-size: 10px;
 }

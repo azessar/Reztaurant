@@ -2,24 +2,19 @@
 
 .header-nav {
     display: flex;
-    padding: 20px;
-    position: relative;
-    width: 100%;
+    justify-content: space-between;
+    height: 50px;
 }
 
 .logo {
-    position: absolute;
-    height: 60px;
-    top: 10px;
+    height: 50px;
     border: 0;
 }
 
 .location-dropdown {
-    position: absolute;
-    height: 40px;
-    top: 20px;
-    left: 180px;
+    height: 45px;
     border: 0;
+    padding-left: 10px;
 }
 
 .logo-and-location {
@@ -34,17 +29,14 @@
 }
 
 .signup-signin-search {
-    display: inline-block;
-    position: absolute;
-    left: 63%;
-    justify-content: flex-end;
+    padding-top: 10px;
 }
 
 .top-right-search {
     margin: auto;
 }
 
-.signup-signin-search button {
+.signup-signin-search button, .signout-button {
     padding: 10px;
 }
 
@@ -63,32 +55,27 @@
 }
 
 .signup-form-modal {
-    display: none;
+    display: flex;
     flex-direction: column;
     background-color: white;
-    width: 50%;
-    max-width: 400px;
+    width: 400px;
     margin: auto;
     border: 2px solid black;
     border-radius: 6px;
     padding: 15px;
-    position: absolute;
-    left: 30%;
     z-index: 10;
 }
 
 .signin-form-modal {
-    display: none;
+    display: flex;
     flex-direction: column;
     background-color: white;
-    width: 50%;
+
     max-width: 400px;
     margin: auto;
     border: 2px solid black;
     border-radius: 6px;
     padding: 15px;
-    position: absolute;
-    left: 30%;
     z-index: 10;
 }
 
@@ -105,7 +92,9 @@
 
 h1.welcome {
     border-bottom: 1px solid #D3D3D3;
+    padding-bottom: 10px;
     font-size: 25px;
+    font-weight: bold;
 }
 
 form > input, form > button {
@@ -130,6 +119,10 @@ form > input, form > button {
     text-align: center;
     min-width: 100%;
     background-size: cover;
+    overflow-x: hidden;
+    img {
+        width: 100%;
+    }
 }
 
 .splash-image {
@@ -138,7 +131,14 @@ form > input, form > button {
     object-fit: cover;
     filter: brightness(50%);
     background-size: cover;
+    background-position: center;
+    overflow-x: hidden;
 
+}
+
+.splash-image-div {
+    display: flex;
+    justify-content: center;
 }
 
 .find-your-table-text {
@@ -156,11 +156,50 @@ form > input, form > button {
 
 .user-buttons {
     display: inline-block;
-    align-items: flex-end;    
+    align-items: flex-end;
+    position: absolute;
+    left: 80%;    
 }
 
 .main-search-form {
     position: absolute;
     z-index: 3;
     bottom: 150px;
+}
+
+.background-for-modal {
+    overflow-x: hidden;
+    // display: float;
+    // z-index: 8;
+    // opacity: 0.5;
+    // height: 900px;
+    // width: 100;
+    // overflow: hidden;
+}
+
+.modal-background {
+  justify-content: center;
+  display: flex;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+
+.modal-child {
+  display: block;
+  position: absolute;
+  top: 50px;  
+  height: 500px;
+  width: 400px;
+  margin: 0 auto;
+
+}
+
+.signup-form-modal {
+    height: 100%;
+    width: 100%;
 }

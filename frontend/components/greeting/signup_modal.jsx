@@ -12,6 +12,7 @@ class SignupModal extends React.Component {
             primary_dining_location: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.refreshPage = this.refreshPage.bind(this);
     }
 
 
@@ -56,10 +57,14 @@ class SignupModal extends React.Component {
         )
     }
 
+    refreshPage() {
+        window.location.reload();
+    }
+
     render(){
         return (
             <div className="signup-form-modal" onClick={this.closeForm}>
-                <h1 className="welcome">Welcome to Reztaurant!</h1>
+                <h1 className="welcome">Welcome to OpenTable!</h1>
                 <div>{this.renderErrors()}</div>
                 <form className="signup-form" onSubmit={this.handleSubmit}>
                     <input type="text" value={this.state.first_name} placeholder="First Name *" onChange={this.update('first_name')}></input>
@@ -67,7 +72,7 @@ class SignupModal extends React.Component {
                     <input type="text" value={this.state.email} placeholder="Email *" onChange={this.update('email')}></input>
                     <input type="password" value={this.state.password} placeholder="Password *" onChange={this.update('password')} autoComplete="password"></input>
                     <input type="text" value={this.state.primary_dining_location} placeholder="Primary Dining Location *" onChange={this.update('primary_dining_location')}></input>
-                    <button className="account-submit-button" type='submit'>Create Account</button>
+                    <button className="account-submit-button" type='submit' onClick={this.refreshPage}>Create Account</button>
                 </form>
             </div>
         )

@@ -51,40 +51,43 @@ class GreetingHeader extends React.Component {
         return (
             <div className="user-buttons">
                 <button className="signout-button" onClick={this.props.signout}>Sign out</button>
+
             </div>
         )
     };
 
-    signupModalAppears(){
-        let signupModal = document.querySelector(".signup-form-modal");
-        signupModal.style.display = "flex";
-        // let everythingElse = document.querySelector(".whole-thing");
-        // everythingElse.style.opacity = "50%";
-    }
+    // signupModalAppears(){
+    //     let signupModal = document.querySelector(".signup-form-modal");
+    //     signupModal.style.display = "flex";
 
-    signinModalAppears() {
-        let signinModal = document.querySelector(".signin-form-modal");
-        signinModal.style.display = "flex";
-    }
+    // }
+
+    // signinModalAppears() {
+    //     let signinModal = document.querySelector(".signin-form-modal");
+    //     signinModal.style.display = "flex";
+    // }
 
     sessionButtons() {
         return (
-            <span className="signup-signin-search">
+            <div className="signup-signin-search">
+
                 <button className="demo-signin-button" onClick={this.handleDemoSubmit}>Demo user enter here</button>
-                <button className="signup-button" onClick={this.signupModalAppears}>Sign up</button>
-                <button className="signin-button" onClick={this.signinModalAppears}>Sign in</button>
-            </span>
+                <button className="signup-button" onClick={() => this.props.openModal('signup')}>Sign up</button>
+                <button className="signin-button" onClick={() => this.props.openModal('signin')}>Sign in</button>
+
+            </div>
         )
     };
 
     render() {
         return (
-            <nav className="header-nav">
-
-                <img className="logo" src={window.logo} />
-                <img className="location-dropdown" src={window.location_dropdown} />
+            <div className="header-nav">
+                <div>
+                    <img className="logo" src={window.logo} />
+                    <img className="location-dropdown" src={window.location_dropdown} />
+                </div>
                 {this.props.currentUser ? this.userButtons() : this.sessionButtons()}
-            </nav>
+            </div>
         )
     }
 }
@@ -127,3 +130,7 @@ export default GreetingHeader;
 // }
 
 // export default GreetingHeader;
+
+{/* <button className="demo-signin-button" onClick={this.handleDemoSubmit}>Demo user enter here</button>
+    <button className="signup-button" onClick={this.signupModalAppears}>Sign up</button>
+    <button className="signin-button" onClick={this.signinModalAppears}>Sign in</button> */}
