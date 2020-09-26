@@ -3,7 +3,9 @@ import GreetingHeader from "./greeting/greeting_container";
 import SignupModal from "./greeting/signup_modal_container";
 import SigninModal from "./greeting/signin_modal_container";
 import Modal from './modal/modal';
-import MainSearch from './main_search/main_search'
+import MainSearch from './main_search/main_search'; 
+import MainRestaurants from './main_restaurants/main_restaurants'; 
+import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
 
 
 const App = () => (
@@ -15,6 +17,9 @@ const App = () => (
             <div className="top-line-social">Github</div>
         </div>
         <Modal />
+        <Switch>
+            <Route path="/" component={GreetingHeader} />
+        </Switch>
         <header className="main-header">
             <GreetingHeader />
 
@@ -34,6 +39,7 @@ const App = () => (
             </div>
             <span className="thin-gray-underline"></span>
         </section>
+        <MainRestaurants />
     </div>
 );
 

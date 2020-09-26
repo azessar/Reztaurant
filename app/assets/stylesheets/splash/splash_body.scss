@@ -17,3 +17,70 @@
 .arrow-location {
     height: 30px;
 }
+
+.category-header {
+    font-size: 25px;
+    border-bottom: 1px solid rgb(207, 190, 190);
+    width: 100%;
+    padding-bottom: 25px;
+}
+
+.restaurant-cards {
+    position: absolute;
+    display: flex;
+    top: 620px;
+    margin-left: 45px;
+    width: 93%;
+    flex-direction: column;
+}
+
+.card-row {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.restaurant-card {
+    min-width: 225px;
+    height: 250px;
+    margin-top: 15px;
+    border: 1px solid rgb(207, 190, 190);
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+}
+
+.card-image, .card-info {
+    height: 50%;
+    width: 100%;
+}
+
+.card-info > div {
+    padding-bottom: 11px;
+    margin-left: 7px;
+    margin-right: 7px;
+    max-width: 80%
+}
+
+.card-reviews-and-stars {
+    display: flex;
+}
+.stars {
+    padding-right: 10px;
+}
+
+.card-name {
+    font-size: 20px;
+    font-weight: 600;
+    padding-top: 4px;
+}
+
+.booked-times {
+    padding-top: 8px;
+    font-weight: lighter;
+}
+
+.cuisine-price-area {
+    font-weight: lighter;
+    font-size: 13px;
+}

@@ -81,11 +81,13 @@ class GreetingHeader extends React.Component {
         )
     };
 
+  
+
     render() {
         return (
             <div className="header-nav">
                 <div>
-                    <img className="logo" src={window.logo} />
+                    <Link to="/"><img className="logo" src={window.logo} /></Link>
                     <img className="location-dropdown" src={window.location_dropdown} />
                 </div>
                 {this.props.currentUser ? this.userButtons() : this.sessionButtons()}
