@@ -23,7 +23,7 @@
     border-bottom: 1px solid rgb(207, 190, 190);
     width: 100%;
     padding-bottom: 25px;
-    padding-top: 50px;
+    padding-top: 35px;
 }
 
 .restaurant-cards {
@@ -42,7 +42,7 @@
 }
 
 .restaurant-card {
-    min-width: 225px;
+    min-width: 245px;
     height: 100%;
     margin-top: 15px;
     border: 1px solid rgb(207, 190, 190);
@@ -98,7 +98,7 @@
 .bottom-socials {
     position: absolute;
     display: flex;
-    top: 1360px;
+    top: 1330px;
     margin-left: 45px;
     margin-right: 45px;
     width: 93%;
@@ -107,6 +107,7 @@
     overflow-x: hidden;
     align-items: center;
     justify-content: center;
+    padding-top: 8px;
 }
 
 .footer-food {
@@ -131,7 +132,7 @@
     text-align: center;
 }
 .connect-with-me {
-    font-size: 50px;
+    font-size: 38px;
 }
 
 .social-buttons {
@@ -156,4 +157,27 @@ input.twitter {
 input.github {
     background-color: black;
     color: white
+}
+
+.splash-footer {
+    position: absolute;
+    display: flex;
+    top: 1590px;
+    background-size: cover;
+    text-align: center;
+    overflow-x: hidden;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100px;
+    background-color: rgb(40, 39, 54);
+    color: white;
+}
+
+.mock-opentable {
+    padding-bottom: 10px;
+}
+
+.real-opentable a {
+    color: white;
 }

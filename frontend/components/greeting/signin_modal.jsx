@@ -14,7 +14,7 @@ class SigninModal extends React.Component {
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
-        this.refreshPage = this.refreshPage.bind(this);
+
     }
 
     handleSubmit(e) {
@@ -36,7 +36,7 @@ class SigninModal extends React.Component {
         const { signin } = this.props;
         const { first_name, last_name, email, password, primary_dining_location } = this.state;
         const demoUser = { first_name: "Gordon", last_name: "Ramsay", email: "gramsay@gmail.com", password: "rubbish", primary_dining_location: "London" }
-        signin(demoUser).then(closeModal());
+        signin(demoUser);
         e.target.reset();
     }
 
@@ -59,9 +59,6 @@ class SigninModal extends React.Component {
         )
     }
 
-    refreshPage() {
-        window.location.reload();
-    }
 
     render(){
         return (
@@ -71,7 +68,7 @@ class SigninModal extends React.Component {
                 <form className="signin-form" onSubmit={this.handleSubmit}>
                     <input type="text" value={this.state.email} placeholder="Email" onChange={this.update('email')}></input>
                     <input type="password" value={this.state.password} placeholder="Password" onChange={this.update('password')} autoComplete="password"></input>
-                    <button className="account-submit-button" type='submit' onClick={this.refreshPage}>Sign In</button>
+                    <button className="account-submit-button" type='submit' >Sign In</button>
                 </form>
                 <form className="demo-signin" onSubmit={this.handleDemoSubmit}>
                     <button type='submit'>Demo user enter here</button>

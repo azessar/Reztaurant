@@ -9,3 +9,4 @@
 
 
 user1 = User.create([{first_name: 'Andrew'}, {last_name: 'Zessar'}, {email: 'blah@gmail.com'}, {primary_dining_location: 'Chicago'}, {password: 'password'}])
+user2 = User.create([{first_name: 'bob'}, {last_name: 'bob'}, {email: 'bob'}, {primary_dining_location: 'Chicago'}, {password: 'password'}])

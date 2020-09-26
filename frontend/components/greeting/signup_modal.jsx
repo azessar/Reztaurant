@@ -12,7 +12,7 @@ class SignupModal extends React.Component {
             primary_dining_location: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.refreshPage = this.refreshPage.bind(this);
+
     }
 
 
@@ -57,9 +57,7 @@ class SignupModal extends React.Component {
         )
     }
 
-    refreshPage() {
-        window.location.reload();
-    }
+
 
     render(){
         return (

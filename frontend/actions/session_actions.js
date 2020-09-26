@@ -1,4 +1,5 @@
 import * as APIUtil from '../util/session_api_util';
+import {closeModal} from './modal_actions'
 
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const SIGNOUT_USER = 'SIGNOUT_USER';
@@ -21,17 +22,19 @@ export const receiveSessionErrors = errors => ({
 //thunk above, regular action below
 
 export const signup = user => dispatch => {
-    return APIUtil.signup(user).then(user => (
-            dispatch(receiveUser(user))
-        ), errorObject => (
+    return APIUtil.signup(user).then(user => {
+            dispatch(receiveUser(user));
+            dispatch(closeModal());
+            }, errorObject => (
             dispatch(receiveSessionErrors(errorObject.responseJSON))
         ))
 };
 
 export const signin = user => dispatch => {
-    return APIUtil.signin(user).then(user => (
-            dispatch(receiveUser(user))
-        ), errorObject => (
+    return APIUtil.signin(user).then(user => {
+            dispatch(receiveUser(user));
+            dispatch(closeModal());
+            }, errorObject => (
             dispatch(receiveSessionErrors(errorObject.responseJSON))
         ))
 };
