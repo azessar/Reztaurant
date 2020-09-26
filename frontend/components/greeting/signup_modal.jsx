@@ -30,13 +30,13 @@ class SignupModal extends React.Component {
         });
     }
 
-    closeForm(event){
-        let signupModal = document.querySelector(".signup-form-modal");
-        if (event.target == signupModal) {
-            signupModal.style.display = "none";
-        }
+    // closeForm(event){
+    //     let signupModal = document.querySelector(".signup-form-modal");
+    //     if (event.target == signupModal) {
+    //         signupModal.style.display = "none";
+    //     }
         
-    }
+    // }
 
     update(field) {
         return e => {
@@ -72,7 +72,7 @@ class SignupModal extends React.Component {
                     <input type="text" value={this.state.email} placeholder="Email *" onChange={this.update('email')}></input>
                     <input type="password" value={this.state.password} placeholder="Password *" onChange={this.update('password')} autoComplete="password"></input>
                     <input type="text" value={this.state.primary_dining_location} placeholder="Primary Dining Location *" onChange={this.update('primary_dining_location')}></input>
-                    <button className="account-submit-button" type='submit' onClick={this.refreshPage}>Create Account</button>
+                    <button className="account-submit-button" type='submit'>Create Account</button>
                 </form>
             </div>
         )

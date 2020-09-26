@@ -3,6 +3,7 @@ import GreetingHeader from "./greeting/greeting_container";
 import SignupModal from "./greeting/signup_modal_container";
 import SigninModal from "./greeting/signin_modal_container";
 import Modal from './modal/modal';
+import MainSearch from './main_search/main_search'
 
 
 const App = () => (
@@ -21,15 +22,18 @@ const App = () => (
                 <span className="find-your-table-text">Find your table for any occasion</span>
                 <div className="splash-image-div">
                     <img className="splash-image" src={window.restaurantURL}/>
-                    <form className="main-search-form">
-                        <input placeholder="Date"></input>
-                        <input placeholder="Time"></input>
-                        <input placeholder="Num People"></input>
-                        <input placeholder="Search"></input>
-                    </form>
+                    <MainSearch />
                 </div>
             </div>
         </header>
+        <section>
+            <div className="it-looks-like">
+                <div>It looks like you're in Chicago. Not correct?</div>
+                <img className="arrow-location" src={window.arrow_location} />
+                <div>Get current location</div>
+            </div>
+            <span className="thin-gray-underline"></span>
+        </section>
     </div>
 );
 

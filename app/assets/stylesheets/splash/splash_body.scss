@@ -1,0 +1,19 @@
+.it-looks-like {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 520px;
+    padding-bottom: 10px;
+    margin-left: 45px;
+    border-bottom: 1px solid rgb(207, 190, 190);
+    width: 93%;
+}
+
+.it-looks-like div {
+    padding-right: 20px;
+    font-size: 15px;
+}
+
+.arrow-location {
+    height: 30px;
+}

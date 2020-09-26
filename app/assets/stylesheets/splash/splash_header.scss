@@ -3,7 +3,7 @@
 .header-nav {
     display: flex;
     justify-content: space-between;
-    height: 50px;
+
 }
 
 .logo {
@@ -28,8 +28,10 @@
     margin-right: 10px;
 }
 
-.signup-signin-search {
-    padding-top: 10px;
+
+.signup-signin-search, .user-buttons {
+    display: flex;
+    align-items: center;
 }
 
 .top-right-search {
@@ -38,6 +40,9 @@
 
 .signup-signin-search button, .signout-button {
     padding: 10px;
+}
+.signout-button {
+    margin-top: 8px;
 }
 
 .demo-signin-button {
@@ -97,10 +102,11 @@ h1.welcome {
     font-weight: bold;
 }
 
-form > input, form > button {
+.signup-form > input, .signup-form > button, .signin-form > input, .signin-form > button {
     padding: 20px;
     border: 1px solid #D3D3D3;
     margin-bottom: 15px;
+    margin-top: 5px;
 }
 
 .account-submit-button {
@@ -141,13 +147,61 @@ form > input, form > button {
     justify-content: center;
 }
 
+.main-search-div {
+    position: absolute;
+    z-index: 7;
+    top: 53%;
+}
+
+.main-search-input {
+    padding-right: 15px;
+}
+
+
+.main-search-form {
+    display: flex;
+}
+
+.date-time-peeps {
+    display: flex;
+    padding-right: 15px;
+}
+.date-time-peeps input {
+    width: 150px;
+    height: 45px;
+}
+
+.main-search-input input {
+    width: 300px;
+}
+
+.main-search-form input {
+
+}
+.main-search-form select {
+    width: 150px;
+    height: 49px;
+}
+
+.location-restaurant-cuisine {
+    height: 43px;
+}
+
+.lets-go-button {
+    height: 50px;
+    width: 150px;
+    background-color: #ff3340;
+    border: none;
+    color: white;
+}
+
 .find-your-table-text {
     position: absolute;
-    top: 30%;
+    top: 37%;
     margin-left: auto;
     margin-right: auto;
-    font-size: 40px;
-    font-weight: bold;
+    font-size: 50px;
+    font-weight: 600;
     text-align: center;
     color: white;
     z-index: 3;
@@ -161,11 +215,7 @@ form > input, form > button {
     left: 80%;    
 }
 
-.main-search-form {
-    position: absolute;
-    z-index: 3;
-    bottom: 150px;
-}
+
 
 .background-for-modal {
     overflow-x: hidden;
@@ -202,4 +252,10 @@ form > input, form > button {
 .signup-form-modal {
     height: 100%;
     width: 100%;
+}
+
+.search-mag {
+    height: 35px;
+    padding-right: 15px;
+    padding-top: 5px;
 }

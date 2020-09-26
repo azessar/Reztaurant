@@ -74,7 +74,9 @@ class GreetingHeader extends React.Component {
                 <button className="demo-signin-button" onClick={this.handleDemoSubmit}>Demo user enter here</button>
                 <button className="signup-button" onClick={() => this.props.openModal('signup')}>Sign up</button>
                 <button className="signin-button" onClick={() => this.props.openModal('signin')}>Sign in</button>
-
+                <div className="search-mag-div">
+                    <img className="search-mag" src={window.mag_glass} />
+                </div>
             </div>
         )
     };
