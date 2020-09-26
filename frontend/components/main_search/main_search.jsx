@@ -8,8 +8,8 @@ class MainSearch extends React.Component {
             <div className="main-search-div">
                 <form className="main-search-form">
                     <div className="date-time-peeps">
-                        <div className="search-date">
-                            <input type="date"></input>
+                        <div className="search-date" >
+                            <input type="date" value="2020-10-02"></input>
                         </div>
                         <div className="search-time">
                             <select className="time">

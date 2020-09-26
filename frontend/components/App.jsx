@@ -12,9 +12,15 @@ const App = () => (
     
     <div>
         <div className="top-line">
-            <div className="top-line-social">LinkedIn</div>
-            <div className="top-line-social">Twitter</div>
-            <div className="top-line-social">Github</div>
+            <div className="top-line-social">
+                <a href="https://www.linkedin.com/in/andrew-zessar-93067192/" target="_blank">LinkedIn</a>
+            </div>
+            <div className="top-line-social">
+                <a href="https://twitter.com/ZesstySauce" target="_blank">@zesstysauce</a>
+            </div>
+            <div className="top-line-social">
+                <a href="https://github.com/azessar" target="_blank">Github</a>
+            </div>
         </div>
         <Modal />
         <Switch>
@@ -40,6 +46,23 @@ const App = () => (
             <span className="thin-gray-underline"></span>
         </section>
         <MainRestaurants />
+        <section className="bottom-socials">
+            <img className="footer-food" src={window.footer_food} />
+            <div className="socials-text">
+                <div className="connect-with-me">Connect with me!</div>
+                <div className="social-buttons">
+                    <form action="https://www.linkedin.com/in/andrew-zessar-93067192/" target="_blank">
+                        <input type="submit" value="LinkedIn" className="linkedin"/>
+                    </form>
+                    <form action="https://twitter.com/ZesstySauce">
+                        <input type="submit" value="@zesstysauce" className="twitter" target="_blank"/>
+                    </form>
+                    <form action="https://github.com/azessar">
+                        <input type="submit" value="Github" className="github" target="_blank"/>
+                    </form>
+                </div>
+            </div>
+        </section>
     </div>
 );
 

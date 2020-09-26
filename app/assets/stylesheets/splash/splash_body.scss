@@ -23,12 +23,13 @@
     border-bottom: 1px solid rgb(207, 190, 190);
     width: 100%;
     padding-bottom: 25px;
+    padding-top: 50px;
 }
 
 .restaurant-cards {
     position: absolute;
     display: flex;
-    top: 620px;
+    top: 570px;
     margin-left: 45px;
     width: 93%;
     flex-direction: column;
@@ -42,7 +43,7 @@
 
 .restaurant-card {
     min-width: 225px;
-    height: 250px;
+    height: 100%;
     margin-top: 15px;
     border: 1px solid rgb(207, 190, 190);
     display: flex;
@@ -67,6 +68,15 @@
 }
 .stars {
     padding-right: 10px;
+    padding-bottom: 3px;
+}
+
+.stars img {
+    height: 20px;
+}
+
+.reviews {
+    padding-top: 3px;
 }
 
 .card-name {
@@ -82,5 +92,68 @@
 
 .cuisine-price-area {
     font-weight: lighter;
-    font-size: 13px;
+    font-size: 17px;
+}
+
+.bottom-socials {
+    position: absolute;
+    display: flex;
+    top: 1360px;
+    margin-left: 45px;
+    margin-right: 45px;
+    width: 93%;
+    background-size: cover;
+    text-align: center;
+    overflow-x: hidden;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-food {
+    height: 225px;
+    min-width: 100%;
+    object-fit: cover;
+    filter: brightness(70%);
+    background-size: cover;
+    background-position: center;
+    overflow-x: hidden;
+
+}
+
+.socials-text {
+    z-index: 4;
+    position: absolute;
+    color: white;
+    position: absolute;
+    top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.connect-with-me {
+    font-size: 50px;
+}
+
+.social-buttons {
+    padding-top: 50px;
+    display: flex;
+}
+.social-buttons input {
+    margin: 20px;
+    height: 40px;
+    width: 150px;
+    border: none;
+    cursor: pointer;
+}
+input.linkedin {
+    background-color: rgb(3, 3, 126);
+    color: white
+}
+input.twitter {
+    background-color: rgb(141, 141, 219);
+    color: white
+}
+input.github {
+    background-color: black;
+    color: white
 }
