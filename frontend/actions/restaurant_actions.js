@@ -14,11 +14,13 @@ export const receiveRestaurant = ({ restaurant }) => ({
 
 });
 
-export const fetchRestaurants = () => dispatch => (
-    APIUtil.fetchRestaurants().then(restaurants => (
-        dispatch(receiveRestaurants(restaurants))
-    ))
-);
+export const fetchRestaurants = () => dispatch => {
+    console.log("inside actions")
+    return APIUtil.fetchRestaurants().then(restaurants => {
+        console.log("inside success callback", restaurants)
+        return dispatch(receiveRestaurants(restaurants))
+    })
+};
 
 export const fetchRestaurant = id => dispatch => (
     APIUtil.fetchRestaurant(id).then(payload => (

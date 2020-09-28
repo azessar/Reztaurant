@@ -16,7 +16,7 @@ class MainRestaurants extends React.Component {
                         <div className="restaurant-card">
                             <img className="card-image" src={window.tapas} />
                             <div className="card-info">
-                                <div className="card-name">Cafe Ba-Ba-Reeba 1</div>
+                                <div className="card-name">Cafe Ba-Ba-Reeba</div>
                                 <div className="card-reviews-and-stars">
                                     <div className="stars">
                                         <img className="star" src={window.star} />
