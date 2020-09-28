@@ -51,7 +51,6 @@ class GreetingHeader extends React.Component {
         return (
             <div className="user-buttons">
                 <button className="signout-button" onClick={this.props.signout}>Sign out</button>
-
             </div>
         )
     };

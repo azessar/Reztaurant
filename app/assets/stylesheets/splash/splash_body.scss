@@ -43,12 +43,15 @@
 
 .restaurant-card {
     min-width: 245px;
-    height: 100%;
     margin-top: 15px;
     border: 1px solid rgb(207, 190, 190);
     display: flex;
     flex-direction: column;
     margin-right: 10px;
+}
+
+.restaurant-card:hover {
+    border-bottom: 2px solid rgb(207, 190, 190);
 }
 
 .card-image, .card-info {

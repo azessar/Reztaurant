@@ -5,6 +5,8 @@ import SigninModal from "./greeting/signin_modal_container";
 import Modal from './modal/modal';
 import MainSearch from './main_search/main_search'; 
 import MainRestaurants from './main_restaurants/main_restaurants'; 
+import RestaurantIndex from './restaurants/restaurant_index'; 
+import RestaurantIndexContainer from './restaurants/restaurant_index_container'
 import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
 
 
@@ -23,9 +25,7 @@ const App = () => (
             </div>
         </div>
         <Modal />
-        <Switch>
-            <Route path="/" component={GreetingHeader} />
-        </Switch>
+
         <header className="main-header">
             <GreetingHeader />
 
@@ -73,6 +73,10 @@ const App = () => (
                 </div>
             </div>    
         </footer>
+        <Switch>
+            <Route path="/" component={GreetingHeader} />
+            <Route path="/restaurants" component={RestaurantIndexContainer} />
+        </Switch>
     </div>
 );
 
