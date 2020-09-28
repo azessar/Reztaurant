@@ -1,8 +1,8 @@
 import React from 'react';
 import Modal from '../modal/modal';
 import MainSearch from '../main_search/main_search';
-import MainRestaurants from '../main_restaurants/main_restaurants';
-import RestaurantIndexContainer from '../restaurants/restaurant_index_container'
+import MainRestaurants from '../restaurants/main_restaurants';
+import RestaurantIndex from '../restaurants/restaurant_index_container'
 import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
 
 class SplashBody extends React.Component {
@@ -27,7 +27,8 @@ class SplashBody extends React.Component {
                     </div>
                     <span className="thin-gray-underline"></span>
                 </section>
-                <MainRestaurants />
+                <RestaurantIndex />
+                {/* <MainRestaurants /> */}
                 <section className="bottom-socials">
                     <img className="footer-food" src={window.footer_food} />
                     <div className="socials-text">

@@ -48,6 +48,7 @@
     display: flex;
     flex-direction: column;
     margin-right: 10px;
+    max-width: 245px;
 }
 
 .restaurant-card:hover {
@@ -86,6 +87,8 @@
     font-size: 20px;
     font-weight: 600;
     padding-top: 4px;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .booked-times {
@@ -96,6 +99,8 @@
 .cuisine-price-area {
     font-weight: lighter;
     font-size: 17px;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .bottom-socials {

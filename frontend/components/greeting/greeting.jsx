@@ -51,6 +51,12 @@ class GreetingHeader extends React.Component {
         return (
             <div className="user-buttons">
                 <button className="signout-button" onClick={this.props.signout}>Sign out</button>
+                <div className="user-icons">
+                    <img className="signin-guy" src={window.signin_guy} />
+                    <img className="reservation-box" src={window.reservation_box} />
+                    <img className="alert-bell" src={window.alert_bell} />
+                    <img className="search-mag" src={window.mag_glass} />
+                </div>
             </div>
         )
     };

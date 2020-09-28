@@ -119,7 +119,7 @@ class MainRestaurants extends React.Component {
                     </div>
                 </div>
                 <div className="category-header">
-                    Trendy tapas
+                    Book a table now
                 </div>
                 <div className="card-row">
                     <div className="restaurant-card">

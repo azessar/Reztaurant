@@ -1,10 +1,13 @@
-import { RECEIVE_RESTAURANTS } from '../actions/restaurant_actions';
+import { RECEIVE_RESTAURANTS, RECEIVE_RESTAURANT } from '../actions/restaurant_actions';
 
 const restaurantsReducer = (state = {}, action) => {
     Object.freeze(state);
     switch (action.type) {
         case RECEIVE_RESTAURANTS:
             return action.restaurants;
+        case RECEIVE_RESTAURANT:
+            const nextRestaurant = { [action.restaurant.id]: action.restaurant };
+            return Object.assign({}, state, nextRestaurant);
         default:
             return state;
     }
