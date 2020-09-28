@@ -13,6 +13,7 @@
  */
 @import "./splash/splash_header.scss";
 @import "./splash/splash_body.scss";
+@import "./restaurants/restaurants.scss";
 @import "./reset.scss";
 
 
@@ -38,7 +39,7 @@ footer, header, hgroup, menu, nav, section, button, input, select {
 
 button {
     cursor: pointer;
-    border-radius: 6px;
+    border-radius: 4px;
     border: 1px solid #31d3bd;
     font-weight: 100;
 }

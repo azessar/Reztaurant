@@ -6,7 +6,7 @@ class RestaurantIndex extends React.Component {
 
     render() {
         return (
-            <div>testtesttest</div>
+            <div className="testtesttest">testtesttest</div>
         )
     }
 }
