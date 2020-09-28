@@ -6,7 +6,7 @@ import Modal from './modal/modal';
 import MainSearch from './main_search/main_search'; 
 import MainRestaurants from './main_restaurants/main_restaurants'; 
 import RestaurantIndexItem from './restaurants/restaurant_index_container'
-import RestaurantShowContainer from './restaurants/restaurant_show_container'
+import RestaurantShow from './restaurants/restaurant_show_container'
 import SplashBody from './greeting/splash_body'
 import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
 
@@ -29,8 +29,8 @@ const App = () => (
         <GreetingHeader />
        
         <Switch>
-            <Route exact path="/restaurants/:restaurantId" component={RestaurantShowContainer} />
-            <Route exact path="/restaurants" component={RestaurantIndexItem} />
+            <Route path="/restaurants/:restaurantId" component={RestaurantShow} />
+            <Route path="/restaurants" component={RestaurantIndexItem} />
             <Route path="/" component={SplashBody} />
         </Switch>
     </div>
