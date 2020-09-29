@@ -29,13 +29,15 @@ class RestaurantIndex extends React.Component {
             <div>
                 <div className="restaurant-cards">
                     <div className="category-header">
-                        Get it delivered
+                        Available now
                     </div>
                     <div className="card-row">
                         {restaurantArray.map(restaurant => (
                             <Link to={`/restaurants/${restaurant.id}`}>
                                 <div className="restaurant-card">
-                                    <img className="card-image" src={window.tapas} />
+                                    {/* <img className="card-image" src={window.tapas} /> */}
+                                    {/* <div className="card-image">{restaurant.main_photo}</div> */}
+                                    <img className="card-image" src={restaurant.main_photo} />
                                     <div className="card-info">
                                         <div className="card-name">{restaurant.name}</div>
                                         <div className="card-reviews-and-stars">

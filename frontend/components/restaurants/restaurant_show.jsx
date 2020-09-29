@@ -7,6 +7,7 @@ class RestaurantShow extends React.Component {
     }
 
     componentDidMount() {
+        console.log(this.props.fetchRestaurant(this.props.match.params.restaurantId))
         this.props.fetchRestaurant(this.props.match.params.restaurantId);
     }
 
@@ -24,6 +25,9 @@ class RestaurantShow extends React.Component {
 
     render(){
         const restaurant = this.props.restaurant;
+        if (!restaurant) {
+            return null;
+        };
         return(
             <div>
                 <div className="restaurant-header-loc">
