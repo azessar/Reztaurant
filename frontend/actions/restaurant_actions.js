@@ -21,7 +21,6 @@ export const fetchRestaurants = () => dispatch => {
 };
 
 export const fetchRestaurant = id => dispatch => {
-    debugger
     return (
         APIUtil.fetchRestaurant(id).then(payload => (
             dispatch(receiveRestaurant(payload))

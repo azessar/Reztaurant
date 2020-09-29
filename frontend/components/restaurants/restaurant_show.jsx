@@ -7,16 +7,18 @@ class RestaurantShow extends React.Component {
     }
 
     componentDidMount() {
-        debugger
         this.props.fetchRestaurant(this.props.match.params.restaurantId);
     }
 
     render(){
-        debugger
         const restaurant = this.props.restaurant;
         return(
             <div>
-                aaaabbb
+                <div>
+                    <div>Home</div>
+                    <div>United States</div>
+                    <div>{restaurant.city} / {restaurant.state}</div>
+                </div>
                 {restaurant.name}
             </div>
         )

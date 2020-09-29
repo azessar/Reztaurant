@@ -4,7 +4,6 @@ import SignupModal from "./greeting/signup_modal_container";
 import SigninModal from "./greeting/signin_modal_container";
 import Modal from './modal/modal';
 import MainSearch from './main_search/main_search'; 
-import MainRestaurants from './main_restaurants/main_restaurants'; 
 import RestaurantIndexItem from './restaurants/restaurant_index_container'
 import RestaurantShow from './restaurants/restaurant_show_container'
 import SplashBody from './greeting/splash_body'
