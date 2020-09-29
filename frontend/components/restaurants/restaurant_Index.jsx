@@ -10,6 +10,18 @@ class RestaurantIndex extends React.Component {
         this.props.fetchRestaurants();
     }
 
+    priceConversion(price) {
+        if (price < 15) {
+            return '$'
+        } else if (price < 40) {
+            return '$$'
+        } else if (price < 80) {
+            return '$$$'
+        } else {
+            return '$$$$'
+        }
+    }
+
     render() {
         const restaurantArray = this.props.restaurants;
         // const { name } = this.props.restaurant;
@@ -35,7 +47,7 @@ class RestaurantIndex extends React.Component {
                                             </div>
                                             <div className="reviews">6651 reviews</div>
                                         </div>
-                                        <div className="cuisine-price-area">{restaurant.cuisine} - {restaurant.avg_price} - {restaurant.city}, {restaurant.state}</div>
+                                        <div className="cuisine-price-area">{restaurant.cuisine} - {this.priceConversion(restaurant.avg_price)} - {restaurant.city}, {restaurant.state}</div>
                                         <div className="booked-times">Booked 115 times today</div>
                                     </div>
                                 </div>
@@ -62,7 +74,7 @@ class RestaurantIndex extends React.Component {
                                             </div>
                                             <div className="reviews">6651 reviews</div>
                                         </div>
-                                        <div className="cuisine-price-area">{restaurant.cuisine} - {restaurant.avg_price} - {restaurant.city}, {restaurant.state}</div>
+                                        <div className="cuisine-price-area">{restaurant.cuisine} - {this.priceConversion(restaurant.avg_price)} - {restaurant.city}, {restaurant.state}</div>
                                         <div className="booked-times">Booked 115 times today</div>
                                     </div>
                                 </div>

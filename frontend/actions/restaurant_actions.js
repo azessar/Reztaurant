@@ -10,7 +10,7 @@ export const receiveRestaurants = restaurants => ({
 
 export const receiveRestaurant = ({ restaurant }) => ({
     type: RECEIVE_RESTAURANT,
-    restaurant,
+    restaurant
 
 });
 
@@ -20,8 +20,11 @@ export const fetchRestaurants = () => dispatch => {
     })
 };
 
-export const fetchRestaurant = id => dispatch => (
-    APIUtil.fetchRestaurant(id).then(payload => (
-        dispatch(receiveRestaurant(payload))
-    ))
-);
+export const fetchRestaurant = id => dispatch => {
+    debugger
+    return (
+        APIUtil.fetchRestaurant(id).then(payload => (
+            dispatch(receiveRestaurant(payload))
+        ))
+    )
+};

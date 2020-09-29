@@ -6,8 +6,8 @@ const restaurantsReducer = (state = {}, action) => {
         case RECEIVE_RESTAURANTS:
             return action.restaurants;
         case RECEIVE_RESTAURANT:
-            const nextRestaurant = { [action.restaurant.id]: action.restaurant };
-            return Object.assign({}, state, nextRestaurant);
+            debugger
+            return Object.assign( {}, state, { [action.restaurant.id]: action.restaurant });
         default:
             return state;
     }

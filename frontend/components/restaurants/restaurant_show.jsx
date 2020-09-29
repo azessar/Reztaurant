@@ -6,8 +6,20 @@ class RestaurantShow extends React.Component {
         super(props);
     }
 
+    componentDidMount() {
+        debugger
+        this.props.fetchRestaurant(this.props.match.params.restaurantId);
+    }
+
     render(){
-        return null
+        debugger
+        const restaurant = this.props.restaurant;
+        return(
+            <div>
+                aaaabbb
+                {restaurant.name}
+            </div>
+        )
     }
 }
 
