@@ -28,6 +28,9 @@ class RestaurantShow extends React.Component {
         if (!restaurant) {
             return null;
         };
+        if (!restaurant.photoUrl) {
+            return null;
+        };
         return(
             <div>
                 <div className="restaurant-header-loc">
@@ -38,6 +41,7 @@ class RestaurantShow extends React.Component {
                 <div className="show-body">
                     <div className="show-pic-goes-here">
                         {/* <img className="default_show_background" src={window.default_show_background} /> */}
+                        <img className="main-show-background" src={restaurant.photoUrl} />
                         <div className="save-this-restaurant">Save this restaurant</div>
                     </div>
                     <div className="overview-tabs">

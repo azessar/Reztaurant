@@ -64,7 +64,7 @@ class RestaurantIndex extends React.Component {
                         {restaurantArray.map(restaurant => (
                             <Link to={`/restaurants/${restaurant.id}`}>
                                 <div className="restaurant-card">
-                                    <img className="card-image" src={window.tapas} />
+                                    <img className="card-image" src={restaurant.photoUrl} />
                                     <div className="card-info">
                                         <div className="card-name">{restaurant.name}</div>
                                         <div className="card-reviews-and-stars">
