@@ -3,6 +3,6 @@ if restaurant.main_photo.attached?
     json.main_photo url_for(restaurant.main_photo)
 end
 
-# if restaurant.background_photo.attached?
-#     json.background_photo url_for(restaurant.background_photo)
-# end
+if restaurant.background_photo.attached?
+    json.background_photo url_for(restaurant.background_photo)
+end
