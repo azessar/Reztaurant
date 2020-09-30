@@ -15,3 +15,9 @@
       window.dollars = "<%= image_url('dollars.png') %>"
       window.review_blurb = "<%= image_url('review_blurb.png') %>"
       window.fork_knife = "<%= image_url('fork_knife.png') %>"
+
+          // background-image: url(image-url("default_show_background.png"));
+          // background-image: url(image-url("little-cal.png"));
+          // background-image: url(image-url("little-guy.png"));
+          // background-image: url(image-url("mag-glass.png"));
+
