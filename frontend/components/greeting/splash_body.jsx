@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from '../modal/modal';
-import MainSearch from '../main_search/main_search';
+// import MainSearch from '../main_search/main_search';
 import RestaurantIndex from '../restaurants/restaurant_index_container'
 import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
 
@@ -14,7 +14,7 @@ class SplashBody extends React.Component {
                         <span className="find-your-table-text">Find your table for any occasion</span>
                         <div className="splash-image-div">
                             {/* <img className="splash-image" src={window.restaurantURL} /> */}
-                            <MainSearch />
+                            {/* <MainSearch /> */}
                         </div>
                     </div>
                 </header>

@@ -3,7 +3,6 @@ import GreetingHeader from "./greeting/greeting_container";
 import SignupModal from "./greeting/signup_modal_container";
 import SigninModal from "./greeting/signin_modal_container";
 import Modal from './modal/modal';
-import MainSearch from './main_search/main_search'; 
 import RestaurantIndexItem from './restaurants/restaurant_index_container'
 import RestaurantShow from './restaurants/restaurant_show_container'
 import SplashBody from './greeting/splash_body'
