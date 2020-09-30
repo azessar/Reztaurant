@@ -66,6 +66,7 @@ class SignupModal extends React.Component {
                 <div>{this.renderErrors()}</div>
                 <form className="signup-form" onSubmit={this.handleSubmit}>
                     <input type="text" value={this.state.first_name} placeholder="First Name *" onChange={this.update('first_name')}></input>
+                    {/* <div>{this.props.errors[0]}</div> */}
                     <input type="text" value={this.state.last_name} placeholder="Last Name *" onChange={this.update('last_name')}></input>
                     <input type="text" value={this.state.email} placeholder="Email *" onChange={this.update('email')}></input>
                     <input type="password" value={this.state.password} placeholder="Password *" onChange={this.update('password')} autoComplete="password"></input>

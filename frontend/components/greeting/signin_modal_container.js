@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import SigninModal from './signin_modal';
 import React from 'react';
-import { signup, signin } from '../../actions/session_actions';
+import { signup, signin, clearErrors } from '../../actions/session_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 
 const mSTP = (state) => {
@@ -22,7 +22,8 @@ const mDTP = dispatch => {
                 Sign up
             </button>
         ),
-        closeModal: () => dispatch(closeModal())
+        closeModal: () => dispatch(closeModal()),
+        clearErrors: () => dispatch(clearErrors())
     }
 }
 

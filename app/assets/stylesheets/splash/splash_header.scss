@@ -43,6 +43,12 @@
 }
 .signout-button {
     margin-top: 8px;
+    margin-bottom: 7px;
+}
+
+.signin-guy {
+    margin-bottom: 3px;
+    margin-left: 7px;
 }
 
 .demo-signin-button {
@@ -87,6 +93,7 @@
 .signup-form {
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
 
 }
 
@@ -106,12 +113,20 @@ h1.welcome {
     border: 1px solid #D3D3D3;
     margin-bottom: 15px;
     margin-top: 5px;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .account-submit-button {
     background-color: #ff3340;
     color: white;
     font-size: 15px;
+}
+
+form.demo-signin > button {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 94%;
 }
 
 .splash-image-container {
@@ -239,13 +254,13 @@ h1.welcome {
 }
 
 .user-buttons {
-    display: inline-block;
-    align-items: flex-end;
-    position: absolute;
-    left: 80%;    
+    display: flex;
+    align-items: flex-end;  
 }
 
-
+.user-icons img {
+    height: 40px;
+}
 
 .background-for-modal {
     overflow-x: hidden;
