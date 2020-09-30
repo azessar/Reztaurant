@@ -7,7 +7,6 @@ class RestaurantShow extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props.fetchRestaurant(this.props.match.params.restaurantId))
         this.props.fetchRestaurant(this.props.match.params.restaurantId);
     }
 
@@ -28,6 +27,13 @@ class RestaurantShow extends React.Component {
         if (!restaurant) {
             return null;
         };
+        if (!restaurant.main_photo) {
+            return null;
+        };
+
+        // if (!restaurant.background_photo) {
+        //     return null;
+        // };
         return(
             <div>
                 <div className="restaurant-header-loc">
@@ -38,6 +44,7 @@ class RestaurantShow extends React.Component {
                 <div className="show-body">
                     <div className="show-pic-goes-here">
                         {/* <img className="default_show_background" src={window.default_show_background} /> */}
+                        {/* <img className="main-show-background" src={restaurant.main_photo} /> */}
                         <div className="save-this-restaurant">Save this restaurant</div>
                     </div>
                     <div className="overview-tabs">
@@ -54,22 +61,22 @@ class RestaurantShow extends React.Component {
                         <div className="big-restaurant-name">{restaurant.name} - {restaurant.city}</div>
                         <div className="rating-review-price-cuisine">
                             <div className="stars-score">
+                                {/* <img className="star" src={window.star} />
                                 <img className="star" src={window.star} />
                                 <img className="star" src={window.star} />
-                                <img className="star" src={window.star} />
-                                <img className="star" src={window.star} />
+                                <img className="star" src={window.star} /> */}
                                 <div className="restaurant-score">4.0</div>
                             </div>
                             <div className="show-reviews">
-                                <img className="review_blurb" src={window.review_blurb} />
+                                {/* <img className="review_blurb" src={window.review_blurb} /> */}
                                 <div className="review-num">4469 Reviews</div>
                             </div>
                             <div className="money-stuff">
-                                <img className="dollars" src={window.dollars} />
+                                {/* <img className="dollars" src={window.dollars} /> */}
                                 <div className="show-pricing">{this.priceConversion(restaurant.avg_price)}</div>
                             </div>
                             <div className="show-cuisine">
-                                <img className="fork_knife" src={window.fork_knife} />
+                                {/* <img className="fork_knife" src={window.fork_knife} /> */}
                                 <div className="the-cuisine">{restaurant.cuisine}</div>
                             </div>
  
