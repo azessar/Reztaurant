@@ -24,7 +24,6 @@ class RestaurantIndex extends React.Component {
 
     render() {
         const restaurantArray = this.props.restaurants;
-        // const { name } = this.props.restaurant;
         return (
             <div>
                 <div className="restaurant-cards">
@@ -35,17 +34,15 @@ class RestaurantIndex extends React.Component {
                         {restaurantArray.map(restaurant => (
                             <Link to={`/restaurants/${restaurant.id}`}>
                                 <div className="restaurant-card">
-                                    {/* <img className="card-image" src={window.tapas} /> */}
-                                    {/* <div className="card-image">{restaurant.main_photo}</div> */}
-                                    {/* <img className="card-image" src={restaurant.main_photo} /> */}
+                                    <img className="card-image" src={restaurant.main_photo} />
                                     <div className="card-info">
                                         <div className="card-name">{restaurant.name}</div>
                                         <div className="card-reviews-and-stars">
                                             <div className="stars">
-                                                {/* <img className="star" src={window.star} />
                                                 <img className="star" src={window.star} />
                                                 <img className="star" src={window.star} />
-                                                <img className="star" src={window.star} /> */}
+                                                <img className="star" src={window.star} />
+                                                <img className="star" src={window.star} />
                                             </div>
                                             <div className="reviews">6651 reviews</div>
                                         </div>
@@ -55,7 +52,7 @@ class RestaurantIndex extends React.Component {
                                 </div>
                             </Link>
                         ))}
-                    </div>   
+                    </div>
 
                     <div className="category-header">
                         Get it delivered
@@ -64,15 +61,15 @@ class RestaurantIndex extends React.Component {
                         {restaurantArray.map(restaurant => (
                             <Link to={`/restaurants/${restaurant.id}`}>
                                 <div className="restaurant-card">
-                                    {/* <img className="card-image" src={restaurant.main_photo} /> */}
+                                    <img className="card-image" src={restaurant.main_photo} />
                                     <div className="card-info">
                                         <div className="card-name">{restaurant.name}</div>
                                         <div className="card-reviews-and-stars">
                                             <div className="stars">
-                                                {/* <img className="star" src={window.star} />
                                                 <img className="star" src={window.star} />
                                                 <img className="star" src={window.star} />
-                                                <img className="star" src={window.star} /> */}
+                                                <img className="star" src={window.star} />
+                                                <img className="star" src={window.star} />
                                             </div>
                                             <div className="reviews">6651 reviews</div>
                                         </div>
