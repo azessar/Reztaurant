@@ -1,7 +1,6 @@
 import React from 'react';
 import Modal from '../modal/modal';
 import MainSearch from '../main_search/main_search';
-import MainRestaurants from '../restaurants/main_restaurants';
 import RestaurantIndex from '../restaurants/restaurant_index_container'
 import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
 
@@ -14,7 +13,7 @@ class SplashBody extends React.Component {
                     <div className="splash-image-container">
                         <span className="find-your-table-text">Find your table for any occasion</span>
                         <div className="splash-image-div">
-                            <img className="splash-image" src={window.restaurantURL} />
+                            {/* <img className="splash-image" src={window.restaurantURL} /> */}
                             <MainSearch />
                         </div>
                     </div>
@@ -22,7 +21,7 @@ class SplashBody extends React.Component {
                 <section>
                     <div className="it-looks-like">
                         <div>It looks like you're in Chicago. Not correct?</div>
-                        <img className="arrow-location" src={window.arrow_location} />
+                        {/* <img className="arrow-location" src={window.arrow_location} /> */}
                         <div>Get current location</div>
                     </div>
                     <span className="thin-gray-underline"></span>
@@ -30,7 +29,7 @@ class SplashBody extends React.Component {
                 <RestaurantIndex />
                 {/* <MainRestaurants /> */}
                 <section className="bottom-socials">
-                    <img className="footer-food" src={window.footer_food} />
+                    {/* <img className="footer-food" src={window.footer_food} /> */}
                     <div className="socials-text">
                         <div className="connect-with-me">Connect with me!</div>
                         <div className="social-buttons">

@@ -3,5 +3,7 @@ class Restaurant < ApplicationRecord
 
     
     has_one_attached :main_photo
+    has_one_attached :background_photo
+
     # has_one_attached :second_photo
 end
