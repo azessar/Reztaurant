@@ -183,7 +183,7 @@ form.demo-signin > button {
 .date-time-peeps input {
     width: 150px;
     height: 49px;
-    background-image:url(little_cal.png);
+    background-image: url(image-url("little-cal.png"));
     background-repeat: no-repeat;
     background-size: 25px;
     background-position: 10px; 
@@ -204,7 +204,7 @@ form.demo-signin > button {
 .main-search-form select {
     width: 150px;
     height: 49px;
-    background-image:url(little-guy.png);
+    background-image: url(image-url("little-guy.png"));
     background-repeat: no-repeat;
     background-size: 25px;
     background-position: 10px; 
@@ -222,7 +222,7 @@ form.demo-signin > button {
 
 .location-restaurant-cuisine {
     height: 47px;
-    background-image: url(mag-glass.png);
+    background-image: url(image-url("mag-glass.png"));
     background-size: 35px;
     background-position: 7px; 
     background-repeat: no-repeat;
