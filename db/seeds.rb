@@ -37,4 +37,3 @@ restaurant11 = Restaurant.create!(name: "Tarboush Mediterranean Grill", avg_pric
 restaurant12 = Restaurant.create!(name: "Katz's Delicatessen", avg_price: 16, cuisine: "Delicatessen", description: "No-frills deli with theatrically cranky service serving mile-high sandwiches since 1888.", capacity: 200, latitude: 40.7, longitude: -74.0, open_time: "7:00", close_time: "20:00", address: "205 E Houston St", city: "New York", state: "NY", zip: "10002")
 restaurant13 = Restaurant.create!(name: "Buffalo Joe's", avg_price: 12, cuisine: "American", description: "Area chain outlet dishing Buffalo wings & cheeseburgers in a straightforward setting.", capacity: 150, latitude: 42.0, longitude: -87.7, open_time: "11:00", close_time: "20:00", address: "812 Clark St", city: "Evanston", state: "IL", zip: "60201")
 
->>>>>>> restaurant_creation
