@@ -59,6 +59,16 @@ class SigninModal extends React.Component {
         )
     }
 
+    renderError(num){
+        const errors = Array.from(this.props.errors);
+        const error = errors[num];
+        return (
+            <li>
+                {error}
+            </li>
+        )
+    }
+
 
     render(){
         return (
@@ -67,7 +77,9 @@ class SigninModal extends React.Component {
                 <div>{this.renderErrors()}</div>
                 <form className="signin-form" onSubmit={this.handleSubmit}>
                     <input type="text" value={this.state.email} placeholder="Email" onChange={this.update('email')}></input>
+                    {/* {this.renderError(1)} */}
                     <input type="password" value={this.state.password} placeholder="Password" onChange={this.update('password')} autoComplete="password"></input>
+                    {/* {this.renderError(2)} */}
                     <button className="account-submit-button" type='submit' >Sign In</button>
                 </form>
                 <form className="demo-signin" onSubmit={this.handleDemoSubmit}>

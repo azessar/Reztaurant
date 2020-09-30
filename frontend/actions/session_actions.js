@@ -4,6 +4,7 @@ import {closeModal} from './modal_actions'
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const SIGNOUT_USER = 'SIGNOUT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
+export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 export const receiveUser = user => ({
     type: RECEIVE_USER,
@@ -17,6 +18,10 @@ export const signoutUser = () => ({
 export const receiveSessionErrors = errors => ({
     type: RECEIVE_SESSION_ERRORS,
     errors
+});
+
+export const clearErrors = () => ({
+    type: CLEAR_ERRORS,
 });
 
 //thunk above, regular action below

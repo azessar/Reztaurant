@@ -3,8 +3,9 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import SigninFormContainer from '../greeting/signin_modal_container';
 import SignupFormContainer from '../greeting/signup_modal_container';
+import { clearErrors } from '../../actions/session_actions';
 
-function Modal({ modal, closeModal }) {
+function Modal({ modal, closeModal, clearErrors }) {
     if (!modal) {
         return null;
     }
@@ -36,7 +37,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        closeModal: () => dispatch(closeModal())
+        closeModal: () => dispatch(closeModal()),
+        clearErrors: () => dispatch(clearErrors())
     };
 };
 
