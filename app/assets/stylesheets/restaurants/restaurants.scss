@@ -85,7 +85,6 @@
     position: absolute;
     margin-left: 100px;
     background-color: white;
-    margin-top: 225px;
     display: flex;
     width: 600px;
     display: flex;
@@ -167,14 +166,53 @@
 
 .show-photos {
     margin-top: 30px;
+    margin-left: 12px;
 }
 
 .photos-header {
     font-size: 30px;
-    margin-left: 12px;
+    margin-left: 0px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid lightgray;
 }
 
 .main-background-show-image {
     height: 225px;
     width: 100%;
+}
+
+.show-lower-photo {
+    margin-top: 20px;
+}
+
+.show-res-form {
+    position: absolute;
+    margin-left: 770px;
+    top: 291px;
+    width: 330px;
+    background-color: white;
+    box-shadow: 2px 2px 4px lightgray;
+}
+
+.show-footer {
+    position: absolute;
+    display: flex;
+    top: 990px;
+    background-size: cover;
+    text-align: center;
+    overflow-x: hidden;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100px;
+    background-color: rgb(40, 39, 54);
+    color: white;
+}
+
+.make-a-res {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+    width: 100%;
+    font-size: 25px;
 }
