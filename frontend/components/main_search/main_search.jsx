@@ -9,10 +9,10 @@ class MainSearch extends React.Component {
                 <form className="main-search-form">
                     <div className="date-time-peeps">
                         <div className="search-date" >
-                            <input type="date" value="2020-10-02"></input>
+                            <input type="date" defaultValue="2020-10-02"></input>
                         </div>
                         <div className="search-time">
-                            <select className="time">
+                            <select className="time" defaultValue="7:00 PM">
                                 <option value="8:00">8:00 AM</option>
                                 <option value="8:30">8:30 AM</option>
                                 <option value="9:00">9:00 AM</option>
@@ -35,7 +35,7 @@ class MainSearch extends React.Component {
                                 <option value="17:30">5:30 PM</option>
                                 <option value="18:00">6:00 PM</option>
                                 <option value="18:30">6:30 PM</option>
-                                <option value="19:00" selected>7:00 PM</option>
+                                <option value="19:00">7:00 PM</option>
                                 <option value="19:30">7:30 PM</option>
                                 <option value="20:00">8:00 PM</option>
                                 <option value="20:30">8:30 PM</option>
@@ -48,9 +48,9 @@ class MainSearch extends React.Component {
                             </select>
                         </div>
                         <div className="search-peeps">
-                            <select className="peeps">
+                            <select className="peeps" defaultValue="2 people">
                                 <option value="1">1 person</option>
-                                <option value="2" selected>2 people</option>
+                                <option value="2">2 people</option>
                                 <option value="2">3 people</option>
                                 <option value="4">4 people</option>
                                 <option value="5">5 people</option>

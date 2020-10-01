@@ -32,7 +32,7 @@ class RestaurantIndex extends React.Component {
                     </div>
                     <div className="card-row">
                         {restaurantArray.map(restaurant => (
-                            <Link to={`/restaurants/${restaurant.id}`}>
+                            <Link to={`/restaurants/${restaurant.id}`} key={restaurant.id}>
                                 <div className="restaurant-card">
                                     <img className="card-image" src={restaurant.main_photo} />
                                     <div className="card-info">
@@ -59,7 +59,7 @@ class RestaurantIndex extends React.Component {
                     </div>
                     <div className="card-row">
                         {restaurantArray.map(restaurant => (
-                            <Link to={`/restaurants/${restaurant.id}`}>
+                            <Link to={`/restaurants/${restaurant.id}`} key={restaurant.id}>
                                 <div className="restaurant-card">
                                     <img className="card-image" src={restaurant.main_photo} />
                                     <div className="card-info">

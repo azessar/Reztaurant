@@ -13,8 +13,8 @@ class RestaurantShow extends React.Component {
     priceConversion(price) {
         if (price < 15) {
             return '$15 and under'
-        } else if (price < 40) {
-            return '$20 to $40'
+        } else if (price < 30) {
+            return '$15 to $30'
         } else if (price < 80) {
             return '$40 to $80'
         } else {
