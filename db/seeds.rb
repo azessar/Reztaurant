@@ -95,4 +95,3 @@ file13 = URI.open('https://reztaurant-seeds.s3.us-east-2.amazonaws.com/buffjoes.
 restaurant13.main_photo.attach(io: file13, filename: 'buffjoes.jpeg')
 file13b = URI.open('https://reztaurant-seeds.s3.us-east-2.amazonaws.com/wings_b.png')
 restaurant10.background_photo.attach(io: file13b, filename: 'wings_b.png')
->>>>>>> fixing_images
