@@ -32,6 +32,10 @@
 }
 
 .show-pic-goes-here {
+<<<<<<< HEAD
+=======
+    background-image: image-url("default_show_background.png");
+>>>>>>> fixing_images
     height: 225px;
     display: flex;
     align-items: flex-end;
@@ -48,6 +52,7 @@
     padding-bottom: 15px;
     font-size: 15px;
     border: 2px solid red;
+    position: absolute;
 }
 
 .overview-tabs {
@@ -169,4 +174,9 @@
 .photos-header {
     font-size: 30px;
     margin-left: 12px;
+}
+
+.main-background-show-image {
+    height: 225px;
+    width: 100%;
 }
