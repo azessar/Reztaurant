@@ -213,6 +213,111 @@
     padding-top: 15px;
     padding-bottom: 15px;
     text-align: center;
-    width: 100%;
+    width: 90%;
     font-size: 25px;
+    border-bottom: 1px solid lightgray;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.party-size {
+    margin-top: 15px;
+    margin-left: 16px;
+    margin-bottom: 10px;
+}
+
+.for-two {
+    margin-bottom: 10px;
+    width: 93%;
+    border: none;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 10px;
+}
+
+.right-show-res-form {
+    margin-left: 16px;
+    width: 98%;
+    margin-bottom: 10px;
+}
+
+.right-show-res-form select:hover, .right-show-res-form input:hover {
+    border-bottom: 1px solid red;
+}
+
+.date-time-head-show {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.date-time-select-show > select,  .date-time-select-show > input {
+    width: 45.5%;
+    border: none;
+    border-bottom: 1px solid lightgray;
+}
+.date-time-head-show > div:first-of-type {
+    margin-left: 0px;
+}
+.date-time-head-show > div:last-of-type {
+    margin-left: 37%;
+}
+
+.date-time-select-show {
+    padding-bottom: 10px;
+}
+
+.date-time-select-show > select:last-of-type {
+    margin-left: 5px;
+}
+
+.show-res-button {
+    width: 92%;
+    height: 50px;
+    border-radius: 2px;
+    background-color: white;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.more-show-info {
+    position: absolute;
+    margin-left: 770px;
+    top: 561px;
+    width: 330px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.hours-show{
+    display: flex;
+}
+
+.hours-show > div {
+    margin-left: 10px;
+}
+
+.open-days-show {
+    margin-left: 26px;
+    margin-top: 5px;
+}
+
+.show-info {
+    margin-top: 10px;
+}
+
+.info-header {
+    display: flex;
+    margin-top: 30px;
+}
+
+.info-header > div {
+    margin-left: 10px;  
+}
+
+.address-header {
+    margin-left: 14px;
+}
+
+.address-show-info i {
+    margin-left: 5px;   
 }
