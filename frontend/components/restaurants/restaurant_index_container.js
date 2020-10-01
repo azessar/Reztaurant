@@ -1,4 +1,4 @@
-import RestaurantIndex from "./restaurant_index.jsx";
+import RestaurantIndex from "./restaurant_Index.jsx";
 import { connect } from 'react-redux';
 import { fetchRestaurant, fetchRestaurants } from "../../actions/restaurant_actions.js";
 
