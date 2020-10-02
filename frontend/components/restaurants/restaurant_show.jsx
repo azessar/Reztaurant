@@ -169,10 +169,31 @@ class RestaurantShow extends React.Component {
                             <button className="show-res-button">Show next available</button>
                         </form>
                     </div>
+
+                  <div className="show-phone">
+                        <div className="order-delivery">Order delivery or takeout</div>
+                        <div className="takeout">Takeout</div>
+                        <div className="phone-box">
+                            <i className='fas fa-phone'></i>
+                            <div>{restaurant.phone}</div>
+                        </div>
+                        <div className="takeout">Delivery</div>
+                        <div className="four-boxes">
+                            <div className="two-boxes">
+                                <a href="https://www.trycaviar.com/"><img className="caviar" src={window.caviar} /></a>
+                                <a href="https://www.ubereats.com/"><img className="ubereats" src={window.ubereats} /> </a>
+                            </div>
+                            <div className="two-boxes">
+                                <a href="https://www.postmates.com/"><img className="postmates" src={window.postmates} /></a>
+                                <a href="https://www.chownow.com/"><img className="chownow" src={window.chownow} /></a>
+                            </div>
+                        </div>
+                  </div>
+
                     <div className="more-show-info">
                         <div className="hours-show-info">
                             <div className="info-header">
-                                <i class='fas fa-clock'></i>
+                                <i className='fas fa-clock'></i>
                                 <div>Hours of operation:</div>
                             </div>
                             <div className="open-days-show">
@@ -181,7 +202,7 @@ class RestaurantShow extends React.Component {
                         </div>
                         <div className="address-show-info">
                             <div className="info-header">
-                                <i class='fas fa-map-marker'></i>
+                                <i className='fas fa-map-marker'></i>
                                 <div className="address-header">Address:</div>
                             </div>
                             <div className="open-days-show">

@@ -24,6 +24,11 @@ class RestaurantIndex extends React.Component {
 
     render() {
         const restaurantArray = this.props.restaurants;
+        const restaurantEvens = [];
+        const restaurantOdds = [];
+        restaurantArray.forEach(res => 
+            parseInt(res.id) % 2 === 0 ? restaurantEvens.push(res) : restaurantOdds.push(res)
+        )
         return (
             <div>
                 <div className="restaurant-cards">
@@ -31,7 +36,7 @@ class RestaurantIndex extends React.Component {
                         Available now
                     </div>
                     <div className="card-row">
-                        {restaurantArray.map(restaurant => (
+                        {restaurantEvens.map(restaurant => (
                             <Link to={`/restaurants/${restaurant.id}`} key={restaurant.id}>
                                 <div className="restaurant-card">
                                     <img className="card-image" src={restaurant.main_photo} />
@@ -58,7 +63,7 @@ class RestaurantIndex extends React.Component {
                         Get it delivered
                     </div>
                     <div className="card-row">
-                        {restaurantArray.map(restaurant => (
+                        {restaurantOdds.map(restaurant => (
                             <Link to={`/restaurants/${restaurant.id}`} key={restaurant.id}>
                                 <div className="restaurant-card">
                                     <img className="card-image" src={restaurant.main_photo} />

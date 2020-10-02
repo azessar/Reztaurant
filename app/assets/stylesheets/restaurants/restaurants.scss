@@ -191,7 +191,16 @@
     top: 291px;
     width: 330px;
     background-color: white;
-    box-shadow: 2px 2px 4px lightgray;
+    box-shadow: 0 0 3px gray;
+}
+
+.show-phone {
+    position: absolute;
+    margin-left: 770px;
+    top: 570px;
+    width: 330px;
+    background-color: white;
+    box-shadow: 0 0 3px gray;
 }
 
 .show-footer {
@@ -276,12 +285,14 @@
     background-color: white;
     font-size: 18px;
     font-weight: 400;
+    color: white;
+    background-color: #ff3340;
 }
 
 .more-show-info {
     position: absolute;
     margin-left: 770px;
-    top: 561px;
+    top: 838px;
     width: 330px;
     background-color: white;
     display: flex;
@@ -320,4 +331,57 @@
 
 .address-show-info i {
     margin-left: 5px;   
+}
+
+.order-delivery {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+    width: 90%;
+    font-size: 25px;
+    border-bottom: 1px solid lightgray;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.takeout {
+    margin-top: 10px;
+    margin-left: 18px;
+}
+
+.phone-box {
+    text-align: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: 1px solid lightgray;
+    display: flex;
+    i {
+        margin-left: 30%;
+    }
+    div {
+        margin-left: 15px;
+    }
+}
+
+.four-boxes {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.two-boxes {
+    display: flex;
+    flex-direction: column;
+    img {
+        height: 30px;
+        width: 100px;
+        border: 1px solid lightgray;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+    }
+    
 }
