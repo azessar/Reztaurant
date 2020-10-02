@@ -4,10 +4,10 @@ Reztaurant is a functional clone of OpenTable.com, allowing users to search rest
 You can find Reztaurant here: https://reztaurant1.herokuapp.com/#/
 You can find the real OpenTable here: https://www.opentable.com/start/home
 
-##Technologies
+## Technologies
 Reztaurant's backend was built with Ruby on Rails, and the frontend was built with JavaScript and React/Redux. The database is supported by AWS S3.
 
-##Functionality
+## Functionality
 Users can signup/signin in the top right of the splash page
 [![Screen-Shot-2020-10-02-at-8-34-52-AM.png](https://i.postimg.cc/Kv98s4d6/Screen-Shot-2020-10-02-at-8-34-52-AM.png)](https://postimg.cc/KRMb1ccf)
 
@@ -23,9 +23,9 @@ Without proper signup/signin credentials, user errors will render on the screen:
 that will take them to that restaurant's show page, where that user will be able to book a reservation:
 [![Screen-Shot-2020-10-02-at-8-25-40-AM.png](https://i.postimg.cc/W1bJhBvv/Screen-Shot-2020-10-02-at-8-25-40-AM.png)](https://postimg.cc/rK3pHYsn)
 
-*Users will soon be able to search for restaurants based on filtering options from the splash page search section.
+* Users will soon be able to search for restaurants based on filtering options from the splash page search section.
 
-##Code snippets
+## Code snippets
 To convert restaurant data into restaurant-cards, I mapped restaurants in as a prop from my restaurant index container to my restaurant index component, where I was then able to map the data into an HTML/CSS formatted block:
 Restaurant Index Container:
 ```
@@ -44,7 +44,7 @@ Component:
                                     <img className="card-image" src={restaurant.main_photo} />
                                     <div className="card-info"> ...
 ```
-##Future functionality
-*Search and filter features
-*Reservation booking
-*Functional reviews with average rating scores rendered for each restaurant
+## Future functionality
+* Search and filter features
+* Reservation booking
+* Functional reviews with average rating scores rendered for each restaurant
