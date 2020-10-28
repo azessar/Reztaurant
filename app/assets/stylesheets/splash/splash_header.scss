@@ -304,3 +304,19 @@ form.demo-signin > button {
     padding-right: 15px;
     padding-top: 5px;
 }
+
+.user-dropdown {
+    // display: none;
+    position: absolute;
+    right: 150px;
+    background-color: white;
+    top: 82px;
+    z-index: 3;
+    height: 100px;
+    width: 200px;
+    border-radius: 4px;
+    border: 1px solid gray;
+}
+.signin-guy:hover {
+    cursor: pointer;
+}

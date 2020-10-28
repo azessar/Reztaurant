@@ -10,12 +10,32 @@ class GreetingHeader extends React.Component {
             last_name: '',
             email: '',
             password: '',
-            primary_dining_location: ''
+            primary_dining_location: '',
+            showDrop: false,
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
         this.userButtons = this.userButtons.bind(this);
         this.sessionButtons = this.sessionButtons.bind(this);
+        this.showDrop = this.showDrop.bind(this);
+        this.closeDrop = this.closeDrop.bind(this);
+    }
+
+    showDrop(event) { //Thank you to: https://blog.campvanilla.com/reactjs-dropdown-menus-b6e06ae3a8fe
+        event.preventDefault();
+
+        this.setState({ showDrop: true }, () => {
+            document.addEventListener('click', this.closeDrop);
+        });
+    }
+
+    closeDrop() { //Thank you to: https://blog.campvanilla.com/reactjs-dropdown-menus-b6e06ae3a8fe
+        if (!this.dropdownMenu.contains(event.target)) {
+            this.setState({ showDrop: false }, () => {
+                document.removeEventListener('click', this.closeDrop);
+            });
+        }
+        
     }
 
     handleSubmit(e) {
@@ -47,16 +67,32 @@ class GreetingHeader extends React.Component {
         }
     }
 
+   
+
     userButtons() {
         return (
             <div className="user-buttons">
                 <button className="signout-button" onClick={this.props.signout}>Sign out</button>
                 <div className="user-icons">
-                    <img className="signin-guy" src={window.signin_guy} />
+                    <img className="signin-guy" src={window.signin_guy} onClick={this.showDrop}/>
                     <img className="reservation-box" src={window.reservation_box} />
                     <img className="alert-bell" src={window.alert_bell} />
                     <img className="search-mag" src={window.mag_glass} />
                 </div>
+                {
+                    this.state.showDrop
+                    ? (
+                        <div className="user-dropdown" ref={(element) => {
+                            this.dropdownMenu = element;
+                        }}>
+                            Test
+                        </div>
+                    )
+                        : (
+                            null
+                        )
+                }
+                
             </div>
         )
     };
@@ -86,7 +122,7 @@ class GreetingHeader extends React.Component {
         )
     };
 
-  
+
 
     render() {
         return (
@@ -102,6 +138,8 @@ class GreetingHeader extends React.Component {
 }
 
 export default GreetingHeader;
+
+
 
 // const GreetingHeader = ( { currentUser, signout, signin, signup } ) => {
 //     // const firstName = currentUser.first_name;
