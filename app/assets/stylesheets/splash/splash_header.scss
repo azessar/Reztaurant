@@ -312,11 +312,20 @@ form.demo-signin > button {
     background-color: white;
     top: 82px;
     z-index: 3;
-    height: 100px;
+    height: 70px;
     width: 200px;
     border-radius: 4px;
     border: 1px solid gray;
 }
 .signin-guy:hover {
     cursor: pointer;
+}
+
+.drop-greeting, .drop-signout {
+    padding: 7px;
+    width: 93%;
+}
+.drop-signout:hover {
+    cursor: pointer;
+    background-color: lightgray;
 }

@@ -70,6 +70,7 @@ class GreetingHeader extends React.Component {
    
 
     userButtons() {
+        let currentUser = this.props.currentUser;
         return (
             <div className="user-buttons">
                 <button className="signout-button" onClick={this.props.signout}>Sign out</button>
@@ -85,7 +86,8 @@ class GreetingHeader extends React.Component {
                         <div className="user-dropdown" ref={(element) => {
                             this.dropdownMenu = element;
                         }}>
-                            Test
+                            <div className="drop-greeting">Hello, {currentUser.first_name} {currentUser.last_name}!</div>
+                                <div className="drop-signout" onClick={this.props.signout}>Sign out</div>
                         </div>
                     )
                         : (

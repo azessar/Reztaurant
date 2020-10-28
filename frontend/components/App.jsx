@@ -7,7 +7,7 @@ import RestaurantIndexItem from './restaurants/restaurant_index_container'
 import RestaurantShow from './restaurants/restaurant_show_container'
 import SplashBody from './greeting/splash_body'
 import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
-import RestaurantSearchIndex from './search/restaurant_search_index';
+import RestaurantSearchIndex from './search/restaurant_search_index_container';
 
 
 const App = () => (
