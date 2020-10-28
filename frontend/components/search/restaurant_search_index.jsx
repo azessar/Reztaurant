@@ -4,6 +4,9 @@ import { Route, Redirect, Switch, Link, HashRouter, withRouter } from 'react-rou
 class RestaurantSearchIndex extends React.Component {
     constructor(props) {
         super(props);
+
+        this.filterRestaurantsByName = this.filterRestaurantsByName.bind(this);
+        this.searchFunction = this.searchFunction.bind(this);
     }
 
     componentDidMount() {
@@ -25,10 +28,22 @@ class RestaurantSearchIndex extends React.Component {
     searchFunction(){
         var userInput = document.getElementById('search-page-search-bar').value;
         document.getElementById('search-output').innerHTML = `You searched for "${userInput}"`;
+        this.filterRestaurantsByName(userInput);
+    }
+
+    filterRestaurantsByName(string){
+        const restaurantArray = this.props.restaurants;
+        let filteredRestaurants = [];
+        restaurantArray.forEach(restaurant => {
+            if (restaurant.name.toLowerCase().includes(string.toLowerCase())) {
+                filteredRestaurants.push(restaurant)
+            }
+        })
+        return filteredRestaurants;
     }
 
     render() {
-        const restaurantArray = this.props.restaurants;
+        const filteredRestaurantArray = this.props.restaurants;
         return (
             <div>
                 <form className="search-page-search-form" onSubmit={this.searchFunction}>
@@ -37,7 +52,7 @@ class RestaurantSearchIndex extends React.Component {
                 </form>
                 <div id="search-output"></div>
                 <div className="restaurant-search-cards">
-                    {restaurantArray.map(restaurant => (
+                    {filteredRestaurantArray.map(restaurant => (
                         <Link to={`/restaurants/${restaurant.id}`} key={restaurant.id}>
                             <div className="restaurant-search-card">
                                 <img className="search-pic" src={restaurant.main_photo} />
