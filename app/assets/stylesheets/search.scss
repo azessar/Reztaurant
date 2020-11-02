@@ -54,6 +54,10 @@
     position: absolute;
     top: 90px;
     left: 570px;
+    border-radius: 6px;
+}
+.find-a-table-button:hover {
+    cursor: pointer;
 }
 
 #search-output {

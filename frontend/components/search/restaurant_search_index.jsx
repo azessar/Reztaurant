@@ -10,6 +10,7 @@ class RestaurantSearchIndex extends React.Component {
         };
         // this.searchFunction = this.searchFunction.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.update = this.update.bind(this);
     }
 
     componentDidMount() {
@@ -43,9 +44,10 @@ class RestaurantSearchIndex extends React.Component {
     //     return filteredRestaurants
     // }
 
-    update(field) {
-        return e => this.setState({
-            [field]: e.currentTarget.value
+    update(e) {
+        e.preventDefault();
+        this.setState({
+            searchWord: document.getElementById("search-page-search-bar").value
         });
     }
 
@@ -62,19 +64,25 @@ class RestaurantSearchIndex extends React.Component {
     }
 
     render() {
-        let restaurantArray = this.props.restaurants;
-
-        let filteredRestaurantArray = restaurantArray.filter(restaurant =>
+        // let restaurantArray = this.props.restaurants;
+        // debugger
+        let filteredRestaurantArray = 
+            this.state.searchWord && this.props.restaurants ? 
+            this.props.restaurants.filter(restaurant =>
                 restaurant.name.toLowerCase().includes(this.state.searchWord.toLowerCase())
             )
+            :
+            this.props.restaurants;
         // debugger
         return (
             <div>
-                <form className="search-page-search-form">
+                <form className="search-page-search-form" >
                     <input className="search-page-search-bar" id="search-page-search-bar" placeholder="Search a restaurant name"
-                        value={this.state.searchWord}
-                        onChange={this.update('searchWord')}></input>
-                    <input className="find-a-table-button" onClick={this.handleSubmit} type="submit" value="Find a Table" />
+                        defaultValue={this.state.searchWord}
+                        // onChange={this.update('searchWord')}
+                        >    
+                    </input>
+                    <button className="find-a-table-button" onClick={this.update}>Find a table</button>
                 </form>
                 <div id="search-output"></div>
                 <div className="restaurant-search-cards" id="restaurant-search-cards">
