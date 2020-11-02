@@ -1,6 +1,6 @@
 import RestaurantSearchIndex from "./restaurant_search_index.jsx";
 import { connect } from 'react-redux';
-import { fetchRestaurant, fetchRestaurants } from "../../actions/restaurant_actions.js";
+import { fetchRestaurant, fetchRestaurants, searchRestaurants } from "../../actions/restaurant_actions.js";
 
 const mSTP = (state, ownProps) => {
     return {
@@ -9,9 +9,12 @@ const mSTP = (state, ownProps) => {
     }
 }
 
-const mDTP = dispatch => ({
-    fetchRestaurants: () => dispatch(fetchRestaurants()),
-    fetchRestaurant: (id) => dispatch(fetchRestaurant(id))
-});
+const mDTP = dispatch => {
+    return {
+        fetchRestaurants: () => dispatch(fetchRestaurants()),
+        fetchRestaurant: (id) => dispatch(fetchRestaurant(id)),
+        searchRestaurants: (searchWord) => dispatch(searchRestaurants(searchWord)),
+    }
+};
 
 export default connect(mSTP, mDTP)(RestaurantSearchIndex);

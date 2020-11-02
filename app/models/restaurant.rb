@@ -5,8 +5,8 @@ class Restaurant < ApplicationRecord
     has_one_attached :main_photo
     has_one_attached :background_photo
 
-    def self.in_bounds(word)
-        Restaurant.where("name LIKE '%?%'", word)
+    def self.name_like(search_word)
+        Restaurant.where("lower(name) like ?", "#{search_word.downcase}%")
     end
 
     # has_one_attached :second_photo
