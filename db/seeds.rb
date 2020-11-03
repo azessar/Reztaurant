@@ -90,7 +90,7 @@ restaurant12.main_photo.attach(io: file12, filename: 'katzs.jpeg')
 file12b = URI.open('https://reztaurant-seeds.s3.us-east-2.amazonaws.com/default_show_background.png')
 restaurant12.background_photo.attach(io: file12b, filename: 'default_show_background.png')
 
-restaurant13 = Restaurant.create!(name: "Kevin?", avg_price: 50, cuisine: "Bar/Club", description: "This place has everything-geeks, sherpas, a Jamaican nurse wearing a shower cap, room after room of broken mirrors, and look over there in the corner. Is that Mick Jagger? No, it's a fat kid on a Slip 'n Slide. His knees look like biscuits.", capacity: 400, latitude: 40.0, longitude: -74.7, open_time: "11:00", close_time: "20:00", address: "N/A", city: "New York", state: "NY", zip: "11211", phone: '555-555-2854')
+restaurant13 = Restaurant.create!(name: "Kevin?", avg_price: 50, cuisine: "Bar/Club", description: "This place has everything-geeks, sherpas, a Jamaican nurse wearing a shower cap, room after room of broken mirrors, and look over there in the corner. Is that Mick Jagger? No, it's a fat kid on a Slip 'n Slide. His knees look like biscuits.", capacity: 400, latitude: 40.0, longitude: -74.7, open_time: "11:00", close_time: "11:00", address: "N/A", city: "New York", state: "NY", zip: "11211", phone: '555-555-2854')
 file13 = URI.open('https://reztaurant-seeds.s3.us-east-2.amazonaws.com/kevin.jpeg')
 restaurant13.main_photo.attach(io: file13, filename: 'buffjoes.jpeg')
 file13b = URI.open('https://reztaurant-seeds.s3.us-east-2.amazonaws.com/kevin_b.jpeg')

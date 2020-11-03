@@ -7,10 +7,15 @@ class RestaurantSearchIndex extends React.Component {
 
         this.state = {
             searchWord: '',
+            $: 'off',
+            $$: 'off',
+            $$$: 'off',
+            $$$$: 'off',
         };
         // this.searchFunction = this.searchFunction.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.update = this.update.bind(this);
+        this.togglePrice = this.togglePrice.bind(this);
     }
 
     componentDidMount() {
@@ -29,20 +34,6 @@ class RestaurantSearchIndex extends React.Component {
             return '$$$$'
         }
     }
-
-    // searchFunction() {
-    //     var userInput = document.getElementById('search-page-search-bar').value;
-    //     // document.getElementById('search-output').innerHTML = `You searched for "${userInput}"`;
-    //     let filteredRestaurants = []
-    //     const restaurantCards = this.props.restaurants;
-    //     restaurantCards.forEach(restaurant => {
-    //         if (restaurant.name.toLowerCase().includes(userInput.toLowerCase())) {
-    //             filteredRestaurants.push(restaurant)
-    //         }
-    //     })
-    //     console.log(filteredRestaurants)
-    //     return filteredRestaurants
-    // }
 
     update(e) {
         e.preventDefault();
@@ -81,30 +72,76 @@ class RestaurantSearchIndex extends React.Component {
         }
     }
 
+    togglePrice(price) {
+        if (this.state[price] === "off") {
+            return () => {
+                this.setState({
+                    [price]: 'on'
+                });
+                console.log("here's state for:", price, this.state[price])
+            }
+        } else {
+            return () => {
+                this.setState({
+                    [price]: 'off'
+                });
+                console.log("here's state for:", price, this.state[price])
+            }
+        }
+    }
+
 
     render() {
         let filteredRestaurantArray = 
-            this.state.searchWord && this.props.restaurants ?
+            (this.state.$ === "off" && this.state.$$ === "off" && this.state.$$$ === "off" && this.state.$$$$ === "off") 
+            ?
+            (
+                    this.state.searchWord && this.props.restaurants ?
+                        this.props.restaurants.filter(restaurant =>
+                            (restaurant.name.toLowerCase().includes(this.state.searchWord.toLowerCase()) ||
+                                restaurant.city.toLowerCase().includes(this.state.searchWord.toLowerCase()) ||
+                                restaurant.cuisine.toLowerCase().includes(this.state.searchWord.toLowerCase()))
+                        )
+                        :
+                        this.props.location.state && this.props.restaurants ?
+                            this.props.restaurants.filter(restaurant =>
+                                (restaurant.name.toLowerCase().includes(this.props.location.state.searchWord.toLowerCase()) ||
+                                    restaurant.city.toLowerCase().includes(this.props.location.state.searchWord.toLowerCase()) ||
+                                    restaurant.cuisine.toLowerCase().includes(this.props.location.state.searchWord.toLowerCase()))
+                            )
+                        :
+                        this.props.restaurants
+            )
+            :
+            (
+                this.state.searchWord && this.props.restaurants ?
                 this.props.restaurants.filter(restaurant =>
-                    restaurant.name.toLowerCase().includes(this.state.searchWord.toLowerCase()) ||
+                    (restaurant.name.toLowerCase().includes(this.state.searchWord.toLowerCase()) ||
                     restaurant.city.toLowerCase().includes(this.state.searchWord.toLowerCase()) ||
-                    restaurant.cuisine.toLowerCase().includes(this.state.searchWord.toLowerCase())
+                    restaurant.cuisine.toLowerCase().includes(this.state.searchWord.toLowerCase()))
+                    &&
+                    this.state[this.priceConversion(restaurant.avg_price)] === "on"
                 )
                 :
             this.props.location.state && this.props.restaurants ?
                 this.props.restaurants.filter(restaurant =>
-                    restaurant.name.toLowerCase().includes(this.props.location.state.searchWord.toLowerCase()) ||
+                    (restaurant.name.toLowerCase().includes(this.props.location.state.searchWord.toLowerCase()) ||
                     restaurant.city.toLowerCase().includes(this.props.location.state.searchWord.toLowerCase()) ||
-                    restaurant.cuisine.toLowerCase().includes(this.props.location.state.searchWord.toLowerCase())
+                    restaurant.cuisine.toLowerCase().includes(this.props.location.state.searchWord.toLowerCase()))
+                    &&
+                    this.state[this.priceConversion(restaurant.avg_price)] === "on"
                 ) 
                 :
-            this.props.restaurants;
-            let sorry;
-            if (filteredRestaurantArray.length === 0) {
-                sorry = "Sorry, we have no results for that"
-            } else {
-                sorry = ""
-            }     
+            this.props.restaurants.filter(restaurant =>
+                this.state[this.priceConversion(restaurant.avg_price)] === "on"
+            )
+        )
+        let sorry;
+        if (filteredRestaurantArray.length === 0) {
+            sorry = "Sorry, we have no results for that"
+        } else {
+            sorry = ""
+        }     
         return (
             <div>
                 <form className="search-page-search-form" >
@@ -119,6 +156,20 @@ class RestaurantSearchIndex extends React.Component {
                     {this.whatDidISearchFor()}
                     <br></br>
                     {sorry}
+                </div>
+                <div className="filters">
+                    <form>
+                        <div className="price-filter-title">
+                            <img className="dollars" src={window.dollars} />
+                            <h1>Price</h1>
+                        </div>
+                        <div className="price-filters">
+                            <input type="submit" value="$" onClick={this.togglePrice("$")}></input>
+                            <input type="submit" value="$$"onClick={this.togglePrice("$$")}></input>
+                            <input type="submit" value="$$$"onClick={this.togglePrice("$$$")}></input>
+                            <input type="submit" value="$$$$"onClick={this.togglePrice("$$$$")}></input>
+                        </div> 
+                    </form>
                 </div>
                 <div className="restaurant-search-cards" id="restaurant-search-cards">
                     {filteredRestaurantArray.map(restaurant => (

@@ -2,7 +2,7 @@
     position: absolute;
     display: flex;
     top: 220px;
-    left: 250px;
+    left: 350px;
     width: 65%;
     flex-direction: column;
 }
@@ -40,7 +40,7 @@
     border-radius: 3px;
     position: absolute;
     top: 90px;
-    left: 250px;
+    left: 350px;
 }
 
 .find-a-table-button {
@@ -53,7 +53,7 @@
     font-weight: 400;
     position: absolute;
     top: 90px;
-    left: 570px;
+    left: 670px;
     border-radius: 6px;
 }
 .find-a-table-button:hover {
@@ -62,7 +62,39 @@
 
 #search-output {
     position: absolute;
-    left: 250px;
+    left: 350px;
     margin-top: 30px;
     font-size: 20px;
+}
+
+.filters {
+    position: absolute;
+    display: flex;
+    top: 220px;
+    left: 50px;
+    width: 250px;
+    flex-direction: column;
+}
+
+.price-filters {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+.price-filters > input {
+    width: 70px;
+    height: 40px;
+    font-size: 15px;
+    border: 1px solid lightgray;
+}
+.price-filters > input:hover {
+    cursor: pointer;
+    border: 1px solid navy;
+}
+
+.price-filter-title {
+    display: flex;
+}
+.price-filter-title > h1 {
+    margin-top: 9px;
 }
