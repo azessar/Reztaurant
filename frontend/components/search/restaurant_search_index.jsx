@@ -78,14 +78,12 @@ class RestaurantSearchIndex extends React.Component {
                 this.setState({
                     [price]: 'on'
                 });
-                console.log("here's state for:", price, this.state[price])
             }
         } else {
             return () => {
                 this.setState({
                     [price]: 'off'
                 });
-                console.log("here's state for:", price, this.state[price])
             }
         }
     }
@@ -141,7 +139,11 @@ class RestaurantSearchIndex extends React.Component {
             sorry = "Sorry, we have no results for that"
         } else {
             sorry = ""
-        }     
+        }
+        let priceFilter1 = this.state.$ === "on" ? "price-filter-on" : "price-filter-off";
+        let priceFilter2 = this.state.$$ === "on" ? "price-filter-on" : "price-filter-off";
+        let priceFilter3 = this.state.$$$ === "on" ? "price-filter-on" : "price-filter-off";
+        let priceFilter4 = this.state.$$$$ === "on" ? "price-filter-on" : "price-filter-off";
         return (
             <div>
                 <form className="search-page-search-form" >
@@ -164,10 +166,10 @@ class RestaurantSearchIndex extends React.Component {
                             <h1>Price</h1>
                         </div>
                         <div className="price-filters">
-                            <input type="submit" value="$" onClick={this.togglePrice("$")}></input>
-                            <input type="submit" value="$$"onClick={this.togglePrice("$$")}></input>
-                            <input type="submit" value="$$$"onClick={this.togglePrice("$$$")}></input>
-                            <input type="submit" value="$$$$"onClick={this.togglePrice("$$$$")}></input>
+                            <input className={priceFilter1} type="submit" value="$" onClick={this.togglePrice("$")} ></input>
+                            <input className={priceFilter2} type="submit" value="$$"onClick={this.togglePrice("$$")} ></input>
+                            <input className={priceFilter3} type="submit" value="$$$"onClick={this.togglePrice("$$$")} ></input>
+                            <input className={priceFilter4} type="submit" value="$$$$"onClick={this.togglePrice("$$$$")} ></input>
                         </div> 
                     </form>
                 </div>
