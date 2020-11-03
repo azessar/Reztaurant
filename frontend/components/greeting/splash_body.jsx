@@ -18,14 +18,7 @@ class SplashBody extends React.Component {
                         </div>
                     </div>
                 </header>
-                <section>
-                    <div className="it-looks-like">
-                        <div>It looks like you're in Chicago. Not correct?</div>
-                        {/* <img className="arrow-location" src={window.arrow_location} /> */}
-                        <div>Get current location</div>
-                    </div>
-                    <span className="thin-gray-underline"></span>
-                </section>
+
                 <RestaurantIndex />
                 <section className="bottom-socials">
                     <img className="footer-food" src={window.footer_food} />

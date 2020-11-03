@@ -11,7 +11,6 @@ class RestaurantIndexItem extends React.Component {
     }
 
     render(){
-        console.log("secondtry_", this.props.restaurants)
         const restaurantArray = this.props.restaurants;
         // const { name } = this.props.restaurant;
         return(

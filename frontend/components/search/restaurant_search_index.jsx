@@ -4,10 +4,18 @@ import { Route, Redirect, Switch, Link, HashRouter, withRouter } from 'react-rou
 class RestaurantSearchIndex extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            searchWord: '',
+        };
+        // this.searchFunction = this.searchFunction.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.update = this.update.bind(this);
     }
 
     componentDidMount() {
         this.props.fetchRestaurants();
+        // debugger
     }
 
     priceConversion(price) {
@@ -22,37 +30,120 @@ class RestaurantSearchIndex extends React.Component {
         }
     }
 
+    // searchFunction() {
+    //     var userInput = document.getElementById('search-page-search-bar').value;
+    //     // document.getElementById('search-output').innerHTML = `You searched for "${userInput}"`;
+    //     let filteredRestaurants = []
+    //     const restaurantCards = this.props.restaurants;
+    //     restaurantCards.forEach(restaurant => {
+    //         if (restaurant.name.toLowerCase().includes(userInput.toLowerCase())) {
+    //             filteredRestaurants.push(restaurant)
+    //         }
+    //     })
+    //     console.log(filteredRestaurants)
+    //     return filteredRestaurants
+    // }
+
+    update(e) {
+        e.preventDefault();
+        this.setState({
+            searchWord: document.getElementById("search-page-search-bar").value
+        });
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        // debugger
+        this.props.searchRestaurants(this.state.searchWord)
+            .then(() =>
+                this.setState({
+                    searchWord: ''
+                })
+            )
+            // debugger
+    }
+
+    whatDidISearchFor(){
+        if (this.state.searchWord) {
+            return (
+                <div>
+                    You searched for "{this.state.searchWord}"
+                </div>
+            )
+        } else if (this.props.location.state) {
+             return (
+                <div>
+                    You searched for "{this.props.location.state.searchWord}"
+                </div>
+            )
+        } else {
+            return null
+        }
+    }
+
+
     render() {
-        const restaurantArray = this.props.restaurants;
+        let filteredRestaurantArray = 
+            this.state.searchWord && this.props.restaurants ?
+                this.props.restaurants.filter(restaurant =>
+                    restaurant.name.toLowerCase().includes(this.state.searchWord.toLowerCase()) ||
+                    restaurant.city.toLowerCase().includes(this.state.searchWord.toLowerCase()) ||
+                    restaurant.cuisine.toLowerCase().includes(this.state.searchWord.toLowerCase())
+                )
+                :
+            this.props.location.state && this.props.restaurants ?
+                this.props.restaurants.filter(restaurant =>
+                    restaurant.name.toLowerCase().includes(this.props.location.state.searchWord.toLowerCase()) ||
+                    restaurant.city.toLowerCase().includes(this.props.location.state.searchWord.toLowerCase()) ||
+                    restaurant.cuisine.toLowerCase().includes(this.props.location.state.searchWord.toLowerCase())
+                ) 
+                :
+            this.props.restaurants;
+            let sorry;
+            if (filteredRestaurantArray.length === 0) {
+                sorry = "Sorry, we have no results for that"
+            } else {
+                sorry = ""
+            }     
         return (
             <div>
-                <div className="restaurant-cards">
-                    <div className="category-header">
-                        Available now
-                    </div>
-                    <div className="card-row">
-                        {restaurantArray.map(restaurant => (
-                            <Link to={`/restaurants/${restaurant.id}`} key={restaurant.id}>
-                                <div className="restaurant-card">
-                                    <img className="card-image" src={restaurant.main_photo} />
-                                    <div className="card-info">
-                                        <div className="card-name">{restaurant.name}</div>
-                                        <div className="card-reviews-and-stars">
-                                            <div className="stars">
-                                                <img className="star" src={window.star} />
-                                                <img className="star" src={window.star} />
-                                                <img className="star" src={window.star} />
-                                                <img className="star" src={window.star} />
-                                            </div>
-                                            <div className="reviews">6651 reviews</div>
+                <form className="search-page-search-form" >
+                    <input className="search-page-search-bar" id="search-page-search-bar" placeholder="Search a restaurant name"
+                        defaultValue={this.state.searchWord}
+                        // onChange={this.update('searchWord')}
+                        >    
+                    </input>
+                    <button className="find-a-table-button" onClick={this.update}>Find a table</button>
+                </form>
+                <div id="search-output">
+                    {this.whatDidISearchFor()}
+                    <br></br>
+                    {sorry}
+                </div>
+                <div className="restaurant-search-cards" id="restaurant-search-cards">
+                    {filteredRestaurantArray.map(restaurant => (
+                        <Link to={`/restaurants/${restaurant.id}`} key={restaurant.id} className="restaurant-search-card-link">
+                            <div className="restaurant-search-card">
+                                <img className="search-pic" src={restaurant.main_photo} />
+                                <div className="search-info">
+                                    <div className="card-name">{restaurant.name}</div>
+                                    <div className="card-reviews-and-stars">
+                                        <div className="stars">
+                                            <img className="star" src={window.star} />
+                                            <img className="star" src={window.star} />
+                                            <img className="star" src={window.star} />
+                                            <img className="star" src={window.star} />
                                         </div>
-                                        <div className="cuisine-price-area">{restaurant.cuisine} - {this.priceConversion(restaurant.avg_price)} - {restaurant.city}, {restaurant.state}</div>
-                                        <div className="booked-times">Booked 115 times today</div>
+                                        <div className="reviews">6651 reviews</div>
                                     </div>
+                                    <div className="cuisine-price-area">{restaurant.cuisine} - {this.priceConversion(restaurant.avg_price)} - {restaurant.city}, {restaurant.state}</div>
+                                    <div className="booked-times">Booked 115 times today</div>
                                 </div>
-                            </Link>
-                        ))}
-                    </div>
+                            </div>
+                        </Link>
+                    ))}
+
+
                 </div>
             </div>
 
@@ -62,4 +153,3 @@ class RestaurantSearchIndex extends React.Component {
 }
 
 export default RestaurantSearchIndex;
-
