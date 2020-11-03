@@ -64,16 +64,22 @@ class RestaurantSearchIndex extends React.Component {
     }
 
     render() {
-        // let restaurantArray = this.props.restaurants;
-        // debugger
         let filteredRestaurantArray = 
-            this.state.searchWord && this.props.restaurants ? 
-            this.props.restaurants.filter(restaurant =>
-                restaurant.name.toLowerCase().includes(this.state.searchWord.toLowerCase())
-            )
-            :
+            this.state.searchWord && this.props.restaurants ?
+                this.props.restaurants.filter(restaurant =>
+                    restaurant.name.toLowerCase().includes(this.state.searchWord.toLowerCase()) ||
+                    restaurant.city.toLowerCase().includes(this.state.searchWord.toLowerCase()) ||
+                    restaurant.cuisine.toLowerCase().includes(this.state.searchWord.toLowerCase())
+                )
+                :
+            this.props.location.state && this.props.restaurants ?
+                this.props.restaurants.filter(restaurant =>
+                    restaurant.name.toLowerCase().includes(this.props.location.state.searchWord.toLowerCase()) ||
+                    restaurant.city.toLowerCase().includes(this.props.location.state.searchWord.toLowerCase()) ||
+                    restaurant.cuisine.toLowerCase().includes(this.props.location.state.searchWord.toLowerCase())
+                ) 
+                :
             this.props.restaurants;
-        // debugger
         return (
             <div>
                 <form className="search-page-search-form" >

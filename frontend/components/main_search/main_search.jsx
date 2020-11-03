@@ -1,6 +1,27 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class MainSearch extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            searchWord: '',
+        };
+
+        this.update = this.update.bind(this);
+    }
+
+    update(e){
+        e.preventDefault();
+        // this.setState({
+        //     searchWord: document.getElementById("main-search-bar").value
+        // });
+
+        this.setState((state) => {
+            return { searchWord: document.getElementById("main-search-bar").value }
+        });
+    }
 
 
     render() {
@@ -74,10 +95,22 @@ class MainSearch extends React.Component {
                         </div>
                     </div>
                     <div className="main-search-input">
-                        <input className="location-restaurant-cuisine" placeholder="Location, Restaurant, or Cuisine"></input>
+                        <input className="location-restaurant-cuisine" 
+                            id="main-search-bar" placeholder="Location, Restaurant, or Cuisine" 
+                            defaultValue={this.state.searchWord}
+                            onChange={this.update}
+                            >
+                        </input>
                     </div>
 
-                    <button className="lets-go-button">Let's go</button>
+                    <Link to={{
+                        pathname: "/restaurants",
+                        state: {
+                            searchWord: this.state.searchWord
+                        },
+                    }}>
+                        <button className="lets-go-button">Let's go</button>
+                    </Link>
 
                 </form>
             </div>
