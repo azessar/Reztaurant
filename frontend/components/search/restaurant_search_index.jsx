@@ -81,6 +81,7 @@ class RestaurantSearchIndex extends React.Component {
         }
     }
 
+
     render() {
         let filteredRestaurantArray = 
             this.state.searchWord && this.props.restaurants ?
@@ -98,6 +99,12 @@ class RestaurantSearchIndex extends React.Component {
                 ) 
                 :
             this.props.restaurants;
+            let sorry;
+            if (filteredRestaurantArray.length === 0) {
+                sorry = "Sorry, we have no results for that"
+            } else {
+                sorry = ""
+            }     
         return (
             <div>
                 <form className="search-page-search-form" >
@@ -110,6 +117,8 @@ class RestaurantSearchIndex extends React.Component {
                 </form>
                 <div id="search-output">
                     {this.whatDidISearchFor()}
+                    <br></br>
+                    {sorry}
                 </div>
                 <div className="restaurant-search-cards" id="restaurant-search-cards">
                     {filteredRestaurantArray.map(restaurant => (
