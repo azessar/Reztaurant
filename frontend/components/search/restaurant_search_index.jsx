@@ -63,6 +63,24 @@ class RestaurantSearchIndex extends React.Component {
             // debugger
     }
 
+    whatDidISearchFor(){
+        if (this.state.searchWord) {
+            return (
+                <div>
+                    You searched for "{this.state.searchWord}"
+                </div>
+            )
+        } else if (this.props.location.state) {
+             return (
+                <div>
+                    You searched for "{this.props.location.state.searchWord}"
+                </div>
+            )
+        } else {
+            return null
+        }
+    }
+
     render() {
         let filteredRestaurantArray = 
             this.state.searchWord && this.props.restaurants ?
@@ -90,7 +108,9 @@ class RestaurantSearchIndex extends React.Component {
                     </input>
                     <button className="find-a-table-button" onClick={this.update}>Find a table</button>
                 </form>
-                <div id="search-output"></div>
+                <div id="search-output">
+                    {this.whatDidISearchFor()}
+                </div>
                 <div className="restaurant-search-cards" id="restaurant-search-cards">
                     {filteredRestaurantArray.map(restaurant => (
                         <Link to={`/restaurants/${restaurant.id}`} key={restaurant.id} className="restaurant-search-card-link">
