@@ -102,12 +102,11 @@ class RestaurantSearchIndex extends React.Component {
                 [field]: newState2
             })
         }
-        console.log("hey",this.state.regions)
     }
 
 
     render() {
-        let filteredRestaurantArray = 
+        let searchedRestaurantArray = 
             (this.state.$ === "off" && this.state.$$ === "off" && this.state.$$$ === "off" && this.state.$$$$ === "off") 
             ?
             (
@@ -151,6 +150,10 @@ class RestaurantSearchIndex extends React.Component {
                 this.state[this.priceConversion(restaurant.avg_price)] === "on"
             )
         )
+        let filteredRestaurantArray = 
+            this.state.regions.length === 0 ? 
+            searchedRestaurantArray : 
+            searchedRestaurantArray.filter(restaurant => this.state.regions.includes(restaurant.city));
         let sorry;
         if (filteredRestaurantArray.length === 0) {
             sorry = "Sorry, we have no results for that"
