@@ -11,11 +11,13 @@ class RestaurantSearchIndex extends React.Component {
             $$: 'off',
             $$$: 'off',
             $$$$: 'off',
+            regions: []
         };
         // this.searchFunction = this.searchFunction.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.update = this.update.bind(this);
         this.togglePrice = this.togglePrice.bind(this);
+        this.toggleFilter = this.toggleFilter.bind(this);
     }
 
     componentDidMount() {
@@ -43,14 +45,12 @@ class RestaurantSearchIndex extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        // debugger
         this.props.searchRestaurants(this.state.searchWord)
             .then(() =>
                 this.setState({
                     searchWord: ''
                 })
             )
-            // debugger
     }
 
     whatDidISearchFor(){
@@ -85,6 +85,24 @@ class RestaurantSearchIndex extends React.Component {
                 });
             }
         }
+    }
+
+    toggleFilter(filter, field) {
+        if (!this.state[field].includes(filter)) {
+            var newState = this.state[field].concat(filter)
+            this.setState({
+                [field]: newState
+            })
+        } else {
+            var newState2 = [];
+            this.state[field].forEach(ele => (
+                ele === filter ? null : newState2.push(ele)
+            ))
+            this.setState({
+                [field]: newState2
+            })
+        }
+        console.log("hey",this.state.regions)
     }
 
 
@@ -155,7 +173,6 @@ class RestaurantSearchIndex extends React.Component {
                 <form className="search-page-search-form" >
                     <input className="search-page-search-bar" id="search-page-search-bar" placeholder="Search a restaurant name, location, or cuisine"
                         defaultValue={this.state.searchWord}
-                        // onChange={this.update('searchWord')}
                         >    
                     </input>
                     <button className="find-a-table-button" onClick={this.update}>Find a table</button>
@@ -186,7 +203,7 @@ class RestaurantSearchIndex extends React.Component {
                         <div className="region-filters">
                             {regions.sort().map(region => (
                                 <div>
-                                    <input className="region" type="checkbox"></input>
+                                    <input className="region" type="checkbox" onChange={() => this.toggleFilter(region, "regions")}></input>
                                     <label className="region-label">{region}</label>
                                 </div>
                             ))}
