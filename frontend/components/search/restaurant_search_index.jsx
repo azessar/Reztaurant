@@ -20,7 +20,6 @@ class RestaurantSearchIndex extends React.Component {
 
     componentDidMount() {
         this.props.fetchRestaurants();
-        // debugger
     }
 
     priceConversion(price) {
@@ -144,10 +143,17 @@ class RestaurantSearchIndex extends React.Component {
         let priceFilter2 = this.state.$$ === "on" ? "price-filter-on" : "price-filter-off";
         let priceFilter3 = this.state.$$$ === "on" ? "price-filter-on" : "price-filter-off";
         let priceFilter4 = this.state.$$$$ === "on" ? "price-filter-on" : "price-filter-off";
+        let regions = [];
+        if (this.props.restaurants) {
+            this.props.restaurants.forEach(restaurant => (
+                !regions.includes(restaurant.city) ? regions.push(restaurant.city) : null
+            ))
+        }            
+
         return (
             <div>
                 <form className="search-page-search-form" >
-                    <input className="search-page-search-bar" id="search-page-search-bar" placeholder="Search a restaurant name"
+                    <input className="search-page-search-bar" id="search-page-search-bar" placeholder="Search a restaurant name, location, or cuisine"
                         defaultValue={this.state.searchWord}
                         // onChange={this.update('searchWord')}
                         >    
@@ -170,6 +176,20 @@ class RestaurantSearchIndex extends React.Component {
                             <input className={priceFilter2} type="submit" value="$$"onClick={this.togglePrice("$$")} ></input>
                             <input className={priceFilter3} type="submit" value="$$$"onClick={this.togglePrice("$$$")} ></input>
                             <input className={priceFilter4} type="submit" value="$$$$"onClick={this.togglePrice("$$$$")} ></input>
+                        </div> 
+                    </form>
+                    <form>
+                        <div className="regions-filter-title">
+                            <i className='fas fa-map-marker'></i>
+                            <h1>Regions</h1>
+                        </div>
+                        <div className="region-filters">
+                            {regions.sort().map(region => (
+                                <div>
+                                    <input className="region" type="checkbox"></input>
+                                    <label className="region-label">{region}</label>
+                                </div>
+                            ))}
                         </div> 
                     </form>
                 </div>
@@ -198,6 +218,7 @@ class RestaurantSearchIndex extends React.Component {
 
 
                 </div>
+                
             </div>
 
         )

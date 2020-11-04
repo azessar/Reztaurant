@@ -2,7 +2,7 @@
     position: absolute;
     display: flex;
     top: 220px;
-    left: 350px;
+    left: 400px;
     width: 65%;
     flex-direction: column;
 }
@@ -34,13 +34,13 @@
     background-size: 35px;
     background-position: 7px;
     background-repeat: no-repeat;
-    text-indent: 40px;
+    text-indent: 30px;
     border: none;
     width: 300px;
     border-radius: 3px;
     position: absolute;
     top: 90px;
-    left: 350px;
+    left: 400px;
 }
 
 .find-a-table-button {
@@ -53,7 +53,7 @@
     font-weight: 400;
     position: absolute;
     top: 90px;
-    left: 670px;
+    left: 720px;
     border-radius: 6px;
 }
 .find-a-table-button:hover {
@@ -62,7 +62,7 @@
 
 #search-output {
     position: absolute;
-    left: 350px;
+    left: 400px;
     margin-top: 30px;
     font-size: 20px;
 }
@@ -71,15 +71,20 @@
     position: absolute;
     display: flex;
     top: 220px;
-    left: 50px;
+    left: 100px;
     width: 250px;
     flex-direction: column;
+}
+.filters > form {
+    padding-bottom: 40px;
+    border-bottom: 1px solid lightgray;
 }
 
 .price-filters {
     display: flex;
     flex-direction: row;
     margin-top: 10px;
+    margin-left: 5px;
 }
 .price-filters > input {
     width: 70px;
@@ -97,9 +102,38 @@
 }
 .price-filter-title > h1 {
     margin-top: 9px;
+    font-weight: 600;
 }
 
 .price-filter-on {
     background-color: rgba(0, 0, 0, 0.408);
     color: white;
+}
+
+.regions-filter-title {
+    display: flex;
+    margin-top: 20px;
+    margin-left: 6px;
+}
+.regions-filter-title > i {
+    margin-left: 1px;
+}
+
+.regions-filter-title > h1 {
+    margin-left: 8px;
+    font-weight: 600;
+}
+
+.region-filters {
+    display: flex;
+    flex-direction: column;
+    margin-left: 3px;
+    margin-top: 7px;
+}
+.region {
+    margin-top: 8px;
+}
+
+.region-label {
+    margin-left: 5px;
 }
