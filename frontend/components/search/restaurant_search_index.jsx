@@ -11,7 +11,8 @@ class RestaurantSearchIndex extends React.Component {
             $$: 'off',
             $$$: 'off',
             $$$$: 'off',
-            regions: []
+            regions: [],
+            cuisines: []
         };
         // this.searchFunction = this.searchFunction.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -150,10 +151,14 @@ class RestaurantSearchIndex extends React.Component {
                 this.state[this.priceConversion(restaurant.avg_price)] === "on"
             )
         )
-        let filteredRestaurantArray = 
+        let regionSearchedRestaurantArray = 
             this.state.regions.length === 0 ? 
             searchedRestaurantArray : 
             searchedRestaurantArray.filter(restaurant => this.state.regions.includes(restaurant.city));
+        let filteredRestaurantArray = 
+            this.state.cuisines.length === 0 ?
+            regionSearchedRestaurantArray :
+            regionSearchedRestaurantArray.filter(restaurant => this.state.cuisines.includes(restaurant.cuisine));
         let sorry;
         if (filteredRestaurantArray.length === 0) {
             sorry = "Sorry, we have no results for that"
@@ -169,7 +174,13 @@ class RestaurantSearchIndex extends React.Component {
             this.props.restaurants.forEach(restaurant => (
                 !regions.includes(restaurant.city) ? regions.push(restaurant.city) : null
             ))
-        }            
+        }
+        let cuisines = [];
+        if (this.props.restaurants) {
+            this.props.restaurants.forEach(restaurant => (
+                !cuisines.includes(restaurant.cuisine) ? cuisines.push(restaurant.cuisine) : null
+            ))
+        }             
 
         return (
             <div>
@@ -211,6 +222,20 @@ class RestaurantSearchIndex extends React.Component {
                                 </div>
                             ))}
                         </div> 
+                    </form>
+                    <form>
+                        <div className="cuisines-filter-title">
+                            <img className="fork_knife" src={window.fork_knife} />
+                            <h1 className="cuisine-filter-title">Cuisines</h1>
+                        </div>
+                        <div className="region-filters">
+                            {cuisines.sort().map(cuisine => (
+                                <div>
+                                    <input className="region" type="checkbox" onChange={() => this.toggleFilter(cuisine, "cuisines")}></input>
+                                    <label className="region-label">{cuisine}</label>
+                                </div>
+                            ))}
+                        </div>
                     </form>
                 </div>
                 <div className="restaurant-search-cards" id="restaurant-search-cards">
