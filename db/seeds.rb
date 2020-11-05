@@ -95,3 +95,9 @@ file13 = URI.open('https://reztaurant-seeds.s3.us-east-2.amazonaws.com/kevin.jpe
 restaurant13.main_photo.attach(io: file13, filename: 'buffjoes.jpeg')
 file13b = URI.open('https://reztaurant-seeds.s3.us-east-2.amazonaws.com/kevin_b.jpeg')
 restaurant13.background_photo.attach(io: file13b, filename: 'wings_b.png')
+
+restaurant14 = Restaurant.create!(name: "Pizza Planet", avg_price: 20, cuisine: "Pizza", description: "A kid's favorite place for pizza, games, and prizes! Try your luck and win an alien at... The CLAAAAAAW...!", capacity: 400, latitude: 37.0, longitude: -122.7, open_time: "11:00", close_time: "11:00", address: "112 South St", city: "San Francisco", state: "CA", zip: "94016", phone: '555-444-2224')
+file14 = URI.open('https://reztaurant-seeds.s3.us-east-2.amazonaws.com/pizzaplanet.jpg')
+restaurant14.main_photo.attach(io: file14, filename: 'pizzaplanet.jpg')
+file14b = URI.open('https://reztaurant-seeds.s3.us-east-2.amazonaws.com/pizzaplanet_b.jpeg')
+restaurant14.background_photo.attach(io: file14b, filename: 'pizzaplanet_b.jpeg')

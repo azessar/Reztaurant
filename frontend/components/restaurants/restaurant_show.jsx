@@ -206,7 +206,7 @@ class RestaurantShow extends React.Component {
                                 <div className="address-header">Address:</div>
                             </div>
                             <div className="open-days-show">
-                                {restaurant.address}, {restaurant.state} {restaurant.zip}
+                                 {restaurant.address}, {restaurant.city}, {restaurant.state} {restaurant.zip}
                             </div>
                         </div>
         
