@@ -7,11 +7,19 @@ class ReservationForm extends React.Component {
 
     }
 
+    componentDidMount() {
+        this.props.fetchRestaurant(this.props.match.params.restaurantId);
+    }
+
 
 
     render() {
+        const restaurant = this.props.restaurant;
+        if (!restaurant) {
+            return null;
+        };
         return (
-            <div>hello</div>
+            <div>hello {restaurant.name}</div>
         )
     }
             
