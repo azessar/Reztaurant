@@ -99,17 +99,6 @@ class GreetingHeader extends React.Component {
         )
     };
 
-    // signupModalAppears(){
-    //     let signupModal = document.querySelector(".signup-form-modal");
-    //     signupModal.style.display = "flex";
-
-    // }
-
-    // signinModalAppears() {
-    //     let signinModal = document.querySelector(".signin-form-modal");
-    //     signinModal.style.display = "flex";
-    // }
-
     sessionButtons() {
         return (
             <div className="signup-signin-search">
@@ -142,44 +131,3 @@ class GreetingHeader extends React.Component {
 export default GreetingHeader;
 
 
-
-// const GreetingHeader = ( { currentUser, signout, signin, signup } ) => {
-//     // const firstName = currentUser.first_name;
-//     const userButtons = () => {
-//         return (
-//             <div>
-//                 Hello (user)!
-//                 <button className="signout-button" onClick={signout}>Sign out</button>
-//             </div>
-//         )
-//     };
-
-//     const sessionButtons = () => {
-//         return (
-//             <div>
-//                 <button className="signup-button" onClick={signup}>Sign up</button>
-//                 <button className="signin-button" onClick={signin}>Sign in</button>
-//             </div>
-//         )
-//     };
-
-//     return (
-//         <nav className="header-nav">
-//             <nav className="logo-and-location">
-//                 <div className="open-table-logo">OpenTable logo</div>
-//                 <div>Location dropdown</div>
-//             </nav>
-
-//             <nav className="signup-signin-search">
-//                 {currentUser ? userButtons() : sessionButtons()}
-//                 <div>Search</div>
-//             </nav>
-//         </nav>
-//         );
-// }
-
-// export default GreetingHeader;
-
-{/* <button className="demo-signin-button" onClick={this.handleDemoSubmit}>Demo user enter here</button>
-    <button className="signup-button" onClick={this.signupModalAppears}>Sign up</button>
-    <button className="signin-button" onClick={this.signinModalAppears}>Sign in</button> */}

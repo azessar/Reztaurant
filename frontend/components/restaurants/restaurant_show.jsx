@@ -7,11 +7,14 @@ class RestaurantShow extends React.Component {
 
         this.state = {
             times: [],
-            currentTime: ''
+            currentTime: '',
+            showTimesButtonClicked: false
         }
 
         this.makeResTimes = this.makeResTimes.bind(this);
         this.makeTableTimes = this.makeTableTimes.bind(this);
+        this.showTimes = this.showTimes.bind(this);
+        this.reshowButton = this.reshowButton.bind(this);
     }
 
     componentDidMount() {
@@ -87,10 +90,24 @@ class RestaurantShow extends React.Component {
         resSelectArray.push(givenTime);
         resSelectArray.push(allTimes[allTimes.indexOf(givenTime) + 1]);
         resSelectArray.push(allTimes[allTimes.indexOf(givenTime) + 2]);
-        console.log(givenTime) // gotta reset state here
-
+        resSelectArray.push(allTimes[allTimes.indexOf(givenTime) + 3]);
         return resSelectArray;
     }
+
+    showTimes(event) { //Thank you to: https://blog.campvanilla.com/reactjs-dropdown-menus-b6e06ae3a8fe
+        event.preventDefault();
+
+        this.setState({ showTimesButtonClicked: true });
+        this.makeResTimes();
+    }
+    reshowButton(event) { //Thank you to: https://blog.campvanilla.com/reactjs-dropdown-menus-b6e06ae3a8fe
+        event.preventDefault();
+
+        this.setState({ showTimesButtonClicked: false });
+        this.makeResTimes();
+    }
+
+    
 
     render(){
         const restaurant = this.props.restaurant;
@@ -192,17 +209,27 @@ class RestaurantShow extends React.Component {
                             </div>
                             <div className="date-time-select-show">
                                 <input type="date" className="date-select-show" defaultValue="2020-10-02"></input>
-                                <select className="time-select-show" id="time-select" defaultValue="7:00 PM" onChange={this.makeResTimes}>
+                                <select className="time-select-show" id="time-select" defaultValue="7:00 PM" onChange={this.reshowButton}>
                                     {this.makeTableTimes().map((time, i) => (
                                         <option value={time} key={i}>{time}</option>
                                     ))}
                                 </select>
                             </div>
-                            <div className="res-times">
-                                {this.makeResTimes().map(time => (
-                                    <button className="res-time" value={time}>{time}</button>
-                                ))}
-                            </div>
+                            
+                            {
+                                this.state.showTimesButtonClicked
+                                    ? (
+                                        <div className="res-times">
+                                            {this.makeResTimes().map(time => (
+                                                <button className="res-time" value={time}>{time}</button>
+                                            ))}
+                                        </div>
+                                    )
+                                    : (
+                                        <button className="show-res-button" onClick={this.showTimes}>Show next available</button>
+                                    )
+                            }
+                           
                         </form>
                     </div>
 

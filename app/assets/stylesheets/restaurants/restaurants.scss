@@ -192,6 +192,7 @@
     width: 330px;
     background-color: white;
     box-shadow: 0 0 3px gray;
+    height: 255px;
 }
 
 .show-phone {
@@ -287,6 +288,7 @@
     font-weight: 400;
     color: white;
     background-color: #ff3340;
+    border: none;
 }
 
 .more-show-info {
@@ -389,7 +391,17 @@
     
 }
 
-// .this-is-sticky {
-//     position: sticky;
-//     top: 0;
-// }
+.res-time:not(:first-child) {
+    margin-left: 13px;
+}
+.res-time {
+    height: 30px;
+    width: 65px;
+    margin-top: 10px;
+    border-radius: 2px;
+    background-color: white;
+    font-size: 12px;
+    color: white;
+    background-color: #ff3340;
+    border: none;
+}
