@@ -8,17 +8,50 @@ class RestaurantShow extends React.Component {
         this.state = {
             times: [],
             currentTime: '',
-            showTimesButtonClicked: false
+            showTimesButtonClicked: false,
+            timesMade: false,
+            first_name: '',
+            last_name: '',
+            email: '',
+            password: '',
+            primary_dining_location: '',
+            showDrop: false,
         }
 
         this.makeResTimes = this.makeResTimes.bind(this);
         this.makeTableTimes = this.makeTableTimes.bind(this);
         this.showTimes = this.showTimes.bind(this);
         this.reshowButton = this.reshowButton.bind(this);
+
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
     }
 
     componentDidMount() {
         this.props.fetchRestaurant(this.props.match.params.restaurantId);
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        const { signin } = this.props;
+        const { first_name, last_name, email, password, primary_dining_location } = this.state;
+        signin({ first_name, last_name, email, password, primary_dining_location });
+        this.setState({
+            first_name: '',
+            last_name: '',
+            email: '',
+            password: '',
+            primary_dining_location: ''
+        });
+    }
+
+    handleDemoSubmit(e) {
+        e.preventDefault();
+        const { signin } = this.props;
+        const { first_name, last_name, email, password, primary_dining_location } = this.state;
+        const demoUser = { first_name: "Gordon", last_name: "Ramsay", email: "gramsay@gmail.com", password: "rubbish", primary_dining_location: "London" }
+        signin(demoUser);
+        e.target.reset();
     }
 
     priceConversion(price) {
@@ -98,14 +131,15 @@ class RestaurantShow extends React.Component {
         event.preventDefault();
 
         this.setState({ showTimesButtonClicked: true });
-        this.makeResTimes();
+        // this.makeResTimes();
     }
     reshowButton(event) { //Thank you to: https://blog.campvanilla.com/reactjs-dropdown-menus-b6e06ae3a8fe
         event.preventDefault();
 
         this.setState({ showTimesButtonClicked: false });
-        this.makeResTimes();
+        // this.makeResTimes();
     }
+
 
     
 
@@ -123,7 +157,7 @@ class RestaurantShow extends React.Component {
         };
       
         const parties = [1,2,3,4,5,6,7,8,9,10];
-        
+        const resTimes = this.makeResTimes();
         return(
             <div>
                 <div className="restaurant-header-loc">
@@ -219,13 +253,13 @@ class RestaurantShow extends React.Component {
                             {
                                 this.state.showTimesButtonClicked
                                     ? (
-                                        <div className="res-times">
-                                            {this.makeResTimes().map(time => (
-                                                <Link to={`/restaurants/${restaurant.id}/reservation_form`} key={restaurant.id} className="res-time-link">
-                                                    <button className="res-time" value={time}>{time}</button>
-                                                </Link>
-                                            ))}
-                                        </div>
+                                            <div className="res-times">
+                                                {resTimes.map(time => (
+                                                    <Link to={`/restaurants/${restaurant.id}/reservation_form`} key={restaurant.id} className="res-time-link">
+                                                        <button className="res-time" value={time}>{time}</button>
+                                                    </Link>
+                                                ))}
+                                            </div>
                                     )
                                     : (
                                         <button className="show-res-button" onClick={this.showTimes}>Show next available</button>
