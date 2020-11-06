@@ -391,9 +391,10 @@
     
 }
 
-.res-time:not(:first-child) {
+.res-time-link:not(:first-child) {
     margin-left: 13px;
 }
+
 .res-time {
     height: 30px;
     width: 65px;

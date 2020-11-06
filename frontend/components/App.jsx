@@ -5,6 +5,7 @@ import SigninModal from "./greeting/signin_modal_container";
 import Modal from './modal/modal';
 import RestaurantIndexItem from './restaurants/restaurant_index_container'
 import RestaurantShow from './restaurants/restaurant_show_container'
+import ReservationForm from './reservations/reservation_form_container'
 import SplashBody from './greeting/splash_body'
 import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
 import RestaurantSearchIndex from './search/restaurant_search_index_container';
@@ -28,9 +29,10 @@ const App = () => (
         <GreetingHeader />
        
         <Switch>
-            <Route path="/restaurants/:restaurantId" component={RestaurantShow} />
-            <Route path="/restaurants" component={RestaurantSearchIndex} />
-            <Route path="/" component={SplashBody} />
+            <Route exact path="/restaurants/:restaurantId" component={RestaurantShow} />
+            <Route exact path="/restaurants" component={RestaurantSearchIndex} />
+            <Route exact path="/" component={SplashBody} />
+            <Route exact path="/restaurants/:restaurantId/reservation_form" component={ReservationForm} />
         </Switch>
     </div>
 );

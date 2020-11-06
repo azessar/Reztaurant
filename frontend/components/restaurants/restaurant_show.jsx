@@ -135,7 +135,7 @@ class RestaurantShow extends React.Component {
                     <div className="show-pic-goes-here">
                         {/* <img className="default_show_background" src={window.default_show_background} /> */}
                         <img className="main-background-show-image" src={restaurant.background_photo} />
-                        <div className="save-this-restaurant">Save this restaurant</div>
+                        {/* <div className="save-this-restaurant">Save this restaurant</div> */}
                     </div>
                     <div className="overview-tabs">
                         <div className="inner-overview-tab">
@@ -221,7 +221,9 @@ class RestaurantShow extends React.Component {
                                     ? (
                                         <div className="res-times">
                                             {this.makeResTimes().map(time => (
-                                                <button className="res-time" value={time}>{time}</button>
+                                                <Link to={`/restaurants/${restaurant.id}/reservation_form`} key={restaurant.id} className="res-time-link">
+                                                    <button className="res-time" value={time}>{time}</button>
+                                                </Link>
                                             ))}
                                         </div>
                                     )
