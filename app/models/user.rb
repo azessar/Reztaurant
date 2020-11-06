@@ -7,6 +7,11 @@ class User < ApplicationRecord
     validates :password, length: {minimum: 6}, allow_nil: true
     validates :first_name, :last_name, presence: true
 
+    has_many :reservations,
+        primary_key: :id,
+        foreign_key: :user_id,
+        class_name: :Reservation
+
     attr_reader :password
     after_initialize :ensure_session_token
 

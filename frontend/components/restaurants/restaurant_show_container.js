@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import RestaurantShow from './restaurant_show';
 import { fetchRestaurant } from '../../actions/restaurant_actions';
+import { createReservation, requestSingleReservation, requestUserReservations, deleteReservation} from '../../actions/reservation_actions'
 
 const mSTP = (state, ownProps) => {
     return {
@@ -11,7 +12,13 @@ const mSTP = (state, ownProps) => {
 
 const mDTP = (dispatch) => {
     return {
-        fetchRestaurant: (restaurantId) => dispatch(fetchRestaurant(restaurantId))
+        
+        fetchRestaurant: (restaurantId) => dispatch(fetchRestaurant(restaurantId)),
+
+        createReservation: reservation => dispatch(createReservation(reservation)),
+        requestSingleReservation: id => dispatch(requestSingleReservation(id)),
+        requestUserReservations: userId => dispatch(requestUserReservations(userId)),
+        deleteReservation: id => dispatch(deleteReservation(id)),
     }
 };
 

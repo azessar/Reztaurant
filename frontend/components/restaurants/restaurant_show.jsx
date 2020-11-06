@@ -4,6 +4,14 @@ import { Route, Redirect, Switch, Link, HashRouter, withRouter } from 'react-rou
 class RestaurantShow extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            times: [],
+            currentTime: ''
+        }
+
+        this.makeResTimes = this.makeResTimes.bind(this);
+        this.makeTableTimes = this.makeTableTimes.bind(this);
     }
 
     componentDidMount() {
@@ -36,6 +44,54 @@ class RestaurantShow extends React.Component {
         }
     }
 
+    makeTableTimes(){
+        const restaurant = this.props.restaurant;
+        const times = [];
+        let i;
+        for (i = new Date(restaurant.open_time).getUTCHours(); i < new Date(restaurant.close_time).getUTCHours(); i += 0.5) {
+            let minsNum = i * 60;
+            var hours = Math.floor(minsNum / 60);
+            var minutes = minsNum % 60;
+            if (minutes === 0 && hours < 12) {
+                times.push(hours + ":00 AM")
+            } else if (minutes === 0 && hours === 12) {
+                times.push("12:00 PM");
+            } else if (minutes === 0 && hours > 12) {
+                times.push(hours - 12 + ":00 PM")
+            } else if (minutes > 0 && hours < 12) {
+                times.push(hours + ":30 AM")
+            } else if (minutes > 0 && hours === 12) {
+                times.push("12:30 PM")
+            } else if (minutes > 0 && hours > 12) {
+                times.push(hours - 12 + ":30 PM")
+            }
+        }
+ 
+        return times
+    }
+
+    makeResTimes(){
+        const allTimes = []
+        for(let i = 1; i < 12; i++) {
+            allTimes.push(`${i}:00 AM`);
+            allTimes.push(`${i}:30 AM`);
+        }
+        allTimes.push(`12:00 PM`);
+        allTimes.push(`12:30 PM`);
+        for (let i = 1; i < 12; i++) {
+            allTimes.push(`${i}:00 PM`);
+            allTimes.push(`${i}:30 PM`);
+        }
+        const resSelectArray = [];
+        const givenTime = document.getElementById("time-select") ? document.getElementById("time-select").value : "7:00 PM";
+        resSelectArray.push(givenTime);
+        resSelectArray.push(allTimes[allTimes.indexOf(givenTime) + 1]);
+        resSelectArray.push(allTimes[allTimes.indexOf(givenTime) + 2]);
+        console.log(givenTime) // gotta reset state here
+
+        return resSelectArray;
+    }
+
     render(){
         const restaurant = this.props.restaurant;
         if (!restaurant) {
@@ -48,6 +104,8 @@ class RestaurantShow extends React.Component {
         if (!restaurant.background_photo) {
             return null;
         };
+      
+        const parties = [1,2,3,4,5,6,7,8,9,10];
         
         return(
             <div>
@@ -120,9 +178,13 @@ class RestaurantShow extends React.Component {
                     <div className="show-res-form">
                         <div className="make-a-res">Make a reservation</div>
                         <div className="party-size">Party size</div>
+                        
                         <form className="right-show-res-form">
                             <select className="for-two" defaultValue="For 2">
-                                <option value="2">For 2</option>
+                                        <option value="2">For 2</option>
+                                    {parties.map(party => (
+                                        <option value={party}>For {party}</option>
+                                    ))}
                             </select>
                             <div className="date-time-head-show">
                                 <div>Date</div>
@@ -130,43 +192,17 @@ class RestaurantShow extends React.Component {
                             </div>
                             <div className="date-time-select-show">
                                 <input type="date" className="date-select-show" defaultValue="2020-10-02"></input>
-                                <select className="time-select-show" defaultValue="7:00 PM">
-                                    <option value="19:00">7:00 PM</option>
-                                    <option value="8:00">8:00 AM</option>
-                                    <option value="8:30">8:30 AM</option>
-                                    <option value="9:00">9:00 AM</option>
-                                    <option value="9:30">9:30 AM</option>
-                                    <option value="10:00">10:00 AM</option>
-                                    <option value="10:30">10:30 AM</option>
-                                    <option value="11:00">11:00 AM</option>
-                                    <option value="11:30">11:30 AM</option>
-                                    <option value="12:00">12:00 PM</option>
-                                    <option value="12:30">12:30 PM</option>
-                                    <option value="13:00">1:00 PM</option>
-                                    <option value="13:30">1:30 PM</option>
-                                    <option value="14:00">2:00 PM</option>
-                                    <option value="14:30">2:30 PM</option>
-                                    <option value="15:00">3:00 PM</option>
-                                    <option value="15:30">3:30 PM</option>
-                                    <option value="16:00">4:00 PM</option>
-                                    <option value="16:30">4:30 PM</option>
-                                    <option value="17:00">5:00 PM</option>
-                                    <option value="17:30">5:30 PM</option>
-                                    <option value="18:00">6:00 PM</option>
-                                    <option value="18:30">6:30 PM</option>
-                                    <option value="19:00">7:00 PM</option>
-                                    <option value="19:30">7:30 PM</option>
-                                    <option value="20:00">8:00 PM</option>
-                                    <option value="20:30">8:30 PM</option>
-                                    <option value="21:00">9:00 PM</option>
-                                    <option value="21:30">9:30 PM</option>
-                                    <option value="22:00">10:00 PM</option>
-                                    <option value="22:30">10:30 PM</option>
-                                    <option value="23:00">11:00 PM</option>
-                                    <option value="23:30">11:30 PM</option>
+                                <select className="time-select-show" id="time-select" defaultValue="7:00 PM" onChange={this.makeResTimes}>
+                                    {this.makeTableTimes().map((time, i) => (
+                                        <option value={time} key={i}>{time}</option>
+                                    ))}
                                 </select>
                             </div>
-                            <button className="show-res-button">Show next available</button>
+                            <div className="res-times">
+                                {this.makeResTimes().map(time => (
+                                    <button className="res-time" value={time}>{time}</button>
+                                ))}
+                            </div>
                         </form>
                     </div>
 
