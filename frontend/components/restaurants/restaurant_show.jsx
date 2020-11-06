@@ -16,6 +16,9 @@ class RestaurantShow extends React.Component {
             password: '',
             primary_dining_location: '',
             showDrop: false,
+            resDate: '2020-10-02',
+            resTime: '7:00 PM',
+            partySize: '2'
         }
 
         this.makeResTimes = this.makeResTimes.bind(this);
@@ -25,10 +28,24 @@ class RestaurantShow extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
+        this.update = this.update.bind(this);
+
     }
 
     componentDidMount() {
         this.props.fetchRestaurant(this.props.match.params.restaurantId);
+    }
+
+    update(e) {
+        e.preventDefault();
+
+        this.setState((state) => {
+            return {resDate: document.getElementById("date-select").value,
+                    resTime: document.getElementById("time-select").value,
+                    partySize: document.getElementById("party-select").value,
+            }
+        });
+        console.log(this.state.resDate, this.state.resTime, this.state.partySize)
     }
 
     handleSubmit(e) {
@@ -141,8 +158,6 @@ class RestaurantShow extends React.Component {
     }
 
 
-    
-
     render(){
         const restaurant = this.props.restaurant;
         if (!restaurant) {
@@ -155,7 +170,6 @@ class RestaurantShow extends React.Component {
         if (!restaurant.background_photo) {
             return null;
         };
-      
         const parties = [1,2,3,4,5,6,7,8,9,10];
         const resTimes = this.makeResTimes();
         return(
@@ -231,7 +245,7 @@ class RestaurantShow extends React.Component {
                         <div className="party-size">Party size</div>
                         
                         <form className="right-show-res-form">
-                            <select className="for-two" defaultValue="For 2">
+                            <select className="for-two" defaultValue="For 2" id="party-select" onChange={this.update}>
                                         <option value="2">For 2</option>
                                     {parties.map(party => (
                                         <option value={party}>For {party}</option>
@@ -242,8 +256,8 @@ class RestaurantShow extends React.Component {
                                 <div>Time</div>
                             </div>
                             <div className="date-time-select-show">
-                                <input type="date" className="date-select-show" defaultValue="2020-10-02"></input>
-                                <select className="time-select-show" id="time-select" defaultValue="7:00 PM" onChange={this.reshowButton}>
+                                <input type="date" className="date-select-show" defaultValue="2020-10-02" id="date-select" onChange={this.update}></input>
+                                <select className="time-select-show" id="time-select" defaultValue="7:00 PM" onChange={this.reshowButton, this.update}>
                                     {this.makeTableTimes().map((time, i) => (
                                         <option value={time} key={i}>{time}</option>
                                     ))}
@@ -255,8 +269,15 @@ class RestaurantShow extends React.Component {
                                     ? (
                                             <div className="res-times">
                                                 {resTimes.map(time => (
-                                                    <Link to={`/restaurants/${restaurant.id}/reservation_form`} key={restaurant.id} className="res-time-link">
-                                                        <button className="res-time" value={time}>{time}</button>
+                                                    <Link to={{
+                                                        pathname: `/restaurants/${restaurant.id}/reservation_form`,
+                                                        state: {
+                                                            resDate: this.state.resDate,
+                                                            resTime: time,
+                                                            partySize: this.state.partySize,
+                                                        },
+                                                    }} key={restaurant.id} className="res-time-link" >
+                                                        <button className="res-time" >{time}</button>
                                                     </Link>
                                                 ))}
                                             </div>

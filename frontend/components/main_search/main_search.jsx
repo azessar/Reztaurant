@@ -14,9 +14,6 @@ class MainSearch extends React.Component {
 
     update(e){
         e.preventDefault();
-        // this.setState({
-        //     searchWord: document.getElementById("main-search-bar").value
-        // });
 
         this.setState((state) => {
             return { searchWord: document.getElementById("main-search-bar").value }

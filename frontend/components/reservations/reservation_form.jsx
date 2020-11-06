@@ -26,7 +26,7 @@ class ReservationForm extends React.Component {
             return null;
         };
         return (
-            <div>hello {restaurant.name}</div>
+            <div>hello {restaurant.name} blah blah {this.props.location.state.partySize} blah { this.props.location.state.resTime} blah { this.props.location.state.resDate} </div>
         )
     }
             
