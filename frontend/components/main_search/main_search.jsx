@@ -13,6 +13,7 @@ class MainSearch extends React.Component {
         };
 
         this.update = this.update.bind(this);
+        this.makeTableTimes = this.makeTableTimes.bind(this);
     }
 
     update(e){
@@ -28,8 +29,34 @@ class MainSearch extends React.Component {
         });
     }
 
+    makeTableTimes() {
+        const times = [];
+        let i;
+        for (i = 7; i < 24; i += 0.5) {
+            let minsNum = i * 60;
+            var hours = Math.floor(minsNum / 60);
+            var minutes = minsNum % 60;
+            if (minutes === 0 && hours < 12) {
+                times.push(hours + ":00 AM")
+            } else if (minutes === 0 && hours === 12) {
+                times.push("12:00 PM");
+            } else if (minutes === 0 && hours > 12) {
+                times.push(hours - 12 + ":00 PM")
+            } else if (minutes > 0 && hours < 12) {
+                times.push(hours + ":30 AM")
+            } else if (minutes > 0 && hours === 12) {
+                times.push("12:30 PM")
+            } else if (minutes > 0 && hours > 12) {
+                times.push(hours - 12 + ":30 PM")
+            }
+        }
+
+        return times
+    }
+
 
     render() {
+        const parties = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         return (
             <div className="main-search-div">
                 <form className="main-search-form">
@@ -39,14 +66,17 @@ class MainSearch extends React.Component {
                         </div>
                         <div className="search-time">
                             <select className="time" defaultValue="7:00 PM" id="main-search-time" onChange={this.update}>
-                                <option value="8:00">8:00 AM</option>
-                                
+                                {this.makeTableTimes().map((time, i) => (
+                                    <option value={time} key={i}>{time}</option>
+                                ))}                                
                             </select>
                         </div>
                         <div className="search-peeps">
                             <select className="peeps" defaultValue="2 people" id="main-search-peeps" onChange={this.update}>
-                                <option value="1">1 person</option>
-                                <option value="2">2 people</option>
+                                    <option value="2">For 2</option>
+                                {parties.map(party => (
+                                    <option value={party}>For {party}</option>
+                                ))}
                             </select>
                         </div>
                     </div>
