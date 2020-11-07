@@ -78,7 +78,17 @@ class GreetingHeader extends React.Component {
                     <img className="signin-guy" src={window.signin_guy} onClick={this.showDrop}/>
                     <img className="reservation-box" src={window.reservation_box} />
                     <img className="alert-bell" src={window.alert_bell} />
-                    <img className="search-mag" src={window.mag_glass} />
+                    <Link to={{
+                        pathname: "/restaurants",
+                        // state: {
+                        //     searchWord: this.state.searchWord,
+                        //     resDate: this.state.resDate,
+                        //     resTime: this.state.resTime,
+                        //     partySize: this.state.partySize
+                        // },
+                    }}>
+                        <img className="search-mag" src={window.mag_glass} />
+                    </Link>
                 </div>
                 {
                     this.state.showDrop
