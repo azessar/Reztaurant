@@ -40,7 +40,7 @@
     border-radius: 3px;
     position: absolute;
     top: 90px;
-    left: 400px;
+    left: 500px;
 }
 
 .find-a-table-button {
@@ -53,7 +53,7 @@
     font-weight: 400;
     position: absolute;
     top: 90px;
-    left: 720px;
+    left: 820px;
     border-radius: 6px;
 }
 .find-a-table-button:hover {
@@ -157,9 +157,32 @@
     font-weight: 400;
     position: absolute;
     top: 90px;
-    left: 884px;
+    left: 984px;
     border-radius: 6px;
 }
 .clear-search-and-filter:hover {
     cursor: pointer;
+}
+
+.date-time-peeps-search {
+    display: flex;
+    flex-direction: row;
+    margin-left: 140px;
+}
+
+.date-time-peeps-search input, .date-time-peeps-search select {
+    width: 115px;
+    margin-top: 11px;
+    border: none;
+}
+
+.date-time-peeps-search input {
+    height: 51px;
+    border-radius: 3px 0px 0px 3px;
+}
+.date-time-peeps-search select {
+    height: 51px;
+}
+.search-date {
+    margin-right: 1px;
 }

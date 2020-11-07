@@ -12,7 +12,10 @@ class RestaurantSearchIndex extends React.Component {
             $$$: 'off',
             $$$$: 'off',
             regions: [],
-            cuisines: []
+            cuisines: [],
+            partySize: '',
+            resDate: '2020-10-02',
+            resTime: ''
         };
         // this.searchFunction = this.searchFunction.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -181,10 +184,29 @@ class RestaurantSearchIndex extends React.Component {
                 !cuisines.includes(restaurant.cuisine) ? cuisines.push(restaurant.cuisine) : null
             ))
         }             
-
+        const defDate = this.props.location.state ? this.props.location.state.resDate : this.state.resDate;
+        const defTime = this.props.location.state ? this.props.location.state.resTime : this.state.resTime;
+        const defParty = this.props.location.state ? this.props.location.state.partySize : this.state.partySize;
         return (
             <div>
                 <form className="search-page-search-form" >
+                    <div className="date-time-peeps-search">
+                        <div className="search-date" >
+                            <input type="date" defaultValue={defDate}></input>
+                        </div>
+                        <div className="search-time">
+                            <select className="time" defaultValue={defTime}>
+                                <option value="8:00">8:00 AM</option>
+
+                            </select>
+                        </div>
+                        <div className="search-peeps">
+                            <select className="peeps" defaultValue={defParty}>
+                                <option value="1">1 person</option>
+                                <option value="2">2 people</option>
+                            </select>
+                        </div>
+                    </div>
                     <input className="search-page-search-bar" id="search-page-search-bar" placeholder="Search a restaurant name, location, or cuisine"
                         defaultValue={this.state.searchWord}
                         >    
