@@ -187,12 +187,12 @@ form.demo-signin > button {
 .date-time-peeps input {
     width: 150px;
     height: 49px;
-    
-    background-image: image-url("little_cal.png");
+    font-size: 15px;
+    // background-image: image-url("little_cal.png");
     background-repeat: no-repeat;
     background-size: 25px;
     background-position: 10px; 
-    text-indent: 19px;
+    text-indent: 13px;
     cursor: pointer;
     border: none;
     border-radius: 3px 0px 0px 3px;
@@ -207,7 +207,6 @@ form.demo-signin > button {
 .main-search-form select {
     width: 150px;
     height: 49px;
-    background-image: image-url("little-guy.png");
     background-repeat: no-repeat;
     background-size: 25px;
     background-position: 10px; 
@@ -215,6 +214,11 @@ form.demo-signin > button {
     cursor: pointer;
     border: none;
     margin-left: 0.5px;
+    font-size: 15px;
+}
+
+.peeps {
+    // background-image: image-url("little-guy.png");
 }
 
 .peeps {

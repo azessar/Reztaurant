@@ -4,7 +4,10 @@ import { Route, Redirect, Switch, Link, HashRouter, withRouter } from 'react-rou
 class RestaurantSearchIndex extends React.Component {
     constructor(props) {
         super(props);
-
+        let newDate = new Date()
+        let date = newDate.getDate() > 9 ? newDate.getDate() : '0' + newDate.getDate();
+        let month = newDate.getMonth() + 1;
+        let year = newDate.getFullYear();    
         this.state = {
             searchWord: '',
             $: 'off',
@@ -13,9 +16,9 @@ class RestaurantSearchIndex extends React.Component {
             $$$$: 'off',
             regions: [],
             cuisines: [],
-            partySize: '',
-            resDate: '2020-10-02',
-            resTime: ''
+            partySize: '2',
+            resDate: year + '-' + month + '-' + date,
+            resTime: '7:00 PM'
         };
         // this.searchFunction = this.searchFunction.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -131,6 +134,9 @@ class RestaurantSearchIndex extends React.Component {
         resSelectArray.push(allTimes[allTimes.indexOf(givenTime) + 1]);
         resSelectArray.push(allTimes[allTimes.indexOf(givenTime) + 2]);
         resSelectArray.push(allTimes[allTimes.indexOf(givenTime) + 3]);
+        resSelectArray.push(allTimes[allTimes.indexOf(givenTime) + 4]);
+        resSelectArray.push(allTimes[allTimes.indexOf(givenTime) + 5]);
+
         return resSelectArray;
     }
 

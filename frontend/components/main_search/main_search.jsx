@@ -5,9 +5,13 @@ class MainSearch extends React.Component {
     constructor(props) {
         super(props);
 
+        let newDate = new Date()
+        let date = newDate.getDate() > 9 ? newDate.getDate() : '0' + newDate.getDate();
+        let month = newDate.getMonth() + 1;
+        let year = newDate.getFullYear();        
         this.state = {
             searchWord: '',
-            resDate: '',
+            resDate: year + '-' + month + '-' + date,
             resTime: '',
             partySize: '',
         };
@@ -62,7 +66,7 @@ class MainSearch extends React.Component {
                 <form className="main-search-form">
                     <div className="date-time-peeps">
                         <div className="search-date" >
-                            <input type="date" defaultValue="2020-10-02" id="main-search-date" onChange={this.update}></input>
+                            <input type="date" defaultValue={this.state.resDate} id="main-search-date" onChange={this.update}></input>
                         </div>
                         <div className="search-time">
                             <select className="time" defaultValue="7:00 PM" id="main-search-time" onChange={this.update}>
