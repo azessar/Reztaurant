@@ -22,6 +22,8 @@ class RestaurantSearchIndex extends React.Component {
         this.update = this.update.bind(this);
         this.togglePrice = this.togglePrice.bind(this);
         this.toggleFilter = this.toggleFilter.bind(this);
+        this.makeResTimes = this.makeResTimes.bind(this);
+
     }
 
     componentDidMount() {
@@ -43,7 +45,10 @@ class RestaurantSearchIndex extends React.Component {
     update(e) {
         e.preventDefault();
         this.setState({
-            searchWord: document.getElementById("search-page-search-bar").value
+            searchWord: document.getElementById("search-page-search-bar").value,
+            resDate: document.getElementById("date-select-search").value,
+            resTime: document.getElementById("time-select-search").value,
+            partySize: document.getElementById("party-select-search").value,
         });
     }
 
@@ -106,6 +111,27 @@ class RestaurantSearchIndex extends React.Component {
                 [field]: newState2
             })
         }
+    }
+
+    makeResTimes() {
+        const allTimes = []
+        for (let i = 1; i < 12; i++) {
+            allTimes.push(`${i}:00 AM`);
+            allTimes.push(`${i}:30 AM`);
+        }
+        allTimes.push(`12:00 PM`);
+        allTimes.push(`12:30 PM`);
+        for (let i = 1; i < 12; i++) {
+            allTimes.push(`${i}:00 PM`);
+            allTimes.push(`${i}:30 PM`);
+        }
+        const resSelectArray = [];
+        const givenTime = document.getElementById("time-select-search") ? document.getElementById("time-select-search").value : "7:00 PM";
+        resSelectArray.push(givenTime);
+        resSelectArray.push(allTimes[allTimes.indexOf(givenTime) + 1]);
+        resSelectArray.push(allTimes[allTimes.indexOf(givenTime) + 2]);
+        resSelectArray.push(allTimes[allTimes.indexOf(givenTime) + 3]);
+        return resSelectArray;
     }
 
 
@@ -187,21 +213,22 @@ class RestaurantSearchIndex extends React.Component {
         const defDate = this.props.location.state ? this.props.location.state.resDate : this.state.resDate;
         const defTime = this.props.location.state ? this.props.location.state.resTime : this.state.resTime;
         const defParty = this.props.location.state ? this.props.location.state.partySize : this.state.partySize;
+        const resTimes = this.makeResTimes();
         return (
             <div>
                 <form className="search-page-search-form" >
                     <div className="date-time-peeps-search">
                         <div className="search-date" >
-                            <input type="date" defaultValue={defDate}></input>
+                            <input type="date" defaultValue={defDate} id="date-select-search" onChange={this.update}></input>
                         </div>
                         <div className="search-time">
-                            <select className="time" defaultValue={defTime}>
+                            <select className="time" defaultValue={defTime} id="time-select-search" onChange={this.update}>
                                 <option value="8:00">8:00 AM</option>
 
                             </select>
                         </div>
                         <div className="search-peeps">
-                            <select className="peeps" defaultValue={defParty}>
+                            <select className="peeps" defaultValue={defParty} id="party-select-search" onChange={this.update}>
                                 <option value="1">1 person</option>
                                 <option value="2">2 people</option>
                             </select>
@@ -279,6 +306,20 @@ class RestaurantSearchIndex extends React.Component {
                                     </div>
                                     <div className="cuisine-price-area">{restaurant.cuisine} - {this.priceConversion(restaurant.avg_price)} - {restaurant.city}, {restaurant.state}</div>
                                     <div className="booked-times">Booked 115 times today</div>
+                                    <div className="res-times">
+                                        {resTimes.map(time => (
+                                            <Link to={{
+                                                pathname: `/restaurants/${restaurant.id}/reservation_form`,
+                                                state: {
+                                                    resDate: this.state.resDate,
+                                                    resTime: time,
+                                                    partySize: this.state.partySize,
+                                                },
+                                            }} key={restaurant.id} className="res-time-link" >
+                                                <button className="res-time" >{time}</button>
+                                            </Link>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
                         </Link>
