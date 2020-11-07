@@ -190,6 +190,7 @@ class RestaurantSearchIndex extends React.Component {
                         >    
                     </input>
                     <button className="find-a-table-button" onClick={this.update}>Find a table</button>
+                    <button className="clear-search-and-filter" onClick={() => setTimeout(function () {window.location.reload()})}>Clear search and filters</button>
                 </form>
                 <div id="search-output">
                     {this.whatDidISearchFor()}

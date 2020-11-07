@@ -146,3 +146,20 @@
     display: flex;
     margin-top: 20px;
 }
+
+.clear-search-and-filter {
+    height: 50px;
+    width: 150px;
+    background-color: #746f6f;
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 400;
+    position: absolute;
+    top: 90px;
+    left: 884px;
+    border-radius: 6px;
+}
+.clear-search-and-filter:hover {
+    cursor: pointer;
+}
