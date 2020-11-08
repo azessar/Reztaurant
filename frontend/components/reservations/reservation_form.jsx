@@ -15,6 +15,8 @@ class ReservationForm extends React.Component {
 
         }
         this.dateConvert = this.dateConvert.bind(this);
+        this.userForm = this.userForm.bind(this);
+        this.guestForm = this.guestForm.bind(this);
     }
 
     componentDidMount() {
@@ -24,6 +26,21 @@ class ReservationForm extends React.Component {
     dateConvert(dateString) {
         const monthArray = { "01": "January", "02": "February", "03": "March", "04": "April", "05": "May", "06": "June", "07": "July", "08": "August", "09": "September", "10": "October", "11": "November", "12": "December"}
         return monthArray[dateString.slice(5, 7)] + " " + dateString.slice(8) + ", " + dateString.slice(0,4)
+    }
+
+    userForm() {
+        const user = this.props.currentUser;
+        return (
+            <form>
+                <input value=""></input>
+            </form>
+        )
+
+    }
+    guestForm() {
+        return (
+            null
+        )
     }
 
     render() {
@@ -69,6 +86,8 @@ class ReservationForm extends React.Component {
                         </div>
                         
                     </div>
+                    <div>Diner Details</div>
+                    {this.props.currentUser ? this.userForm() : this.guestForm()}                
                     
                 </div>
             </div>
