@@ -19,7 +19,7 @@
 }
 
 .res-name-city {
-    font-size: 20px;
+    font-size: 30px;
     font-weight: 600;
     margin-top: 5px;
 }
@@ -34,8 +34,16 @@
 .res-date-time-peeps {
     display: flex;
     margin-top: 30px;
+    font-size: 20px;
 }
 
 .res-date-time-peeps > div:not(:first-child) {
     margin-left: 30px;
+}
+
+.res-party-info {
+    display: flex;
+}
+.res-party-info i {
+    margin-right: 10px;
 }

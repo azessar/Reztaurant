@@ -77,7 +77,6 @@ class GreetingHeader extends React.Component {
                 <div className="user-icons">
                     <img className="signin-guy" src={window.signin_guy} onClick={this.showDrop}/>
                     <img className="reservation-box" src={window.reservation_box} />
-                    <img className="alert-bell" src={window.alert_bell} />
                     <Link to={{
                         pathname: "/restaurants",
                         // state: {
@@ -140,7 +139,6 @@ class GreetingHeader extends React.Component {
             <div className="header-nav">
                 <div>
                     <Link to="/"><img className="logo" src={window.logo} /></Link>
-                    <img className="location-dropdown" src={window.location_dropdown} />
                 </div>
                 {this.props.currentUser ? this.userButtons() : this.sessionButtons()}
             </div>
