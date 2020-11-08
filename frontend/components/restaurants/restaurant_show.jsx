@@ -268,7 +268,8 @@ class RestaurantShow extends React.Component {
                                 this.state.showTimesButtonClicked
                                     ? (
                                             <div className="res-times">
-                                                {resTimes.map(time => (
+                                            {this.props.currentUser ?
+                                                resTimes.map(time => (
                                                     <Link to={{
                                                         pathname: `/restaurants/${restaurant.id}/reservation_form`,
                                                         state: {
@@ -279,7 +280,12 @@ class RestaurantShow extends React.Component {
                                                     }} key={restaurant.id} className="res-time-link" >
                                                         <button className="res-time" >{time}</button>
                                                     </Link>
-                                                ))}
+                                                ))
+                                                :
+                                                resTimes.map(time => (
+                                                    <button className="res-time" onClick={() => window.alert("Please signup, signin, or demo-signin to continue.")}>{time}</button>
+                                                ))
+                                            }
                                             </div>
                                     )
                                     : (

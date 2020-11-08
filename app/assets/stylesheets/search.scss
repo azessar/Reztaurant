@@ -19,6 +19,7 @@
     width: 200px;
     padding-bottom: 10px;
     border-radius: 6px;
+    height: 150px;
 }
 
 .search-info {
@@ -186,4 +187,8 @@
 }
 .search-date {
     margin-right: 1px;
+}
+
+.res-time:not(:first-child) {
+    margin-left: 13px;
 }

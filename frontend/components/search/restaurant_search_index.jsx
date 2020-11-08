@@ -325,9 +325,10 @@ class RestaurantSearchIndex extends React.Component {
                 </div>
                 <div className="restaurant-search-cards" id="restaurant-search-cards">
                     {filteredRestaurantArray.map(restaurant => (
-                        <Link to={`/restaurants/${restaurant.id}`} key={restaurant.id} className="restaurant-search-card-link">
                             <div className="restaurant-search-card">
+                            <Link to={`/restaurants/${restaurant.id}`} key={restaurant.id} className="restaurant-search-card-link">
                                 <img className="search-pic" src={restaurant.main_photo} />
+                            </Link>
                                 <div className="search-info">
                                     <div className="card-name">{restaurant.name}</div>
                                     <div className="card-reviews-and-stars">
@@ -342,22 +343,27 @@ class RestaurantSearchIndex extends React.Component {
                                     <div className="cuisine-price-area">{restaurant.cuisine} - {this.priceConversion(restaurant.avg_price)} - {restaurant.city}, {restaurant.state}</div>
                                     <div className="booked-times">Booked 115 times today</div>
                                     <div className="res-times">
-                                        {resTimes.map(time => (
-                                            <Link to={{
-                                                pathname: `/restaurants/${restaurant.id}/reservation_form`,
-                                                state: {
-                                                    resDate: this.state.resDate,
-                                                    resTime: time,
-                                                    partySize: this.state.partySize,
-                                                },
-                                            }} key={restaurant.id} className="res-time-link" >
-                                                <button className="res-time" >{time}</button>
-                                            </Link>
-                                        ))}
+                                        {this.props.currentUser ?
+                                            resTimes.map(time => (
+                                                <Link to={{
+                                                    pathname: `/restaurants/${restaurant.id}/reservation_form`,
+                                                    state: {
+                                                        resDate: this.state.resDate,
+                                                        resTime: time,
+                                                        partySize: this.state.partySize,
+                                                    },
+                                                }} key={restaurant.id} className="res-time-link" >
+                                                    <button className="res-time" >{time}</button>
+                                                </Link>
+                                            ))
+                                            :
+                                            resTimes.map(time => (                                              
+                                                <button className="res-time" onClick={() => window.alert("Please signup, signin, or demo-signin to continue.")}>{time}</button>
+                                            ))
+                                        }
                                     </div>
                                 </div>
                             </div>
-                        </Link>
                     ))}
 
 
