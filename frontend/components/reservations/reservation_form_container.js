@@ -6,6 +6,7 @@ import { createReservation, requestSingleReservation, requestUserReservations, d
 const mSTP = (state, ownProps) => {
     return {
         restaurant: state.entities.restaurants[ownProps.match.params.restaurantId],
+        reservation: state.entities.reservations[ownProps.match.params.reservationId],
         currentUser: state.entities.users[state.session.id],
     };
 };

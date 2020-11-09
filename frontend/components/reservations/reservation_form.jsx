@@ -19,7 +19,7 @@ class ReservationForm extends React.Component {
         this.guestForm = this.guestForm.bind(this);
         this.completedForm = this.completedForm.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-
+        this.handleCancel = this.handleCancel.bind(this);
     }
 
     componentDidMount() {
@@ -39,6 +39,13 @@ class ReservationForm extends React.Component {
         this.setState({
             resMade: true,
         });
+    }
+
+    handleCancel(e) {
+        e.preventDefault();
+        const { deleteReservation } = this.props;
+        const id = this.props.reservation.id;
+        deleteReservation({id});
     }
 
     dateConvert(dateString) {
@@ -66,7 +73,7 @@ class ReservationForm extends React.Component {
         return (
             <div className="completed-buttons">
                 <div><Link to="/">Back to homepage</Link></div>
-                <div>Cancel reservation</div>
+                <div onClick={this.handleCancel}>Cancel reservation</div>
                 <div>View current reservations</div>
             </div>
         )

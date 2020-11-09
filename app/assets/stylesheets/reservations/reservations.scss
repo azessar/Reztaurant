@@ -125,3 +125,6 @@
 .completed-buttons > div:hover {
     cursor: pointer;
 }
+.completed-buttons > div:first-child {
+    background-color: rgba(59, 59, 59, 0.98);
+}
