@@ -5,6 +5,10 @@ class RestaurantShow extends React.Component {
     constructor(props) {
         super(props);
 
+        let newDate = new Date()
+        let date = newDate.getDate() > 9 ? newDate.getDate() : '0' + newDate.getDate();
+        let month = newDate.getMonth() + 1;
+        let year = newDate.getFullYear(); 
         this.state = {
             times: [],
             currentTime: '',
@@ -16,9 +20,10 @@ class RestaurantShow extends React.Component {
             password: '',
             primary_dining_location: '',
             showDrop: false,
-            resDate: '2020-10-02',
+            resDate: year + '-' + month + '-' + date,
             resTime: '7:00 PM',
-            partySize: '2'
+            partySize: '2',
+            stateResTimes: [],
         }
 
         this.makeResTimes = this.makeResTimes.bind(this);
@@ -142,19 +147,19 @@ class RestaurantShow extends React.Component {
         resSelectArray.push(allTimes[allTimes.indexOf(givenTime) + 2]);
         resSelectArray.push(allTimes[allTimes.indexOf(givenTime) + 3]);
         return resSelectArray;
+        // this.setState({ stateResTimes: resSelectArray });
+
     }
 
     showTimes(event) { //Thank you to: https://blog.campvanilla.com/reactjs-dropdown-menus-b6e06ae3a8fe
         event.preventDefault();
 
         this.setState({ showTimesButtonClicked: true });
-        // this.makeResTimes();
     }
     reshowButton(event) { //Thank you to: https://blog.campvanilla.com/reactjs-dropdown-menus-b6e06ae3a8fe
         event.preventDefault();
 
         this.setState({ showTimesButtonClicked: false });
-        // this.makeResTimes();
     }
 
 
@@ -256,7 +261,7 @@ class RestaurantShow extends React.Component {
                                 <div>Time</div>
                             </div>
                             <div className="date-time-select-show">
-                                <input type="date" className="date-select-show" defaultValue="2020-10-02" id="date-select" onChange={this.update}></input>
+                                <input type="date" className="date-select-show" defaultValue={this.state.resDate}id="date-select" onChange={this.update}></input>
                                 <select className="time-select-show" id="time-select" defaultValue="7:00 PM" onChange={this.reshowButton, this.update}>
                                     {this.makeTableTimes().map((time, i) => (
                                         <option value={time} key={i}>{time}</option>
@@ -268,7 +273,7 @@ class RestaurantShow extends React.Component {
                                 this.state.showTimesButtonClicked
                                     ? (
                                             <div className="res-times">
-                                            {this.props.currentUser ?
+                                            {
                                                 resTimes.map(time => (
                                                     <Link to={{
                                                         pathname: `/restaurants/${restaurant.id}/reservation_form`,
@@ -280,10 +285,6 @@ class RestaurantShow extends React.Component {
                                                     }} key={restaurant.id} className="res-time-link" >
                                                         <button className="res-time" >{time}</button>
                                                     </Link>
-                                                ))
-                                                :
-                                                resTimes.map(time => (
-                                                    <button className="res-time" onClick={() => window.alert("Please signup, signin, or demo-signin to continue.")}>{time}</button>
                                                 ))
                                             }
                                             </div>

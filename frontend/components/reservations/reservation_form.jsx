@@ -32,14 +32,21 @@ class ReservationForm extends React.Component {
         const user = this.props.currentUser;
         return (
             <form>
-                <input value=""></input>
+                <div>Diner Details</div>
+                <div className="res-name-email">
+                    <div className="res-user-name">{user.first_name} {user.last_name}</div>
+                    <div>{user.email}</div>
+                </div>
+                <button className="complete-res">Complete reservation</button>
             </form>
         )
 
     }
     guestForm() {
         return (
-            null
+            <div>
+                Please sign in or sign up to make a reservation.
+            </div>
         )
     }
 
@@ -86,10 +93,19 @@ class ReservationForm extends React.Component {
                         </div>
                         
                     </div>
-                    <div>Diner Details</div>
                     {this.props.currentUser ? this.userForm() : this.guestForm()}                
                     
                 </div>
+                <footer className="res-footer">
+                    <div className="footer-text">
+                        <div className="mock-opentable">
+                            Mock OpenTable by Andrew Zessar, using Ruby, Rails, JS, React/Redux
+                    </div>
+                        <div className="real-opentable">
+                            <a href="https://www.opentable.com/" target="_blank">Click here for the real OpenTable website</a>
+                        </div>
+                    </div>
+                </footer>
             </div>
         )
     }

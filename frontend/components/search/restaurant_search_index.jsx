@@ -143,7 +143,7 @@ class RestaurantSearchIndex extends React.Component {
     makeTableTimes() {
         const times = [];
         let i;
-        for (i = 7; i < 24; i += 0.5) {
+        for (i = 7; i < 21.5; i += 0.5) {
             let minsNum = i * 60;
             var hours = Math.floor(minsNum / 60);
             var minutes = minsNum % 60;
@@ -255,6 +255,7 @@ class RestaurantSearchIndex extends React.Component {
                         </div>
                         <div className="search-time">
                             <select className="time" defaultValue={defTime} id="time-select-search" onChange={this.update}>
+                                    <option value="7:00 PM">7:00 PM</option>
                                 {this.makeTableTimes().map((time, i) => (
                                     <option value={time} key={i}>{time}</option>
                                 ))}
@@ -343,8 +344,7 @@ class RestaurantSearchIndex extends React.Component {
                                     <div className="cuisine-price-area">{restaurant.cuisine} - {this.priceConversion(restaurant.avg_price)} - {restaurant.city}, {restaurant.state}</div>
                                     <div className="booked-times">Booked 115 times today</div>
                                     <div className="res-times">
-                                        {this.props.currentUser ?
-                                            resTimes.map(time => (
+                                        {resTimes.map(time => (
                                                 <Link to={{
                                                     pathname: `/restaurants/${restaurant.id}/reservation_form`,
                                                     state: {
@@ -355,10 +355,6 @@ class RestaurantSearchIndex extends React.Component {
                                                 }} key={restaurant.id} className="res-time-link" >
                                                     <button className="res-time" >{time}</button>
                                                 </Link>
-                                            ))
-                                            :
-                                            resTimes.map(time => (                                              
-                                                <button className="res-time" onClick={() => window.alert("Please signup, signin, or demo-signin to continue.")}>{time}</button>
                                             ))
                                         }
                                     </div>
