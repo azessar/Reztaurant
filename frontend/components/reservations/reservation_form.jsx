@@ -95,9 +95,15 @@ class ReservationForm extends React.Component {
                     <div>{restaurant.city} / {restaurant.state}</div>
                 </div>
                 <div className="res-form-body">
-                    <div className="almost-done">
-                        You're almost done!
-                    </div>
+                    {this.state.resMade ? 
+                        <div>
+                            You're done!
+                        </div>
+                        :
+                        <div className="almost-done">
+                            You're almost done!
+                        </div>
+                    }
                     <div className="res-card">
                         <img className="res-pic" src={restaurant.main_photo} />
                         <div className="res-info">
