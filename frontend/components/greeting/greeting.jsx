@@ -76,7 +76,6 @@ class GreetingHeader extends React.Component {
                 <button className="signout-button" onClick={this.props.signout}>Sign out</button>
                 <div className="user-icons">
                     <img className="signin-guy" src={window.signin_guy} onClick={this.showDrop}/>
-                    <img className="reservation-box" src={window.reservation_box} />
                     <Link to={{
                         pathname: "/restaurants",
                         // state: {
@@ -96,7 +95,8 @@ class GreetingHeader extends React.Component {
                             this.dropdownMenu = element;
                         }}>
                             <div className="drop-greeting">Hello, {currentUser.first_name} {currentUser.last_name}!</div>
-                                <div className="drop-signout" onClick={this.props.signout}>Sign out</div>
+                            <div>My Reservations</div>
+                            <div className="drop-signout" onClick={this.props.signout}>Signout</div>
                         </div>
                     )
                         : (
