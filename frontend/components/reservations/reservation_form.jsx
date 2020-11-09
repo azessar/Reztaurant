@@ -12,7 +12,8 @@ class ReservationForm extends React.Component {
             resDate: year + '-' + month + '-' + stateDate,
             resTime: '7:00 PM',
             partySize: 2,
-            resMade: false
+            resMade: false,
+            resCanceled: false,
         }
         this.dateConvert = this.dateConvert.bind(this);
         this.userForm = this.userForm.bind(this);
@@ -20,6 +21,7 @@ class ReservationForm extends React.Component {
         this.completedForm = this.completedForm.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleCancel = this.handleCancel.bind(this);
+        this.canceledForm = this.canceledForm.bind(this);
     }
 
     componentDidMount() {
@@ -47,6 +49,9 @@ class ReservationForm extends React.Component {
         const reservation = this.props.reservation;
         console.log("hey", reservation["reservation"].id)
         deleteReservation(reservation["reservation"].id);
+        this.setState({
+            resCanceled: true,
+        });
     }
 
     dateConvert(dateString) {
@@ -74,7 +79,15 @@ class ReservationForm extends React.Component {
         return (
             <div className="completed-buttons">
                 <div><Link to="/">Back to homepage</Link></div>
+                <div>View current reservations</div>
                 <div onClick={this.handleCancel}>Cancel reservation</div>
+            </div>
+        )
+    }
+    canceledForm() {
+        return (
+            <div className="completed-buttons">
+                <div><Link to="/">Back to homepage</Link></div>
                 <div>View current reservations</div>
             </div>
         )
@@ -104,10 +117,16 @@ class ReservationForm extends React.Component {
                 </div>
                 <div className="res-form-body">
                     {this.state.resMade ? 
-                        <div className="youre-done">
-                            <i className='fas fa-check-square'></i>
-                            <h1>You're done!</h1>
-                        </div>
+                        this.state.resCanceled ?
+                            <div className="canceled">
+                                <i className='fas fa-calendar-times'></i>
+                                <h1>Reservation canceled:</h1>
+                            </div>
+                        :
+                            <div className="youre-done">
+                                <i className='fas fa-check-square'></i>
+                                <h1>You're done!</h1>
+                            </div>
                         :
                         <div className="almost-done">
                             You're almost done!
@@ -137,9 +156,11 @@ class ReservationForm extends React.Component {
                         
                     </div>
                     {this.props.currentUser ? 
-                        (this.state.resMade ?
-                            this.completedForm()
-                            : this.userForm() ) 
+                            (this.state.resMade ?
+                                (this.state.resCanceled ?
+                                      this.canceledForm()
+                                    : this.completedForm() )
+                                    : this.userForm() ) 
                         : this.guestForm()
                     }                
                     

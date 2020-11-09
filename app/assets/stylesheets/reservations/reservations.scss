@@ -101,8 +101,22 @@
     padding: 15px;
     width: 570px;
     border-radius: 6px;
+    color: white;
 }
 .youre-done i {
+    margin-right: 10px;
+}
+
+.canceled {
+    display: flex;
+    background-color: rgb(236, 11, 11);
+    font-weight: 600;   
+    padding: 15px;
+    width: 570px;
+    border-radius: 6px;
+    color: white;
+}
+.canceled i {
     margin-right: 10px;
 }
 
