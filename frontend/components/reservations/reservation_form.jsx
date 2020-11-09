@@ -12,12 +12,12 @@ class ReservationForm extends React.Component {
             resDate: year + '-' + month + '-' + stateDate,
             resTime: '7:00 PM',
             partySize: 2,
-            
-
+            resMade: false
         }
         this.dateConvert = this.dateConvert.bind(this);
         this.userForm = this.userForm.bind(this);
         this.guestForm = this.guestForm.bind(this);
+        this.completedForm = this.completedForm.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
 
     }
@@ -36,13 +36,9 @@ class ReservationForm extends React.Component {
         const party_size = this.props.location.state ? this.props.location.state.partySize : 2;
         console.log(user_id, restaurant_id, date, time, party_size)
         createReservation({ user_id, restaurant_id, date, time, party_size });
-        // this.setState({
-        //     first_name: '',
-        //     last_name: '',
-        //     email: '',
-        //     password: '',
-        //     primary_dining_location: ''
-        // });
+        this.setState({
+            resMade: true,
+        });
     }
 
     dateConvert(dateString) {
@@ -59,10 +55,19 @@ class ReservationForm extends React.Component {
                     <div className="res-user-name">{user.first_name} {user.last_name}</div>
                     <div>{user.email}</div>
                 </div>
-                <button className="complete-res">Complete reservation</button>
+                
+                <button className="complete-res">Complete reservation</button>               
+                
             </form>
         )
 
+    }
+    completedForm(){
+        return (
+            <div>
+                You're done!
+            </div>
+        )
     }
     guestForm() {
         return (
@@ -116,7 +121,12 @@ class ReservationForm extends React.Component {
                         </div>
                         
                     </div>
-                    {this.props.currentUser ? this.userForm() : this.guestForm()}                
+                    {this.props.currentUser ? 
+                        (this.state.resMade ?
+                            this.completedForm()
+                            : this.userForm() ) 
+                        : this.guestForm()
+                    }                
                     
                 </div>
                 <footer className="res-footer">
