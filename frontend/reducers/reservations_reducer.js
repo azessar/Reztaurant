@@ -9,7 +9,7 @@ const reservationsReducer = (state = {}, action) => {
             return Object.assign({}, state, { [action.reservation.id]: action.reservation });
         case DELETE_RESERVATION:
             let newState = Object.assign({}, state);
-            delete newState[action.reservation.id];
+            delete newState[action.reservationId];
             return newState;
         default:
             return state;

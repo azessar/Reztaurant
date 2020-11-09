@@ -48,7 +48,7 @@ export const requestSingleReservation = (id) => dispatch => (
 
 export const deleteReservation = id => dispatch => (
     APIUtil.deleteReservation(id)
-        .then(reservation => dispatch(destroyReservation(reservation.id)),
+        .then(reservationId => dispatch(destroyReservation(reservationId)),
             err => dispatch(receiveReservationErrors(err.responseJSON))
         )
 );

@@ -44,8 +44,9 @@ class ReservationForm extends React.Component {
     handleCancel(e) {
         e.preventDefault();
         const { deleteReservation } = this.props;
-        const id = this.props.reservation.id;
-        deleteReservation({id});
+        const reservation = this.props.reservation;
+        console.log("hey", reservation["reservation"].id)
+        deleteReservation(reservation["reservation"].id);
     }
 
     dateConvert(dateString) {
@@ -89,10 +90,8 @@ class ReservationForm extends React.Component {
     render() {
         const restaurant = this.props.restaurant;
         let formDate = this.props.location.state ? this.dateConvert(this.props.location.state.resDate) : this.dateConvert(this.state.resDate);
-        // console.log(typeof formDate.slice(0,4))
         let formTime = this.props.location.state ? this.props.location.state.resTime : this.state.resTime;
         let formParty = this.props.location.state ? this.props.location.state.partySize : this.state.partySize;
-        console.log("state:",this.state)
         if (!restaurant) {
             return null;
         };
