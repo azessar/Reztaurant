@@ -79,7 +79,7 @@ class ReservationForm extends React.Component {
         return (
             <div className="completed-buttons">
                 <div><Link to="/">Back to homepage</Link></div>
-                <div>View current reservations</div>
+                <div><Link to="/reservations">View current reservations</Link></div>
                 <div onClick={this.handleCancel}>Cancel reservation</div>
             </div>
         )
@@ -88,7 +88,7 @@ class ReservationForm extends React.Component {
         return (
             <div className="completed-buttons">
                 <div><Link to="/">Back to homepage</Link></div>
-                <div>View current reservations</div>
+                <div><Link to="/reservations">View current reservations</Link></div>
             </div>
         )
     }
