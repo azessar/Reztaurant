@@ -5,22 +5,44 @@ class ReservationForm extends React.Component {
     constructor(props) {
         super(props);
         let newDate = new Date()
-        let date = newDate.getDate() > 9 ? newDate.getDate() : '0' + newDate.getDate();
+        let stateDate = newDate.getDate() > 9 ? newDate.getDate() : '0' + newDate.getDate();
         let month = newDate.getMonth() + 1;
         let year = newDate.getFullYear(); 
         this.state = {
-            resDate: year + '-' + month + '-' + date,
-            resTime: '',
-            partySize: '',
+            resDate: year + '-' + month + '-' + stateDate,
+            resTime: '7:00 PM',
+            partySize: 2,
+            
 
         }
         this.dateConvert = this.dateConvert.bind(this);
         this.userForm = this.userForm.bind(this);
         this.guestForm = this.guestForm.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+
     }
 
     componentDidMount() {
         this.props.fetchRestaurant(this.props.match.params.restaurantId);
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        const { createReservation } = this.props;
+        const user_id = this.props.currentUser.id;
+        const restaurant_id = this.props.restaurant.id;
+        const date = this.props.location.state ? this.dateConvert(this.props.location.state.resDate) : this.dateConvert(this.state.resDate);
+        const time = this.props.location.state ? this.props.location.state.resTime : "7:00 PM"
+        const party_size = this.props.location.state ? this.props.location.state.partySize : 2;
+        console.log(user_id, restaurant_id, date, time, party_size)
+        createReservation({ user_id, restaurant_id, date, time, party_size });
+        // this.setState({
+        //     first_name: '',
+        //     last_name: '',
+        //     email: '',
+        //     password: '',
+        //     primary_dining_location: ''
+        // });
     }
 
     dateConvert(dateString) {
@@ -31,8 +53,8 @@ class ReservationForm extends React.Component {
     userForm() {
         const user = this.props.currentUser;
         return (
-            <form>
-                <div>Diner Details</div>
+            <form onSubmit={this.handleSubmit}>
+                <h1>Diner Details</h1>
                 <div className="res-name-email">
                     <div className="res-user-name">{user.first_name} {user.last_name}</div>
                     <div>{user.email}</div>
@@ -54,8 +76,9 @@ class ReservationForm extends React.Component {
         const restaurant = this.props.restaurant;
         let formDate = this.props.location.state ? this.dateConvert(this.props.location.state.resDate) : this.dateConvert(this.state.resDate);
         // console.log(typeof formDate.slice(0,4))
-        let formTime = this.props.location.state ? this.props.location.state.resTime : "7:00 PM"
-        let formParty = this.props.location.state ? this.props.location.state.partySize : 2;
+        let formTime = this.props.location.state ? this.props.location.state.resTime : this.state.resTime;
+        let formParty = this.props.location.state ? this.props.location.state.partySize : this.state.partySize;
+        console.log("state:",this.state)
         if (!restaurant) {
             return null;
         };
