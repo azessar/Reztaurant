@@ -64,8 +64,10 @@ class ReservationForm extends React.Component {
     }
     completedForm(){
         return (
-            <div>
-                You're done!
+            <div className="completed-buttons">
+                <div><Link to="/">Back to homepage</Link></div>
+                <div>Cancel reservation</div>
+                <div>View current reservations</div>
             </div>
         )
     }
@@ -96,8 +98,9 @@ class ReservationForm extends React.Component {
                 </div>
                 <div className="res-form-body">
                     {this.state.resMade ? 
-                        <div>
-                            You're done!
+                        <div className="youre-done">
+                            <i className='fas fa-check-square'></i>
+                            <h1>You're done!</h1>
                         </div>
                         :
                         <div className="almost-done">
