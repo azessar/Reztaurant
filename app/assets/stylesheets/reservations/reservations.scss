@@ -189,3 +189,53 @@
     font-weight: 600;
     padding: 15px;
 }
+
+.res-index-pic {
+    height: 80px;
+    width: 80px;
+    border-radius: 6px;
+    margin-left: 50px;
+}
+
+.res-index-section {
+    margin-top: 20px;
+}
+
+.res-index-card:not(:first-child) {
+    margin-top: 30px;
+}
+.res-index-card {
+    padding-top: 10px;
+    border-top: 1px solid lightgray;
+    padding-bottom: 40px;
+    display: flex;
+}
+
+.res-card-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+.res-card-info div {
+    margin-top: 10px;
+}
+.res-card-info div:first-child {
+    font-size: 25px;
+}
+.res-card-info div:last-child {
+    color: red;
+}
+
+.res-index-footer {
+     text-align: center;
+    overflow-x: hidden;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100px;
+    background-color: rgb(40, 39, 54);
+    color: white;
+}
+.mock-opentable-res {
+    margin-top: 30px;
+}

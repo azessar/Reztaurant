@@ -5,7 +5,6 @@ class ReservationIndex extends React.Component {
     constructor(props) {
         super(props);
         
-        this.findRestaurantData = this.findRestaurantData.bind(this);
     }
 
     componentDidMount() {
@@ -13,19 +12,19 @@ class ReservationIndex extends React.Component {
         this.props.fetchRestaurants();
     }
 
-    findRestaurantData() {
-        let reservedRestaurants = []
-        let restaurants = this.props.restaurants;
-        let reservations = this.props.reservation;
-        reservations.forEach( reservation => {
-            restaurants.forEach( restaurant => {
-                if (reservation.restaurant_id === restaurant.id) {
-                    reservedRestaurants.push(restaurant)
-                }
-            })
-        })
-        return reservedRestaurants;
-    }
+    // findRestaurantData() {
+    //     let reservedRestaurants = []
+    //     let restaurants = this.props.restaurants;
+    //     let reservations = this.props.reservation;
+    //     reservations.forEach( reservation => {
+    //         restaurants.forEach( restaurant => {
+    //             if (reservation.restaurant_id === restaurant.id) {
+    //                 reservedRestaurants.push(restaurant)
+    //             }
+    //         })
+    //     })
+    //     return reservedRestaurants;
+    // }
 
     render() {
         let currentUser = this.props.currentUser;
@@ -40,12 +39,12 @@ class ReservationIndex extends React.Component {
         let reservedRestaurants = []
         reservations.forEach(reservation => {
             restaurants.forEach(restaurant => {
-                if (reservation.restaurant_id === restaurant.id) {
+                if (reservation.restaurant_id === restaurant.id && reservation.user_id === currentUser.id) {
                     reservedRestaurants.push(restaurant)
                 }
             })
         })        
-        console.log("hey",reservedRestaurants)
+        console.log("hey",reservedRestaurants, reservations)
         return (
             <div className="res-index">
                 <h1 className="res-index-name">{currentUser.first_name} {currentUser.last_name}</h1>
@@ -56,17 +55,34 @@ class ReservationIndex extends React.Component {
                     </div>
                     <div className="res-index-list">
                         <h1 className="upcoming-reservations">Upcoming Reservations</h1>
-                        <div>
-                            {/* {allReservations.map(reservation => (
-                                <div>
-                                    <div>{reservation.id}</div>
-                                    <div>{reservation.user_id}</div>
-                                    <div>{reservation.restaurant_id}</div>
-                                </div>
-                            ))} */}
+                        <div className="res-index-section">
+                            {
+                                reservedRestaurants.map((reservedRestaurant,i) => (
+                                    <Link to={`/restaurants/${reservedRestaurant.id}`}>
+                                        <div className="res-index-card">
+                                            <img className="res-index-pic" src={reservedRestaurant.main_photo} />
+                                            <div className="res-card-info">
+                                                <div>{reservedRestaurant.name}</div>
+                                                <div>{reservations[i].date}</div>
+                                                <div>Table for {reservations[i].party_size}</div>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                ))
+                            }
                         </div>
                     </div>
                 </div>
+                <footer className="res-index-footer">
+                    <div className="footer-text">
+                        <div className="mock-opentable-res">
+                            Mock OpenTable by Andrew Zessar, using Ruby, Rails, JS, React/Redux
+                    </div>
+                        <div className="real-opentable">
+                            <a href="https://www.opentable.com/" target="_blank">Click here for the real OpenTable website</a>
+                        </div>
+                    </div>
+                </footer>
             </div>
         )
     }
