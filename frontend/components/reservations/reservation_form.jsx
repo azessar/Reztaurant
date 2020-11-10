@@ -47,7 +47,6 @@ class ReservationForm extends React.Component {
         e.preventDefault();
         const { deleteReservation } = this.props;
         const reservation = this.props.reservation;
-        console.log("hey", reservation["reservation"].id)
         deleteReservation(reservation["reservation"].id);
         this.setState({
             resCanceled: true,

@@ -332,6 +332,9 @@ form.demo-signin > button {
     padding: 7px;
     width: 93%;
 }
+.user-dropdown div:first-child {
+    font-weight: 600;
+}
 .user-dropdown div:not(:first-child):hover {
     cursor: pointer;
     background-color: lightgray;

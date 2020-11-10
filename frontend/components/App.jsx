@@ -9,7 +9,7 @@ import ReservationForm from './reservations/reservation_form_container'
 import SplashBody from './greeting/splash_body'
 import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
 import RestaurantSearchIndex from './search/restaurant_search_index_container';
-import UserReservationIndex from './reservations/reservation_index_container';
+import ReservationIndex from './reservations/reservation_index_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 
@@ -36,7 +36,7 @@ const App = () => (
             <Route exact path="/restaurants" component={RestaurantSearchIndex} />
             <Route exact path="/" component={SplashBody} />
             <Route exact path="/restaurants/:restaurantId/reservation_form" component={ReservationForm} />
-            <AuthRoute exact path="/reservations" component={UserReservationIndex} />
+            <AuthRoute exact path="/reservations" component={ReservationIndex} />
 
         </Switch>
     </div>
