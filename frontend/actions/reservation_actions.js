@@ -52,3 +52,8 @@ export const deleteReservation = id => dispatch => (
             err => dispatch(receiveReservationErrors(err.responseJSON))
         )
 );
+
+export const requestAllReservations = () => dispatch =>
+    APIUtil.fetchReservations().then( reservations =>
+        dispatch(receiveAllReservations(reservations))
+    );
