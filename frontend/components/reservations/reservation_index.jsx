@@ -5,6 +5,9 @@ class ReservationIndex extends React.Component {
     constructor(props) {
         super(props);
         
+        this.convertToDayValue = this.convertToDayValue.bind(this);
+        this.todayValue = this.todayValue.bind(this);
+
     }
 
     componentDidMount() {
@@ -12,19 +15,20 @@ class ReservationIndex extends React.Component {
         this.props.fetchRestaurants();
     }
 
-    // findRestaurantData() {
-    //     let reservedRestaurants = []
-    //     let restaurants = this.props.restaurants;
-    //     let reservations = this.props.reservation;
-    //     reservations.forEach( reservation => {
-    //         restaurants.forEach( restaurant => {
-    //             if (reservation.restaurant_id === restaurant.id) {
-    //                 reservedRestaurants.push(restaurant)
-    //             }
-    //         })
-    //     })
-    //     return reservedRestaurants;
-    // }
+    convertToDayValue(dateString) {
+        let dateArray = dateString.split(" ");
+        let monthTable = { "January": 1, "February": 2, "March": 3, "April": 4, "May": 5, "June": 6, "July": 7, "August": 8, "September": 9, "October": 10, "November": 11, "December": 12,}
+        let yearVal = (parseInt(dateArray[2] - 2016)) * 365;
+        let monthVal = (monthTable[dateArray[0]] - 1) * 31;
+        let dayVal = parseInt(dateArray[1]);
+        // console.log(dateString, yearVal + monthVal + dayVal);
+        return (yearVal + monthVal + dayVal);
+    }
+    todayValue(){
+        let today = new Date()
+        // console.log(today.getDate() + (today.getMonth() * 31) + (today.getFullYear() * 365 ))
+        return ( today.getDate() + ( (today.getMonth()) * 31 ) + ( (today.getFullYear() - 2016) * 365 ) )
+    }
 
     render() {
         let currentUser = this.props.currentUser;
@@ -36,12 +40,22 @@ class ReservationIndex extends React.Component {
         if (!reservations || reservations.length === 0) {
             return null;
         }
-        let reservedRestaurants = []
+        let upcomingRestaurants = []
+        let upcomingReservations = []
         let previousRestaurants = []
+        let previousReservations = []
         reservations.forEach(reservation => {
             restaurants.forEach(restaurant => {
-                if (reservation.restaurant_id === restaurant.id && reservation.user_id === currentUser.id) {
-                    reservedRestaurants.push(restaurant)
+                if (reservation.restaurant_id === restaurant.id && reservation.user_id === currentUser.id && this.convertToDayValue(reservation.date) >= this.todayValue()) {
+                    upcomingRestaurants.push(restaurant)
+                    upcomingReservations.push(reservation)
+                    console.log(restaurant.name, reservation.date, this.convertToDayValue(reservation.date), this.todayValue())
+                }
+                if (reservation.restaurant_id === restaurant.id && reservation.user_id === currentUser.id && this.convertToDayValue(reservation.date) < this.todayValue()) {
+                    previousRestaurants.push(restaurant)
+                    previousReservations.push(reservation)
+                    console.log(restaurant.name, reservation.date, this.convertToDayValue(reservation.date), this.todayValue())
+
                 }
             })
         })
@@ -59,15 +73,15 @@ class ReservationIndex extends React.Component {
                             <h1 className="upcoming-reservations">Upcoming Reservations</h1>
                             <div className="res-index-section">
                                 {
-                                    reservedRestaurants.map((reservedRestaurant, i) => (
+                                    upcomingRestaurants.map((reservedRestaurant, i) => (
                                         <Link to={`/restaurants/${reservedRestaurant.id}`}>
                                             <div className="res-index-card">
                                                 <img className="res-index-pic" src={reservedRestaurant.main_photo} />
                                                 <div className="res-card-info">
                                                     <div>{reservedRestaurant.name}</div>
-                                                    <div>{reservations[i].date}</div>
-                                                    <div>{reservations[i].time}</div>
-                                                    <div>Table for {reservations[i].party_size}</div>
+                                                    <div>{upcomingReservations[i].date}</div>
+                                                    <div>{upcomingReservations[i].time}</div>
+                                                    <div>Table for {upcomingReservations[i].party_size}</div>
                                                 </div>
                                             </div>
                                         </Link>
@@ -85,9 +99,9 @@ class ReservationIndex extends React.Component {
                                                 <img className="res-index-pic" src={reservedRestaurant.main_photo} />
                                                 <div className="res-card-info">
                                                     <div>{reservedRestaurant.name}</div>
-                                                    <div>{reservations[i].date}</div>
-                                                    <div>{reservations[i].time}</div>
-                                                    <div>Table for {reservations[i].party_size}</div>
+                                                    <div>{previousReservations[i].date}</div>
+                                                    <div>{previousReservations[i].time}</div>
+                                                    <div>Table for {previousReservations[i].party_size}</div>
                                                 </div>
                                             </div>
                                         </Link>
