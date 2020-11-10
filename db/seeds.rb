@@ -10,6 +10,11 @@ require 'open-uri'
 # URI.open(‘url’)
 User.destroy_all
 Restaurant.destroy_all
+Reservation.destroy_all
+
+ActiveRecord::Base.connection.tables.each do |t|
+  ActiveRecord::Base.connection.reset_pk_sequence!(t)
+end
 
 user1 = User.create!(first_name: 'Andrew', last_name: 'Zessar', email: 'blah@gmail.com', primary_dining_location: 'Chicago', password: 'password')
 user2 = User.create!(first_name: 'bob', last_name: 'bob', email: 'bob', primary_dining_location: 'Chicago', password: 'password')
@@ -107,3 +112,7 @@ file15 = URI.open('https://reztaurant-seeds.s3.us-east-2.amazonaws.com/drunkencl
 restaurant15.main_photo.attach(io: file15, filename: 'drunkenclam.jpeg')
 file15b = URI.open('https://reztaurant-seeds.s3.us-east-2.amazonaws.com/drunkenclam_b.jpeg')
 restaurant15.background_photo.attach(io: file15b, filename: 'drunkenclam_b.jpeg')
+
+res1 = Reservation.create!(user_id: 3, restaurant_id: 1, date: 'November 15, 2020', time: '8:00 PM', party_size: 3)
+res2 = Reservation.create!(user_id: 3, restaurant_id: 2, date: 'November 16, 2020', time: '9:00 PM', party_size: 4)
+res3 = Reservation.create!(user_id: 2, restaurant_id: 3, date: 'November 17, 2020', time: '7:00 PM', party_size: 5)

@@ -10,6 +10,7 @@ class ReservationForm extends React.Component {
 
     render() {
         let currentUser = this.props.currentUser;
+        let allReservations = this.props.reservations;
         return (
             <div className="res-index">
                 <h1 className="res-index-name">{currentUser.first_name} {currentUser.last_name}</h1>
@@ -20,6 +21,9 @@ class ReservationForm extends React.Component {
                     </div>
                     <div className="res-index-list">
                         <h1 className="upcoming-reservations">Upcoming Reservations</h1>
+                        <div>
+                            {}
+                        </div>
                     </div>
                 </div>
             </div>

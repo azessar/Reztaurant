@@ -95,7 +95,7 @@ class GreetingHeader extends React.Component {
                             this.dropdownMenu = element;
                         }}>
                             <div className="drop-greeting">Hello, {currentUser.first_name} {currentUser.last_name}!</div>
-                            <div>My Reservations</div>
+                            <div><Link to='/reservations'>My Reservations</Link></div>
                             <div className="drop-signout" onClick={this.props.signout}>Signout</div>
                         </div>
                     )
