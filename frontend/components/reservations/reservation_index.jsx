@@ -37,14 +37,15 @@ class ReservationIndex extends React.Component {
             return null;
         }
         let reservedRestaurants = []
+        let previousRestaurants = []
         reservations.forEach(reservation => {
             restaurants.forEach(restaurant => {
                 if (reservation.restaurant_id === restaurant.id && reservation.user_id === currentUser.id) {
                     reservedRestaurants.push(restaurant)
                 }
             })
-        })        
-        console.log("hey",reservedRestaurants, reservations)
+        })
+
         return (
             <div className="res-index">
                 <h1 className="res-index-name">{currentUser.first_name} {currentUser.last_name}</h1>
@@ -53,25 +54,49 @@ class ReservationIndex extends React.Component {
                         <div>Reservations</div>
                         <div className="account-details">Account Details</div>
                     </div>
-                    <div className="res-index-list">
-                        <h1 className="upcoming-reservations">Upcoming Reservations</h1>
-                        <div className="res-index-section">
-                            {
-                                reservedRestaurants.map((reservedRestaurant,i) => (
-                                    <Link to={`/restaurants/${reservedRestaurant.id}`}>
-                                        <div className="res-index-card">
-                                            <img className="res-index-pic" src={reservedRestaurant.main_photo} />
-                                            <div className="res-card-info">
-                                                <div>{reservedRestaurant.name}</div>
-                                                <div>{reservations[i].date}</div>
-                                                <div>Table for {reservations[i].party_size}</div>
+                    <div className="res-index-lists">
+                        <div className="res-index-list">
+                            <h1 className="upcoming-reservations">Upcoming Reservations</h1>
+                            <div className="res-index-section">
+                                {
+                                    reservedRestaurants.map((reservedRestaurant, i) => (
+                                        <Link to={`/restaurants/${reservedRestaurant.id}`}>
+                                            <div className="res-index-card">
+                                                <img className="res-index-pic" src={reservedRestaurant.main_photo} />
+                                                <div className="res-card-info">
+                                                    <div>{reservedRestaurant.name}</div>
+                                                    <div>{reservations[i].date}</div>
+                                                    <div>{reservations[i].time}</div>
+                                                    <div>Table for {reservations[i].party_size}</div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </Link>
-                                ))
-                            }
+                                        </Link>
+                                    ))
+                                }
+                            </div>
+                        </div>
+                        <div className="res-index-list">
+                            <h1 className="upcoming-reservations">Previous Reservations</h1>
+                            <div className="res-index-section">
+                                {
+                                    previousRestaurants.map((reservedRestaurant, i) => (
+                                        <Link to={`/restaurants/${reservedRestaurant.id}`}>
+                                            <div className="res-index-card">
+                                                <img className="res-index-pic" src={reservedRestaurant.main_photo} />
+                                                <div className="res-card-info">
+                                                    <div>{reservedRestaurant.name}</div>
+                                                    <div>{reservations[i].date}</div>
+                                                    <div>{reservations[i].time}</div>
+                                                    <div>Table for {reservations[i].party_size}</div>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    ))
+                                }
+                            </div>
                         </div>
                     </div>
+                    
                 </div>
                 <footer className="res-index-footer">
                     <div className="footer-text">

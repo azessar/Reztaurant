@@ -198,7 +198,7 @@
 }
 
 .res-index-section {
-    margin-top: 20px;
+    margin-top: 8px;
 }
 
 .res-index-card:not(:first-child) {
@@ -216,7 +216,7 @@
     flex-direction: column;
     margin-left: 20px;
 }
-.res-card-info div {
+.res-card-info div:not(:first-child) {
     margin-top: 10px;
 }
 .res-card-info div:first-child {
