@@ -166,6 +166,7 @@
     margin-top: 20px;
     background-color: #d4edf1;
     padding: 20px 20px 20px 0px;
+    min-height: 450px;
 }
 
 .res-index-options {
@@ -266,4 +267,21 @@
 
 .account-details:hover {
     color: navy;
+}
+
+.about-me-section {
+    padding: 15px;
+}
+
+.about-me-section > div {
+    display: flex;
+}
+.about-me-section > div > div:first-child {
+    font-weight: 600;
+}
+.first-name-box {
+    margin-bottom: 20px;
+}
+.first-name {
+    margin-right: 5px;
 }
