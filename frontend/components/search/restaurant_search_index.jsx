@@ -18,7 +18,8 @@ class RestaurantSearchIndex extends React.Component {
             cuisines: [],
             partySize: '2',
             resDate: year + '-' + month + '-' + date,
-            resTime: '7:00 PM'
+            resTime: '7:00 PM',
+            filtered: false
         };
         // this.searchFunction = this.searchFunction.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -87,7 +88,8 @@ class RestaurantSearchIndex extends React.Component {
         if (this.state[price] === "off") {
             return () => {
                 this.setState({
-                    [price]: 'on'
+                    [price]: 'on',
+                    filtered: true
                 });
             }
         } else {
@@ -100,10 +102,13 @@ class RestaurantSearchIndex extends React.Component {
     }
 
     toggleFilter(filter, field) {
+        this.setState({
+            filtered: true
+        })
         if (!this.state[field].includes(filter)) {
             var newState = this.state[field].concat(filter)
             this.setState({
-                [field]: newState
+                [field]: newState,
             })
         } else {
             var newState2 = [];
@@ -117,7 +122,7 @@ class RestaurantSearchIndex extends React.Component {
     }
 
     makeResTimes() {
-        const allTimes = []
+        let allTimes = []
         for (let i = 1; i < 12; i++) {
             allTimes.push(`${i}:00 AM`);
             allTimes.push(`${i}:30 AM`);
@@ -128,8 +133,8 @@ class RestaurantSearchIndex extends React.Component {
             allTimes.push(`${i}:00 PM`);
             allTimes.push(`${i}:30 PM`);
         }
-        const resSelectArray = [];
-        const givenTime = document.getElementById("time-select-search") ? document.getElementById("time-select-search").value : "7:00 PM";
+        let resSelectArray = [];
+        let givenTime = document.getElementById("time-select-search") ? document.getElementById("time-select-search").value : "7:00 PM";
         resSelectArray.push(givenTime);
         resSelectArray.push(allTimes[allTimes.indexOf(givenTime) + 1]);
         resSelectArray.push(allTimes[allTimes.indexOf(givenTime) + 2]);
@@ -141,7 +146,7 @@ class RestaurantSearchIndex extends React.Component {
     }
 
     makeTableTimes() {
-        const times = [];
+        let times = [];
         let i;
         for (i = 7; i < 21.5; i += 0.5) {
             let minsNum = i * 60;
@@ -198,19 +203,19 @@ class RestaurantSearchIndex extends React.Component {
                     this.state[this.priceConversion(restaurant.avg_price)] === "on"
                 )
                 :
-            this.props.location.state && this.props.restaurants ?
+                this.props.location.state && this.props.restaurants ?
+                    this.props.restaurants.filter(restaurant =>
+                        (restaurant.name.toLowerCase().includes(this.props.location.state.searchWord.toLowerCase()) ||
+                        restaurant.city.toLowerCase().includes(this.props.location.state.searchWord.toLowerCase()) ||
+                        restaurant.cuisine.toLowerCase().includes(this.props.location.state.searchWord.toLowerCase()))
+                        &&
+                        this.state[this.priceConversion(restaurant.avg_price)] === "on"
+                    ) 
+                    :
                 this.props.restaurants.filter(restaurant =>
-                    (restaurant.name.toLowerCase().includes(this.props.location.state.searchWord.toLowerCase()) ||
-                    restaurant.city.toLowerCase().includes(this.props.location.state.searchWord.toLowerCase()) ||
-                    restaurant.cuisine.toLowerCase().includes(this.props.location.state.searchWord.toLowerCase()))
-                    &&
                     this.state[this.priceConversion(restaurant.avg_price)] === "on"
-                ) 
-                :
-            this.props.restaurants.filter(restaurant =>
-                this.state[this.priceConversion(restaurant.avg_price)] === "on"
+                )
             )
-        )
         let regionSearchedRestaurantArray = 
             this.state.regions.length === 0 ? 
             searchedRestaurantArray : 
@@ -244,7 +249,9 @@ class RestaurantSearchIndex extends React.Component {
         const defDate = this.props.location.state ? this.props.location.state.resDate : this.state.resDate;
         const defTime = this.props.location.state ? this.props.location.state.resTime : this.state.resTime;
         const defParty = this.props.location.state ? this.props.location.state.partySize : this.state.partySize;
-        const resTimes = this.makeResTimes();
+        // let resTimes = this.state.filtered ? [] : this.makeResTimes();
+        let resTimes = this.state.filtered ? [] : this.makeResTimes();
+        console.log(resTimes)
         const parties = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         return (
             <div>
@@ -254,7 +261,7 @@ class RestaurantSearchIndex extends React.Component {
                             <input type="date" defaultValue={defDate} id="date-select-search" onChange={this.update}></input>
                         </div>
                         <div className="search-time">
-                            <select className="time" defaultValue={defTime} id="time-select-search" onChange={this.update}>
+                            <select className="time" defaultValue={defTime} id="time-select-search" >
                                     <option value="7:00 PM">7:00 PM</option>
                                 {this.makeTableTimes().map((time, i) => (
                                     <option value={time} key={i}>{time}</option>
@@ -331,7 +338,9 @@ class RestaurantSearchIndex extends React.Component {
                                 <img className="search-pic" src={restaurant.main_photo} />
                             </Link>
                                 <div className="search-info">
-                                    <div className="card-name">{restaurant.name}</div>
+                                    <Link to={`/restaurants/${restaurant.id}`} key={restaurant.id} className="restaurant-search-card-link">
+                                        <div className="card-name">{restaurant.name}</div>
+                                    </Link>
                                     <div className="card-reviews-and-stars">
                                         <div className="stars">
                                             <img className="star" src={window.star} />
@@ -344,7 +353,8 @@ class RestaurantSearchIndex extends React.Component {
                                     <div className="cuisine-price-area">{restaurant.cuisine} - {this.priceConversion(restaurant.avg_price)} - {restaurant.city}, {restaurant.state}</div>
                                     <div className="booked-times">Booked 115 times today</div>
                                     <div className="res-times">
-                                        {resTimes.map(time => (
+                                        {/* THIS KEEPS ON MAKING MORE TIMES ON EACH RE-RENDER */}
+                                        {resTimes.map((time, i) => (
                                                 <Link to={{
                                                     pathname: `/restaurants/${restaurant.id}/reservation_form`,
                                                     state: {
@@ -357,6 +367,7 @@ class RestaurantSearchIndex extends React.Component {
                                                 </Link>
                                             ))
                                         }
+                                       
                                     </div>
                                 </div>
                             </div>
