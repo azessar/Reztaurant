@@ -19,7 +19,8 @@ class RestaurantSearchIndex extends React.Component {
             partySize: '2',
             resDate: year + '-' + month + '-' + date,
             resTime: '7:00 PM',
-            filtered: false
+            filtered: false,
+            filterClicked: 0
         };
         // this.searchFunction = this.searchFunction.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -89,7 +90,6 @@ class RestaurantSearchIndex extends React.Component {
             return () => {
                 this.setState({
                     [price]: 'on',
-                    filtered: true
                 });
             }
         } else {
@@ -102,8 +102,8 @@ class RestaurantSearchIndex extends React.Component {
     }
 
     toggleFilter(filter, field) {
-        this.setState({
-            filtered: true
+        this.setState(prevState => {
+            return { filterClicked: prevState.filterClicked + 1 }
         })
         if (!this.state[field].includes(filter)) {
             var newState = this.state[field].concat(filter)
@@ -118,6 +118,7 @@ class RestaurantSearchIndex extends React.Component {
             this.setState({
                 [field]: newState2
             })
+            
         }
     }
 
@@ -250,8 +251,8 @@ class RestaurantSearchIndex extends React.Component {
         const defTime = this.props.location.state ? this.props.location.state.resTime : this.state.resTime;
         const defParty = this.props.location.state ? this.props.location.state.partySize : this.state.partySize;
         // let resTimes = this.state.filtered ? [] : this.makeResTimes();
-        let resTimes = this.state.filtered ? [] : this.makeResTimes();
-        console.log(resTimes)
+        let resTimes = this.makeResTimes();
+        console.log([...resTimes])
         const parties = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         return (
             <div>
@@ -354,7 +355,7 @@ class RestaurantSearchIndex extends React.Component {
                                     <div className="booked-times">Booked 115 times today</div>
                                     <div className="res-times">
                                         {/* THIS KEEPS ON MAKING MORE TIMES ON EACH RE-RENDER */}
-                                        {resTimes.map((time, i) => (
+                                        {resTimes.map((time, i) => 
                                                 <Link to={{
                                                     pathname: `/restaurants/${restaurant.id}/reservation_form`,
                                                     state: {
@@ -362,10 +363,10 @@ class RestaurantSearchIndex extends React.Component {
                                                         resTime: time,
                                                         partySize: this.state.partySize,
                                                     },
-                                                }} key={restaurant.id} className="res-time-link" >
+                                                }} key={i} className="res-time-link" >
                                                     <button className="res-time" >{time}</button>
                                                 </Link>
-                                            ))
+                                            )
                                         }
                                        
                                     </div>
