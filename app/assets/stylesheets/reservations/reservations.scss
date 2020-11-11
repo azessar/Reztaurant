@@ -201,9 +201,9 @@
     margin-top: 8px;
 }
 
-.res-index-card:not(:first-child) {
-    margin-top: 30px;
-}
+// .res-index-card:not(:first-child) {
+//     margin-top: 30px;
+// }
 .res-index-card {
     padding-top: 10px;
     border-top: 1px solid lightgray;
@@ -216,14 +216,14 @@
     flex-direction: column;
     margin-left: 20px;
 }
-.res-card-info div:not(:first-child) {
+.res-card-info > div:not(:first-child) {
     margin-top: 10px;
 }
-.res-card-info div:first-child {
+.res-card-info > div:first-child {
     font-size: 25px;
 }
-.res-card-info div:last-child {
-    color: red;
+.table-for {
+    color: navy;
 }
 
 .res-index-footer {
@@ -238,4 +238,17 @@
 }
 .mock-opentable-res {
     margin-top: 30px;
+}
+
+.view-cancel {
+    display: flex;
+}
+
+.view-cancel div {
+    margin-right: 20px;
+    color: rgb(81, 81, 102)
+}
+.view-cancel div:hover {
+    color: red;
+    cursor: pointer;
 }

@@ -4,10 +4,18 @@ import { Route, Redirect, Switch, Link, HashRouter, withRouter } from 'react-rou
 class ReservationIndex extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            resDate: '',
+            resTime: '7:00 PM',
+            partySize: 2,
+            resMade: false,
+            resCanceled: false,
+        }
         
         this.convertToDayValue = this.convertToDayValue.bind(this);
         this.todayValue = this.todayValue.bind(this);
-
+        this.handleCancel = this.handleCancel.bind(this);
     }
 
     componentDidMount() {
@@ -21,13 +29,25 @@ class ReservationIndex extends React.Component {
         let yearVal = (parseInt(dateArray[2] - 2016)) * 365;
         let monthVal = (monthTable[dateArray[0]] - 1) * 31;
         let dayVal = parseInt(dateArray[1]);
-        // console.log(dateString, yearVal + monthVal + dayVal);
         return (yearVal + monthVal + dayVal);
     }
     todayValue(){
         let today = new Date()
-        // console.log(today.getDate() + (today.getMonth() * 31) + (today.getFullYear() * 365 ))
         return ( today.getDate() + ( (today.getMonth()) * 31 ) + ( (today.getFullYear() - 2016) * 365 ) )
+    }
+
+    handleCancel(e) {
+        e.preventDefault();
+        const { deleteReservation } = this.props;
+        // console.log(this.props.reservations)
+        // console.log("reservation id:", e.target.id)
+        const reservation = this.props.reservations[e.target.id];
+        // console.log(reservation)
+        // console.log("hey")
+        // console.log(reservation.id)
+        // console.log("overall id", reservation.id)
+        deleteReservation(reservation.id);
+        window.location.reload();
     }
 
     render() {
@@ -49,12 +69,10 @@ class ReservationIndex extends React.Component {
                 if (reservation.restaurant_id === restaurant.id && reservation.user_id === currentUser.id && this.convertToDayValue(reservation.date) >= this.todayValue()) {
                     upcomingRestaurants.push(restaurant)
                     upcomingReservations.push(reservation)
-                    console.log(restaurant.name, reservation.date, this.convertToDayValue(reservation.date), this.todayValue())
                 }
                 if (reservation.restaurant_id === restaurant.id && reservation.user_id === currentUser.id && this.convertToDayValue(reservation.date) < this.todayValue()) {
                     previousRestaurants.push(restaurant)
                     previousReservations.push(reservation)
-                    console.log(restaurant.name, reservation.date, this.convertToDayValue(reservation.date), this.todayValue())
 
                 }
             })
@@ -74,14 +92,17 @@ class ReservationIndex extends React.Component {
                             <div className="res-index-section">
                                 {
                                     upcomingRestaurants.map((reservedRestaurant, i) => (
-                                        <Link to={`/restaurants/${reservedRestaurant.id}`}>
+                                        <Link to={`/restaurants/${reservedRestaurant.id}`} >
                                             <div className="res-index-card">
                                                 <img className="res-index-pic" src={reservedRestaurant.main_photo} />
                                                 <div className="res-card-info">
                                                     <div>{reservedRestaurant.name}</div>
                                                     <div>{upcomingReservations[i].date}</div>
                                                     <div>{upcomingReservations[i].time}</div>
-                                                    <div>Table for {upcomingReservations[i].party_size}</div>
+                                                    <div className="table-for">Table for {upcomingReservations[i].party_size}</div>
+                                                    <div className="view-cancel">
+                                                        <div className="cancel" id={reservations.indexOf(upcomingReservations[i])} onClick={this.handleCancel}>Cancel reservation</div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </Link>
@@ -102,6 +123,7 @@ class ReservationIndex extends React.Component {
                                                     <div>{previousReservations[i].date}</div>
                                                     <div>{previousReservations[i].time}</div>
                                                     <div>Table for {previousReservations[i].party_size}</div>
+                                                   
                                                 </div>
                                             </div>
                                         </Link>
