@@ -180,7 +180,7 @@
     box-shadow: 1px 1px 2px #888888;
 }
 
-.account-details {
+.account-details, .reservation-switch {
     margin-top: 20px;
 }
 
@@ -251,4 +251,19 @@
 .view-cancel div:hover {
     color: red;
     cursor: pointer;
+}
+
+.res-index-card-name {
+    font-size: 25px;
+}
+.res-index-card-name:hover {
+    color: navy;
+}
+
+.reservation-switch {
+    font-weight: 600;
+}
+
+.account-details:hover {
+    color: navy;
 }

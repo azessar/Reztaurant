@@ -4,14 +4,6 @@ import { Route, Redirect, Switch, Link, HashRouter, withRouter } from 'react-rou
 class ReservationIndex extends React.Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            resDate: '',
-            resTime: '7:00 PM',
-            partySize: 2,
-            resMade: false,
-            resCanceled: false,
-        }
         
         this.convertToDayValue = this.convertToDayValue.bind(this);
         this.todayValue = this.todayValue.bind(this);
@@ -83,8 +75,8 @@ class ReservationIndex extends React.Component {
                 <h1 className="res-index-name">{currentUser.first_name} {currentUser.last_name}</h1>
                 <div className="res-index-body">
                     <div className="res-index-options">
-                        <div>Reservations</div>
-                        <div className="account-details">Account Details</div>
+                        <div className="reservation-switch">Reservations</div>
+                        <Link to="/user_info"><div className="account-details">Account Details</div></Link>
                     </div>
                     <div className="res-index-lists">
                         <div className="res-index-list">
@@ -92,11 +84,12 @@ class ReservationIndex extends React.Component {
                             <div className="res-index-section">
                                 {
                                     upcomingRestaurants.map((reservedRestaurant, i) => (
-                                        <Link to={`/restaurants/${reservedRestaurant.id}`} >
                                             <div className="res-index-card">
-                                                <img className="res-index-pic" src={reservedRestaurant.main_photo} />
+                                                <Link to={`/restaurants/${reservedRestaurant.id}`} >
+                                                    <img className="res-index-pic" src={reservedRestaurant.main_photo} />
+                                                </Link>
                                                 <div className="res-card-info">
-                                                    <div>{reservedRestaurant.name}</div>
+                                                <Link to={`/restaurants/${reservedRestaurant.id}`} ><div className="res-index-card-name">{reservedRestaurant.name}</div></Link>
                                                     <div>{upcomingReservations[i].date}</div>
                                                     <div>{upcomingReservations[i].time}</div>
                                                     <div className="table-for">Table for {upcomingReservations[i].party_size}</div>
@@ -105,7 +98,6 @@ class ReservationIndex extends React.Component {
                                                     </div>
                                                 </div>
                                             </div>
-                                        </Link>
                                     ))
                                 }
                             </div>

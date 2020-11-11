@@ -11,6 +11,7 @@ import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
 import RestaurantSearchIndex from './search/restaurant_search_index_container';
 import ReservationIndex from './reservations/reservation_index_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import UserInfo from "./greeting/user_info_container";
 
 
 
@@ -37,6 +38,7 @@ const App = () => (
             <Route exact path="/" component={SplashBody} />
             <Route exact path="/restaurants/:restaurantId/reservation_form" component={ReservationForm} />
             <AuthRoute exact path="/reservations" component={ReservationIndex} />
+            <AuthRoute exact path="/user_info" component={UserInfo} />
 
         </Switch>
     </div>
