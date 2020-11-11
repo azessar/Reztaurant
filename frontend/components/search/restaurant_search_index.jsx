@@ -252,7 +252,6 @@ class RestaurantSearchIndex extends React.Component {
         const defParty = this.props.location.state ? this.props.location.state.partySize : this.state.partySize;
         // let resTimes = this.state.filtered ? [] : this.makeResTimes();
         let resTimes = this.makeResTimes();
-        console.log([...resTimes])
         const parties = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         return (
             <div>
