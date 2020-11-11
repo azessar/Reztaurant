@@ -285,3 +285,11 @@
 .first-name {
     margin-right: 5px;
 }
+
+.guest-form-buttons {
+    display: flex;
+}
+.guest-form-buttons div, .guest-form-buttons button {
+    margin-right: 5px;
+    padding: 10px;
+} 

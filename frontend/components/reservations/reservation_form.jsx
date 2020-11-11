@@ -22,10 +22,21 @@ class ReservationForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleCancel = this.handleCancel.bind(this);
         this.canceledForm = this.canceledForm.bind(this);
+        this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
+
     }
 
     componentDidMount() {
         this.props.fetchRestaurant(this.props.match.params.restaurantId);
+    }
+
+    handleDemoSubmit(e) {
+        e.preventDefault();
+        const { signin } = this.props;
+        const { first_name, last_name, email, password, primary_dining_location } = this.state;
+        const demoUser = { first_name: "Gordon", last_name: "Ramsay", email: "gramsay@gmail.com", password: "rubbish", primary_dining_location: "London" }
+        signin(demoUser);
+        e.target.reset();
     }
 
     handleSubmit(e) {
@@ -93,8 +104,14 @@ class ReservationForm extends React.Component {
     }
     guestForm() {
         return (
-            <div>
-                Please sign in or sign up to make a reservation.
+            <div className="guest-form-buttons">
+                <div>Please</div>
+                <button className="signup-button" onClick={() => this.props.openModal('signup')}>Sign up</button>
+                <div>,</div>
+                <button className="signin-button" onClick={() => this.props.openModal('signin')}>Sign in</button>
+                <div>, or</div>
+                <button className="demo-signin-button" onClick={this.handleDemoSubmit}>Demo sign in</button>
+                <div>to make a reservation.</div>
             </div>
         )
     }
