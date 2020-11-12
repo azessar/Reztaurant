@@ -11,6 +11,7 @@ require 'open-uri'
 User.destroy_all
 Restaurant.destroy_all
 Reservation.destroy_all
+Review.destroy_all
 
 ActiveRecord::Base.connection.tables.each do |t|
   ActiveRecord::Base.connection.reset_pk_sequence!(t)
@@ -116,3 +117,9 @@ restaurant15.background_photo.attach(io: file15b, filename: 'drunkenclam_b.jpeg'
 res1 = Reservation.create!(user_id: 3, restaurant_id: 1, date: 'November 15, 2020', time: '8:00 PM', party_size: 3)
 res2 = Reservation.create!(user_id: 3, restaurant_id: 2, date: 'November 16, 2020', time: '9:00 PM', party_size: 4)
 res3 = Reservation.create!(user_id: 2, restaurant_id: 3, date: 'November 17, 2020', time: '7:00 PM', party_size: 5)
+
+rev1 = Review.create!(user_id: 3, restaurant_id: 1, body: 'I liked it', rating: 4)
+rev2 = Review.create!(user_id: 3, restaurant_id: 1, body: 'This place is eh.', rating: 3)
+rev3 = Review.create!(user_id: 2, restaurant_id: 1, body: 'Never coming back.', rating: 2)
+rev4 = Review.create!(user_id: 3, restaurant_id: 2, body: 'This place is eh.', rating: 3)
+rev5 = Review.create!(user_id: 2, restaurant_id: 2, body: 'Never coming back.', rating: 2)

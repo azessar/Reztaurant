@@ -34,11 +34,14 @@ class RestaurantShow extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
         this.update = this.update.bind(this);
+        this.reviewUser = this.reviewUser.bind(this);
 
     }
 
     componentDidMount() {
         this.props.fetchRestaurant(this.props.match.params.restaurantId);
+        this.props.fetchRestaurantReviews(this.props.match.params.restaurantId);
+        this.props.fetchUsers();
     }
 
     update(e) {
@@ -50,7 +53,6 @@ class RestaurantShow extends React.Component {
                     partySize: document.getElementById("party-select").value,
             }
         });
-        console.log(this.state.resDate, this.state.resTime, this.state.partySize)
     }
 
     handleSubmit(e) {
@@ -162,9 +164,18 @@ class RestaurantShow extends React.Component {
         this.setState({ showTimesButtonClicked: false });
     }
 
+    reviewUser(userId, column){
+        const users = this.props.users;
+        var userData = users.find(user => user.id === userId)
+        // console.log("hey", userId, userData)
+        return userData[column]
+    }
+
 
     render(){
         const restaurant = this.props.restaurant;
+        const reviews = this.props.reviews;
+        const users = this.props.users;
         if (!restaurant) {
             return null;
         };
@@ -175,8 +186,20 @@ class RestaurantShow extends React.Component {
         if (!restaurant.background_photo) {
             return null;
         };
+        
         const parties = [1,2,3,4,5,6,7,8,9,10];
         const resTimes = this.makeResTimes();
+        if (!reviews || reviews.length === 0) {
+            return null;
+        };
+        if (!users || users.length === 0) {
+            return null;
+        };
+        const restaurantReviews = reviews.filter(review => 
+            review.restaurant_id === restaurant.id
+        )
+        console.log(reviews)
+        console.log(users)
         return(
             <div>
                 <div className="restaurant-header-loc">
@@ -236,6 +259,27 @@ class RestaurantShow extends React.Component {
                                 </div>
 
                             </div>
+                            <div className="show-photos">
+                                <h1 className="photos-header">What people are saying</h1>
+                                <div className="review-cards">
+                                    {reviews.map((review,i) => (
+                                        <div className="review-card" key={i}>
+                                            <div className="icon-name">
+                                                <div className="user-icon">AZ</div>
+                                                <div className="user-name">{this.reviewUser(review.user_id, "first_name")} {this.reviewUser(review.user_id, "last_name")}</div>
+                                                <div className="user-name">primary location</div>
+                                                <div className="user-count">num reviews</div>
+                                            </div>
+                                            <div className="rating-and-text">
+                                                <div className="rating">{review.rating}</div>
+                                                <div className="review-text">{review.body}</div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                    
+                                    
+                                </div>
+                            </div>
                            
                         </div>
                         
@@ -252,8 +296,8 @@ class RestaurantShow extends React.Component {
                         <form className="right-show-res-form">
                             <select className="for-two" defaultValue="For 2" id="party-select" onChange={this.update}>
                                         <option value="2">For 2</option>
-                                    {parties.map(party => (
-                                        <option value={party}>For {party}</option>
+                                    {parties.map((party,i) => (
+                                        <option value={party} key={i}>For {party}</option>
                                     ))}
                             </select>
                             <div className="date-time-head-show">

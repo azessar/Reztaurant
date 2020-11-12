@@ -84,7 +84,7 @@ class ReservationIndex extends React.Component {
                             <div className="res-index-section">
                                 {
                                     upcomingRestaurants.map((reservedRestaurant, i) => (
-                                            <div className="res-index-card">
+                                            <div className="res-index-card" key={i}>
                                                 <Link to={`/restaurants/${reservedRestaurant.id}`} >
                                                     <img className="res-index-pic" src={reservedRestaurant.main_photo} />
                                                 </Link>

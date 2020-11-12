@@ -2,6 +2,7 @@ import * as APIUtil from '../util/session_api_util';
 import {closeModal} from './modal_actions'
 
 export const RECEIVE_USER = 'RECEIVE_USER';
+export const RECEIVE_USERS = 'RECEIVE_USERS';
 export const SIGNOUT_USER = 'SIGNOUT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
@@ -9,6 +10,11 @@ export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const receiveUser = user => ({
     type: RECEIVE_USER,
     user
+});
+
+export const receiveUsers = users => ({
+    type: RECEIVE_USERS,
+    users
 });
 
 export const signoutUser = () => ({
@@ -50,3 +56,8 @@ export const signout = () => dispatch => {
         ))
 };
 
+export const fetchUsers = () => dispatch => {
+    return APIUtil.fetchUsers().then(users => {
+        return dispatch(receiveUsers(users))
+    })
+};

@@ -78,8 +78,8 @@ class MainSearch extends React.Component {
                         <div className="search-peeps">
                             <select className="peeps" defaultValue="2 people" id="main-search-peeps" onChange={this.update}>
                                     <option value="2">For 2</option>
-                                {parties.map(party => (
-                                    <option value={party}>For {party}</option>
+                                {parties.map((party,i) => (
+                                    <option value={party} key={i}>For {party}</option>
                                 ))}
                             </select>
                         </div>

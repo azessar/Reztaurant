@@ -58,7 +58,7 @@ class GreetingHeader extends React.Component {
         const { first_name, last_name, email, password, primary_dining_location } = this.state;
         const demoUser = { first_name: "Gordon", last_name: "Ramsay", email: "gramsay@gmail.com", password: "rubbish", primary_dining_location: "London" }
         signin(demoUser);
-        e.target.reset();
+        // e.target.reset();
     }
 
     update(field) {

@@ -206,7 +206,7 @@
 .show-footer {
     position: absolute;
     display: flex;
-    top: 990px;
+    margin-top: 1490px;
     background-size: cover;
     text-align: center;
     overflow-x: hidden;
@@ -413,3 +413,21 @@
 .res-times > h1 {
     margin-bottom: 5px;
 }
+
+.review-card {
+    display: flex;
+    padding: 20px;
+    border-bottom: 1px solid lightgray;
+}
+
+.icon-name {
+    margin-right: 20px;
+    text-align: center;
+}
+.icon-name > div {
+    margin-bottom: 10px;
+}
+.review-text {
+    margin-top: 20px;
+}
+

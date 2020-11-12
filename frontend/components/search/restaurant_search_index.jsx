@@ -262,7 +262,7 @@ class RestaurantSearchIndex extends React.Component {
                         </div>
                         <div className="search-time">
                             <select className="time" defaultValue={defTime} id="time-select-search" >
-                                    <option value="7:00 PM">7:00 PM</option>
+                                    <option value="7:00 PM" key="def">7:00 PM</option>
                                 {this.makeTableTimes().map((time, i) => (
                                     <option value={time} key={i}>{time}</option>
                                 ))}
@@ -270,9 +270,9 @@ class RestaurantSearchIndex extends React.Component {
                         </div>
                         <div className="search-peeps">
                             <select className="peeps" defaultValue={defParty} id="party-select-search" onChange={this.update}>
-                                    <option value="2">For 2</option>
-                                {parties.map(party => (
-                                    <option value={party}>For {party}</option>
+                                    <option value="2" key="def">For 2</option>
+                                {parties.map((party,i) => (
+                                    <option value={party} key={i}>For {party}</option>
                                 ))}
                             </select>
                         </div>
@@ -308,8 +308,8 @@ class RestaurantSearchIndex extends React.Component {
                             <h1>Regions</h1>
                         </div>
                         <div className="region-filters">
-                            {regions.sort().map(region => (
-                                <div>
+                            {regions.sort().map((region,i) => (
+                                <div key={i}>
                                     <input className="region" type="checkbox" onChange={() => this.toggleFilter(region, "regions")}></input>
                                     <label className="region-label">{region}</label>
                                 </div>
@@ -322,8 +322,8 @@ class RestaurantSearchIndex extends React.Component {
                             <h1 className="cuisine-filter-title">Cuisines</h1>
                         </div>
                         <div className="region-filters">
-                            {cuisines.sort().map(cuisine => (
-                                <div>
+                            {cuisines.sort().map((cuisine,i) => (
+                                <div key={i}>
                                     <input className="region" type="checkbox" onChange={() => this.toggleFilter(cuisine, "cuisines")}></input>
                                     <label className="region-label">{cuisine}</label>
                                 </div>
@@ -332,8 +332,8 @@ class RestaurantSearchIndex extends React.Component {
                     </form>
                 </div>
                 <div className="restaurant-search-cards" id="restaurant-search-cards">
-                    {filteredRestaurantArray.map(restaurant => (
-                            <div className="restaurant-search-card">
+                    {filteredRestaurantArray.map((restaurant,i) => (
+                            <div className="restaurant-search-card" key={i}>
                             <Link to={`/restaurants/${restaurant.id}`} key={restaurant.id} className="restaurant-search-card-link">
                                 <img className="search-pic" src={restaurant.main_photo} />
                             </Link>
