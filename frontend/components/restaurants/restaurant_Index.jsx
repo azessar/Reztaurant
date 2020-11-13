@@ -64,7 +64,7 @@ class RestaurantIndex extends React.Component {
                     <div className="category-header">
                         Available now
                     </div>
-                    <div className="card-row">
+                    <div className="card-row" id="card-row-1">
                         {restaurantEvens.map(restaurant => (
                             <Link to={`/restaurants/${restaurant.id}`} key={restaurant.id}>
                                 <div className="restaurant-card">
@@ -84,12 +84,16 @@ class RestaurantIndex extends React.Component {
                                 </div>
                             </Link>
                         ))}
+                        <div className="scroll-holder-1">
+                            <div className="scroll-back" id="2" onClick={() => document.getElementById("card-row-1").scrollBy(-255, 0)}> {"<"} </div>
+                            <div className="scroll-button" id="1" onClick={() => document.getElementById("card-row-1").scrollBy(255, 0)}> > </div>
+                        </div>
                     </div>
 
                     <div className="category-header">
                         Get it delivered
                     </div>
-                    <div className="card-row">
+                    <div className="card-row" id="card-row-2">
                         {restaurantOdds.map(restaurant => (
                             <Link to={`/restaurants/${restaurant.id}`} key={restaurant.id}>
                                 <div className="restaurant-card">
@@ -110,7 +114,11 @@ class RestaurantIndex extends React.Component {
                             </Link>
                         ))}
                     </div>
-
+                    <div className="scroll-holder-2">
+                        <div className="scroll-back" id="1" onClick={() => document.getElementById("card-row-2").scrollBy(-255, 0)}> {"<"} </div>
+                        <div className="scroll-button" id="2" onClick={() => document.getElementById("card-row-2").scrollBy(255, 0)}> > </div>
+                    </div>
+                        
                 </div>
             </div>
             
@@ -120,7 +128,3 @@ class RestaurantIndex extends React.Component {
 }
 
 export default RestaurantIndex;
-
-/* {restaurantArray.map(restaurant => (
-                    restaurant.name
-                ))} */

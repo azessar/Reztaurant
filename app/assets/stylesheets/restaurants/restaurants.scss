@@ -496,3 +496,38 @@
     border-bottom: 1px solid black;
     cursor:pointer;
 }
+
+.stars i {
+    color: red;
+    margin-right: 5px;
+}
+
+.scroll-button, .scroll-back {
+    background-color: rgb(245, 56, 56);
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    align-items: center; 
+    justify-content: center;
+    display: flex;
+    color: white;
+}
+.scroll-holder-1 {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 195px;
+}
+
+.scroll-holder-2 {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 570px;
+}
+.scroll-button:hover, .scroll-back:hover {
+    border:2px solid white;
+    cursor: pointer;
+}
