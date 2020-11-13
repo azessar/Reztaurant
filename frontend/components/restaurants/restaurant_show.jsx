@@ -34,6 +34,8 @@ class RestaurantShow extends React.Component {
         this.update = this.update.bind(this);
         this.reviewUser = this.reviewUser.bind(this);
         this.avgRating = this.avgRating.bind(this);
+        this.totalUserReviews = this.totalUserReviews.bind(this);
+
     }
 
     componentDidMount() {
@@ -155,6 +157,13 @@ class RestaurantShow extends React.Component {
         return (totalScore / restaurantReviews.length) ? totalScore / restaurantReviews.length : 1
     }
 
+    totalUserReviews(userId){
+        const reviews = this.props.reviews;
+        return this.props.reviews.filter(review =>
+            review.user_id === userId
+        ).length
+    }
+
     render(){
         const currentUser = this.props.currentUser;
         const restaurant = this.props.restaurant;
@@ -214,7 +223,12 @@ class RestaurantShow extends React.Component {
                                 </div>
                                 <div className="show-reviews">
                                     <img className="review_blurb" src={window.review_blurb} />
-                                    <div className="review-num">{restaurantReviews.length} Reviews</div>
+                                    {restaurantReviews.length === 1 
+                                        ?
+                                        <div className="review-num">{restaurantReviews.length} Review</div>
+                                        :
+                                        <div className="review-num">{restaurantReviews.length} Reviews</div>
+                                    }
                                 </div>
                                 <div className="money-stuff">
                                     <img className="dollars" src={window.dollars} />
@@ -237,7 +251,16 @@ class RestaurantShow extends React.Component {
 
                             </div>
                             <div className="show-photos">
-                                <h1  className="photos-header">What {restaurantReviews.length} people are saying</h1>
+                                {restaurantReviews.length === 1 ? 
+                                <h1 className="photos-header">What {restaurantReviews.length} person is saying</h1>
+                                :
+                                (restaurantReviews.length === 0 ?
+                                <h1 className="photos-header">No reviews for this restaurant yet</h1>
+                                :
+                                <h1 className="photos-header">What {restaurantReviews.length} people are saying</h1>
+                                )
+
+                                }
                                 <div className="review-cards">
                                     {restaurantReviews.map((review,i) => (
                                         <div className="review-card" key={i}>
@@ -249,7 +272,13 @@ class RestaurantShow extends React.Component {
                                                 }
                                                 <div className="user-name">{this.reviewUser(review.user_id, "first_name").slice(0,1).toUpperCase() + this.reviewUser(review.user_id, "first_name").slice(1)}{this.reviewUser(review.user_id, "last_name").slice(0, 1).toUpperCase()}</div>
                                                 <div className="user-city">{this.reviewUser(review.user_id, "primary_dining_location")}</div>
-                                                <div className="user-count">num reviews</div>
+                                            {
+                                                this.totalUserReviews(review.user_id) === 1
+                                                ?
+                                                <div className="user-count">{this.totalUserReviews(review.user_id)} review</div>
+                                                :
+                                                <div className="user-count">{this.totalUserReviews(review.user_id)} reviews</div>
+                                            }
                                             </div>
                                             <div className="rating-and-text">
                                                 <div className="rating-stars">

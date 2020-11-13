@@ -57,7 +57,6 @@ class RestaurantIndex extends React.Component {
         restaurantArray.forEach(res => 
             parseInt(res.id) % 2 === 0 ? restaurantEvens.push(res) : restaurantOdds.push(res)
         )
-        console.log(this.props.reservations)
         return (
             <div>
                 <div className="restaurant-cards">
@@ -76,10 +75,22 @@ class RestaurantIndex extends React.Component {
                                                 {[...Array(parseInt(this.avgRating(restaurant.id).toFixed(0)))].map((e, i) => <i className='fas fa-star' key={i}></i>)}
                                                 {[...Array(parseInt(5 - this.avgRating(restaurant.id).toFixed(0)))].map((e, i) => <i className='fas fa-star' id="clear-star" key={i}></i>)}
                                             </div>
-                                            <div className="reviews">{this.totalReviews(restaurant.id).length} Reviews</div>
+                                            {
+                                                this.totalReviews(restaurant.id).length === 1 ?
+                                                    <div className="reviews">{this.totalReviews(restaurant.id).length} Review</div>
+                                                    :
+                                                    <div className="reviews">{this.totalReviews(restaurant.id).length} Reviews</div>
+                                            }
+                                           
                                         </div>
                                         <div className="cuisine-price-area">{restaurant.cuisine} - {this.priceConversion(restaurant.avg_price)} - {restaurant.city}, {restaurant.state}</div>
-                                        <div className="booked-times">Booked {this.totalReservations(restaurant.id).length} times</div>
+                                        {
+                                            this.totalReservations(restaurant.id).length === 1
+                                            ?
+                                            <div className="booked-times">Booked {this.totalReservations(restaurant.id).length} time</div>
+                                            :
+                                            <div className="booked-times">Booked {this.totalReservations(restaurant.id).length} times</div>
+                                        }
                                     </div>
                                 </div>
                             </Link>
@@ -105,11 +116,21 @@ class RestaurantIndex extends React.Component {
                                                 {[...Array(parseInt(this.avgRating(restaurant.id).toFixed(0)))].map((e, i) => <i className='fas fa-star' key={i}></i>)}
                                                 {[...Array(parseInt(5 - this.avgRating(restaurant.id).toFixed(0)))].map((e, i) => <i className='fas fa-star' id="clear-star" key={i}></i>)}
                                             </div>
-                                            <div className="reviews">{this.totalReviews(restaurant.id).length} Reviews</div>
+                                            {
+                                                this.totalReviews(restaurant.id).length === 1 ?
+                                                    <div className="reviews">{this.totalReviews(restaurant.id).length} Review</div>
+                                                    :
+                                                    <div className="reviews">{this.totalReviews(restaurant.id).length} Reviews</div>
+                                            }
                                         </div>
                                         <div className="cuisine-price-area">{restaurant.cuisine} - {this.priceConversion(restaurant.avg_price)} - {restaurant.city}, {restaurant.state}</div>
-                                        <div className="booked-times">Booked {this.totalReservations(restaurant.id).length} times</div>
-                                    </div>
+                                        {
+                                            this.totalReservations(restaurant.id).length === 1
+                                                ?
+                                                <div className="booked-times">Booked {this.totalReservations(restaurant.id).length} time</div>
+                                                :
+                                                <div className="booked-times">Booked {this.totalReservations(restaurant.id).length} times</div>
+                                        }                                    </div>
                                 </div>
                             </Link>
                         ))}
