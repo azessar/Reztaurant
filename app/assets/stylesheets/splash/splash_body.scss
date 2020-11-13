@@ -27,9 +27,10 @@
 }
 
 .restaurant-cards {
-    position: absolute;
+    // position: absolute;
+    margin-top: 440px;
     display: flex;
-    top: 520px;
+    // top: 520px;
     margin-left: 30px;
     width: 93%;
     flex-direction: column;
@@ -104,18 +105,17 @@
 }
 
 .bottom-socials {
-    position: absolute;
-    display: flex;
-    top: 1330px;
+   display: flex;
     margin-left: 30px;
     margin-right: 30px;
-    width: 93%;
+    /* width: 93%; */
     background-size: cover;
     text-align: center;
     overflow-x: hidden;
     align-items: center;
     justify-content: center;
     padding-top: 8px;
+    margin-top: 15px;
 }
 
 .footer-food {
@@ -134,7 +134,7 @@
     position: absolute;
     color: white;
     position: absolute;
-    top: 10%;
+    // top: 10%;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -168,9 +168,9 @@ input.github {
 }
 
 .splash-footer {
-    position: absolute;
+    // position: absolute;
     display: flex;
-    top: 1590px;
+    // top: 1590px;
     background-size: cover;
     text-align: center;
     overflow-x: hidden;
@@ -180,6 +180,7 @@ input.github {
     height: 100px;
     background-color: rgb(40, 39, 54);
     color: white;
+    margin-top: 30px;
 }
 
 .mock-opentable {

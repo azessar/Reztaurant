@@ -41,6 +41,16 @@ const App = () => (
             <AuthRoute exact path="/user_info" component={UserInfo} />
 
         </Switch>
+        {/* <footer className="splash-footer">
+            <div className="footer-text">
+                <div className="mock-opentable">
+                    Mock OpenTable by Andrew Zessar, using Ruby, Rails, JS, React/Redux
+                    </div>
+                <div className="real-opentable">
+                    <a href="https://www.opentable.com/" target="_blank">Click here for the real OpenTable website</a>
+                </div>
+            </div>
+        </footer> */}
     </div>
 );
 

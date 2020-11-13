@@ -24,6 +24,12 @@
     flex-direction: column;
 }
 
+.show-body-columns {
+    display: flex;
+    position: absolute;
+    top: 290px;
+}
+
 .default_show_background {
     height: 230px;
     width: 100%;
@@ -53,12 +59,12 @@
 }
 
 .overview-tabs {
-    position: absolute;
-    z-index: 3;
-    margin-left: 100px;
+    // position: absolute;
+    // z-index: 3;
+    // margin-left: 100px;
     background-color: white;
     padding: 10px;
-    margin-top: 178px;
+    // margin-top: 178px;
     display: flex;
     width: 600px;
     
@@ -185,18 +191,19 @@
 }
 
 .show-res-form {
-    position: absolute;
-    margin-left: 770px;
+    // position: absolute;
+    margin-left: 50px;
     top: 291px;
     width: 330px;
     background-color: white;
     box-shadow: 0 0 3px gray;
     height: 255px;
+    margin-bottom: 20px;
 }
 
 .show-phone {
-    position: absolute;
-    margin-left: 770px;
+    // position: absolute;
+    margin-left: 50px;
     top: 570px;
     width: 330px;
     background-color: white;
@@ -206,7 +213,7 @@
 .show-footer {
     // position: absolute;
     display: flex;
-    margin-top: 80px;
+    margin-top: 1080px;
     background-size: cover;
     text-align: center;
     overflow-x: hidden;
@@ -245,7 +252,7 @@
 
 .right-show-res-form {
     margin-left: 16px;
-    width: 98%;
+    // width: 98%;
     margin-bottom: 10px;
 }
 
@@ -297,8 +304,8 @@
 
 .more-show-info {
     position: absolute;
-    margin-left: 770px;
-    top: 838px;
+    margin-left: 50px;
+    top: 528px;
     width: 330px;
     background-color: white;
     display: flex;
@@ -513,19 +520,19 @@
     color: white;
 }
 .scroll-holder-1 {
-    width: 100%;
+    width: 92%;
     display: flex;
     justify-content: space-between;
     position: absolute;
-    top: 195px;
+    top: 715px;
 }
 
 .scroll-holder-2 {
-    width: 100%;
+    width: 92%;
     display: flex;
     justify-content: space-between;
     position: absolute;
-    top: 570px;
+    top: 1090px;
 }
 .scroll-button:hover, .scroll-back:hover {
     border:2px solid white;
@@ -534,4 +541,18 @@
 
 .user-count {
     font-size: 12px;
+}
+
+.things-to-scroll {
+    position: sticky;
+    top: 0px;
+    z-index: 5;
+}
+
+.show-right-side {
+    margin-left: 70px;
+}
+
+.restaurant-cards-holder {
+    margin-left: 20px;
 }

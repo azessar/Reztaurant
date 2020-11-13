@@ -58,7 +58,7 @@ class RestaurantIndex extends React.Component {
             parseInt(res.id) % 2 === 0 ? restaurantEvens.push(res) : restaurantOdds.push(res)
         )
         return (
-            <div>
+            <div className="restaurant-cards-holder">
                 <div className="restaurant-cards">
                     <div className="category-header">
                         Available now
