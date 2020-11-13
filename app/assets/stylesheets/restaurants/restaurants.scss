@@ -81,7 +81,7 @@
 }
 
 .show-main-body {
-    position: absolute;
+    // position: absolute;
     margin-left: 100px;
     background-color: white;
     display: flex;
@@ -204,9 +204,9 @@
 }
 
 .show-footer {
-    position: absolute;
+    // position: absolute;
     display: flex;
-    margin-top: 1490px;
+    margin-top: 20px;
     background-size: cover;
     text-align: center;
     overflow-x: hidden;
@@ -431,3 +431,37 @@
     margin-top: 20px;
 }
 
+.rating-stars i {
+    margin-right: 5px;
+    color: red;
+}
+#clear-star {
+    color: lightgray;
+}
+
+.user-initials {
+    background-color: rgb(245, 56, 56);
+    margin-left:auto;
+    margin-right: auto;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    align-items: center; 
+    justify-content: center;
+    display: flex;
+    color: white;
+}
+.user-name{
+    font-weight: 600;
+}
+.user-city {
+    font-size: 14px;
+}
+
+.rating-numbers {
+    margin-top: 10px;
+}
+
+.rating-and-text {
+    margin-left: 20px;
+}

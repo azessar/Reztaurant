@@ -118,6 +118,7 @@ res1 = Reservation.create!(user_id: 3, restaurant_id: 1, date: 'November 15, 202
 res2 = Reservation.create!(user_id: 3, restaurant_id: 2, date: 'November 16, 2020', time: '9:00 PM', party_size: 4)
 res3 = Reservation.create!(user_id: 2, restaurant_id: 3, date: 'November 17, 2020', time: '7:00 PM', party_size: 5)
 
+
 rev1 = Review.create!(user_id: 3, restaurant_id: 1, body: 'I liked it', rating: 4)
 rev2 = Review.create!(user_id: 3, restaurant_id: 1, body: 'This place is eh.', rating: 3)
 rev3 = Review.create!(user_id: 2, restaurant_id: 1, body: 'Never coming back.', rating: 2)

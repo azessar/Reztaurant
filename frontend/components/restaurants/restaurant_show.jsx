@@ -171,7 +171,6 @@ class RestaurantShow extends React.Component {
         return userData[column]
     }
 
-
     render(){
         const restaurant = this.props.restaurant;
         const reviews = this.props.reviews;
@@ -198,8 +197,6 @@ class RestaurantShow extends React.Component {
         const restaurantReviews = reviews.filter(review => 
             review.restaurant_id === restaurant.id
         )
-        console.log(reviews)
-        console.log(users)
         return(
             <div>
                 <div className="restaurant-header-loc">
@@ -262,16 +259,20 @@ class RestaurantShow extends React.Component {
                             <div className="show-photos">
                                 <h1 className="photos-header">What people are saying</h1>
                                 <div className="review-cards">
-                                    {reviews.map((review,i) => (
+                                    {restaurantReviews.map((review,i) => (
                                         <div className="review-card" key={i}>
                                             <div className="icon-name">
-                                                <div className="user-icon">AZ</div>
-                                                <div className="user-name">{this.reviewUser(review.user_id, "first_name")} {this.reviewUser(review.user_id, "last_name")}</div>
-                                                <div className="user-name">primary location</div>
+                                                <div className="user-initials">{this.reviewUser(review.user_id, "first_name").slice(0,1).toUpperCase()}{this.reviewUser(review.user_id, "last_name").slice(0,1).toUpperCase()}</div>
+                                                <div className="user-name">{this.reviewUser(review.user_id, "first_name").slice(0,1).toUpperCase() + this.reviewUser(review.user_id, "first_name").slice(1)}{this.reviewUser(review.user_id, "last_name").slice(0, 1).toUpperCase()}</div>
+                                                <div className="user-city">{this.reviewUser(review.user_id, "primary_dining_location")}</div>
                                                 <div className="user-count">num reviews</div>
                                             </div>
                                             <div className="rating-and-text">
-                                                <div className="rating">{review.rating}</div>
+                                                <div className="rating-stars">
+                                                    {[...Array(review.rating)].map((e, i) => <i className='fas fa-star' key={i}></i>)}
+                                                    {[...Array(5 - review.rating)].map((e, i) => <i className='fas fa-star' id="clear-star" key={i}></i>)}
+                                                </div>
+                                                <div className="rating-numbers">Overall {review.rating}</div>
                                                 <div className="review-text">{review.body}</div>
                                             </div>
                                         </div>
