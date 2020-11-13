@@ -31,11 +31,9 @@ class RestaurantShow extends React.Component {
         this.showTimes = this.showTimes.bind(this);
         this.reshowButton = this.reshowButton.bind(this);
 
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
         this.update = this.update.bind(this);
         this.reviewUser = this.reviewUser.bind(this);
-
+        this.avgRating = this.avgRating.bind(this);
     }
 
     componentDidMount() {
@@ -53,29 +51,6 @@ class RestaurantShow extends React.Component {
                     partySize: document.getElementById("party-select").value,
             }
         });
-    }
-
-    handleSubmit(e) {
-        e.preventDefault();
-        const { signin } = this.props;
-        const { first_name, last_name, email, password, primary_dining_location } = this.state;
-        signin({ first_name, last_name, email, password, primary_dining_location });
-        this.setState({
-            first_name: '',
-            last_name: '',
-            email: '',
-            password: '',
-            primary_dining_location: ''
-        });
-    }
-
-    handleDemoSubmit(e) {
-        e.preventDefault();
-        const { signin } = this.props;
-        const { first_name, last_name, email, password, primary_dining_location } = this.state;
-        const demoUser = { first_name: "Gordon", last_name: "Ramsay", email: "gramsay@gmail.com", password: "rubbish", primary_dining_location: "London" }
-        signin(demoUser);
-        e.target.reset();
     }
 
     priceConversion(price) {
@@ -171,7 +146,17 @@ class RestaurantShow extends React.Component {
         return userData[column]
     }
 
+    avgRating(){
+        const restaurantReviews = this.props.reviews.filter(review =>
+            review.restaurant_id === this.props.restaurant.id
+        )
+        let totalScore = 0
+        restaurantReviews.forEach(review => totalScore += review.rating)
+        return (totalScore / restaurantReviews.length)
+    }
+
     render(){
+        const currentUser = this.props.currentUser;
         const restaurant = this.props.restaurant;
         const reviews = this.props.reviews;
         const users = this.props.users;
@@ -197,6 +182,10 @@ class RestaurantShow extends React.Component {
         const restaurantReviews = reviews.filter(review => 
             review.restaurant_id === restaurant.id
         )
+        console.log(reviews)
+        console.log(this.avgRating())
+        console.log(this.avgRating().toFixed(0))
+        console.log(5 - this.avgRating().toFixed(0))
         return(
             <div>
                 <div className="restaurant-header-loc">
@@ -212,12 +201,9 @@ class RestaurantShow extends React.Component {
                     </div>
                     <div className="overview-tabs">
                         <div className="inner-overview-tab">
-                            <div className="overview-tab-div">Overview</div>
-                            <div className="overview-tab-div">Photos</div>
-                            <div className="overview-tab-div">Popular dishes</div>
-                            <div className="overview-tab-div">Menu</div>
-                            <div className="overview-tab-div">Reviews</div>
-                            <div className="overview-tab-div">Twitter</div>
+                            <div className="overview-tab-div" id="overview-review">Overview</div>
+                            <div className="overview-tab-div" id="overview-review" onClick={() => window.scrollBy(0, 550)}>Photos</div>
+                            <div className="overview-tab-div" id="overview-review" onClick={() => window.scrollBy(0, 800)}>Reviews</div>
                         </div>   
                     </div>
                   
@@ -226,15 +212,13 @@ class RestaurantShow extends React.Component {
                             <div className="big-restaurant-name">{restaurant.name} - {restaurant.city}</div>
                             <div className="rating-review-price-cuisine">
                                 <div className="stars-score">
-                                    <img className="star" src={window.star} />
-                                    <img className="star" src={window.star} />
-                                    <img className="star" src={window.star} />
-                                    <img className="star" src={window.star} />
-                                    <div className="restaurant-score">4.0</div>
+                                    {[...Array(parseInt(this.avgRating().toFixed(0)))].map((e, i) => <i className='fas fa-star' key={i}></i>)}
+                                    {[...Array(parseInt(5 - this.avgRating().toFixed(0)))].map((e, i) => <i className='fas fa-star' id="clear-star" key={i}></i>)}
+                                    <div className="restaurant-score">{this.avgRating().toFixed(1)}</div>
                                 </div>
                                 <div className="show-reviews">
                                     <img className="review_blurb" src={window.review_blurb} />
-                                    <div className="review-num">4469 Reviews</div>
+                                    <div className="review-num">{restaurantReviews.length} Reviews</div>
                                 </div>
                                 <div className="money-stuff">
                                     <img className="dollars" src={window.dollars} />
@@ -249,7 +233,7 @@ class RestaurantShow extends React.Component {
                             <div className="show-description">
                                 <div className="description-text">{restaurant.description}</div>
                             </div>
-                            <div className="show-photos">
+                            <div className="show-photos" id="reviews-scroll-here">
                                 <div className="photos-header">Photos</div>
                                 <div className="show-lower-photos">
                                     <img className="show-lower-photo" src={restaurant.main_photo} />
@@ -257,12 +241,16 @@ class RestaurantShow extends React.Component {
 
                             </div>
                             <div className="show-photos">
-                                <h1 className="photos-header">What people are saying</h1>
+                                <h1  className="photos-header">What {restaurantReviews.length} people are saying</h1>
                                 <div className="review-cards">
                                     {restaurantReviews.map((review,i) => (
                                         <div className="review-card" key={i}>
                                             <div className="icon-name">
-                                                <div className="user-initials">{this.reviewUser(review.user_id, "first_name").slice(0,1).toUpperCase()}{this.reviewUser(review.user_id, "last_name").slice(0,1).toUpperCase()}</div>
+                                                {(currentUser && review.user_id === currentUser.id) ? 
+                                                    <div className="user-initials">{this.reviewUser(review.user_id, "first_name").slice(0, 1).toUpperCase()}{this.reviewUser(review.user_id, "last_name").slice(0, 1).toUpperCase()}</div>
+                                                    :
+                                                    <div className="non-user-initials">{this.reviewUser(review.user_id, "first_name").slice(0, 1).toUpperCase()}{this.reviewUser(review.user_id, "last_name").slice(0, 1).toUpperCase()}</div>
+                                                }
                                                 <div className="user-name">{this.reviewUser(review.user_id, "first_name").slice(0,1).toUpperCase() + this.reviewUser(review.user_id, "first_name").slice(1)}{this.reviewUser(review.user_id, "last_name").slice(0, 1).toUpperCase()}</div>
                                                 <div className="user-city">{this.reviewUser(review.user_id, "primary_dining_location")}</div>
                                                 <div className="user-count">num reviews</div>

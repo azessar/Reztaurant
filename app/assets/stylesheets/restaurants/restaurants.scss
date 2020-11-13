@@ -206,7 +206,7 @@
 .show-footer {
     // position: absolute;
     display: flex;
-    margin-top: 20px;
+    margin-top: 80px;
     background-size: cover;
     text-align: center;
     overflow-x: hidden;
@@ -256,6 +256,11 @@
 .date-time-head-show {
     display: flex;
     margin-bottom: 10px;
+}
+
+.search-info > div {
+    margin-top: 10px;
+    font-weight: 500;
 }
 
 .date-time-select-show > select,  .date-time-select-show > input {
@@ -397,6 +402,9 @@
 .card-name:hover {
     color: navy;
 }
+.card-name {
+    font-size: 25px;
+}
 
 .res-time {
     height: 30px;
@@ -451,6 +459,18 @@
     display: flex;
     color: white;
 }
+.non-user-initials {
+    background-color: gray;
+    margin-left:auto;
+    margin-right: auto;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    align-items: center; 
+    justify-content: center;
+    display: flex;
+    color: white;
+}
 .user-name{
     font-weight: 600;
 }
@@ -464,4 +484,15 @@
 
 .rating-and-text {
     margin-left: 20px;
+}
+
+.stars-score i {
+    margin-right: 5px;
+    color: red;
+    margin-top: 3px;
+}
+
+#overview-review:hover {
+    border-bottom: 1px solid black;
+    cursor:pointer;
 }

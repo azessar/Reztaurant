@@ -341,17 +341,8 @@ class RestaurantSearchIndex extends React.Component {
                                     <Link to={`/restaurants/${restaurant.id}`} key={restaurant.id} className="restaurant-search-card-link">
                                         <div className="card-name">{restaurant.name}</div>
                                     </Link>
-                                    <div className="card-reviews-and-stars">
-                                        <div className="stars">
-                                            <img className="star" src={window.star} />
-                                            <img className="star" src={window.star} />
-                                            <img className="star" src={window.star} />
-                                            <img className="star" src={window.star} />
-                                        </div>
-                                        <div className="reviews">6651 reviews</div>
-                                    </div>
+                                    <div className="cuisine-price-area">{restaurant.address} - {restaurant.city}</div>
                                     <div className="cuisine-price-area">{restaurant.cuisine} - {this.priceConversion(restaurant.avg_price)} - {restaurant.city}, {restaurant.state}</div>
-                                    <div className="booked-times">Booked 115 times today</div>
                                     <div className="res-times">
                                         {/* THIS KEEPS ON MAKING MORE TIMES ON EACH RE-RENDER */}
                                         {resTimes.map((time, i) => 

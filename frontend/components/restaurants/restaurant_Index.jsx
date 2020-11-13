@@ -29,6 +29,7 @@ class RestaurantIndex extends React.Component {
         restaurantArray.forEach(res => 
             parseInt(res.id) % 2 === 0 ? restaurantEvens.push(res) : restaurantOdds.push(res)
         )
+        console.log(this.props.reviews)
         return (
             <div>
                 <div className="restaurant-cards">

@@ -69,9 +69,9 @@
 }
 
 .res-footer {
-    position: absolute;
+    // position: absolute;
     display: flex;
-    top: 690px;
+    // top: 690px;
     background-size: cover;
     text-align: center;
     overflow-x: hidden;
@@ -81,6 +81,7 @@
     height: 100px;
     background-color: rgb(40, 39, 54);
     color: white;
+    margin-top: 250px;
 }
 
 .complete-res {
