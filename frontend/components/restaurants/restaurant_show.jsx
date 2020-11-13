@@ -204,7 +204,6 @@ class RestaurantShow extends React.Component {
                         <img className="main-background-show-image" src={restaurant.background_photo} />
                         {/* <div className="save-this-restaurant">Save this restaurant</div> */}
                     </div>
-                    <div className="columns-shell">
                         <div className="show-body-columns">
                             <div className="show-main-body">
                                 <div className="overview-tabs">
@@ -250,50 +249,7 @@ class RestaurantShow extends React.Component {
                                     </div>
 
                                 </div>
-                                <div className="show-photos">
-                                    {restaurantReviews.length === 1 ?
-                                        <h1 className="photos-header">What {restaurantReviews.length} person is saying</h1>
-                                        :
-                                        (restaurantReviews.length === 0 ?
-                                            <h1 className="photos-header">No reviews for this restaurant yet</h1>
-                                            :
-                                            <h1 className="photos-header">What {restaurantReviews.length} people are saying</h1>
-                                        )
-
-                                    }
-                                    <div className="review-cards">
-                                        {restaurantReviews.map((review, i) => (
-                                            <div className="review-card" key={i}>
-                                                <div className="icon-name">
-                                                    {(currentUser && review.user_id === currentUser.id) ?
-                                                        <div className="user-initials">{this.reviewUser(review.user_id, "first_name").slice(0, 1).toUpperCase()}{this.reviewUser(review.user_id, "last_name").slice(0, 1).toUpperCase()}</div>
-                                                        :
-                                                        <div className="non-user-initials">{this.reviewUser(review.user_id, "first_name").slice(0, 1).toUpperCase()}{this.reviewUser(review.user_id, "last_name").slice(0, 1).toUpperCase()}</div>
-                                                    }
-                                                    <div className="user-name">{this.reviewUser(review.user_id, "first_name").slice(0, 1).toUpperCase() + this.reviewUser(review.user_id, "first_name").slice(1)}{this.reviewUser(review.user_id, "last_name").slice(0, 1).toUpperCase()}</div>
-                                                    <div className="user-city">{this.reviewUser(review.user_id, "primary_dining_location")}</div>
-                                                    {
-                                                        this.totalUserReviews(review.user_id) === 1
-                                                            ?
-                                                            <div className="user-count">{this.totalUserReviews(review.user_id)} review</div>
-                                                            :
-                                                            <div className="user-count">{this.totalUserReviews(review.user_id)} reviews</div>
-                                                    }
-                                                </div>
-                                                <div className="rating-and-text">
-                                                    <div className="rating-stars">
-                                                        {[...Array(review.rating)].map((e, i) => <i className='fas fa-star' key={i}></i>)}
-                                                        {[...Array(5 - review.rating)].map((e, i) => <i className='fas fa-star' id="clear-star" key={i}></i>)}
-                                                    </div>
-                                                    <div className="rating-numbers">Overall {review.rating}</div>
-                                                    <div className="review-text">{review.body}</div>
-                                                </div>
-                                            </div>
-                                        ))}
-
-
-                                    </div>
-                                </div>
+                                
                                
 
                             </div>
@@ -399,6 +355,49 @@ class RestaurantShow extends React.Component {
                             </div>
 
                         </div>
+                    <div className="show-photos" id="review-id">
+                        {restaurantReviews.length === 1 ?
+                            <h1 className="photos-header">What {restaurantReviews.length} person is saying</h1>
+                            :
+                            (restaurantReviews.length === 0 ?
+                                <h1 className="photos-header">No reviews for this restaurant yet</h1>
+                                :
+                                <h1 className="photos-header">What {restaurantReviews.length} people are saying</h1>
+                            )
+
+                        }
+                        <div className="review-cards">
+                            {restaurantReviews.map((review, i) => (
+                                <div className="review-card" key={i}>
+                                    <div className="icon-name">
+                                        {(currentUser && review.user_id === currentUser.id) ?
+                                            <div className="user-initials">{this.reviewUser(review.user_id, "first_name").slice(0, 1).toUpperCase()}{this.reviewUser(review.user_id, "last_name").slice(0, 1).toUpperCase()}</div>
+                                            :
+                                            <div className="non-user-initials">{this.reviewUser(review.user_id, "first_name").slice(0, 1).toUpperCase()}{this.reviewUser(review.user_id, "last_name").slice(0, 1).toUpperCase()}</div>
+                                        }
+                                        <div className="user-name">{this.reviewUser(review.user_id, "first_name").slice(0, 1).toUpperCase() + this.reviewUser(review.user_id, "first_name").slice(1)}{this.reviewUser(review.user_id, "last_name").slice(0, 1).toUpperCase()}</div>
+                                        <div className="user-city">{this.reviewUser(review.user_id, "primary_dining_location")}</div>
+                                        {
+                                            this.totalUserReviews(review.user_id) === 1
+                                                ?
+                                                <div className="user-count">{this.totalUserReviews(review.user_id)} review</div>
+                                                :
+                                                <div className="user-count">{this.totalUserReviews(review.user_id)} reviews</div>
+                                        }
+                                    </div>
+                                    <div className="rating-and-text">
+                                        <div className="rating-stars">
+                                            {[...Array(review.rating)].map((e, i) => <i className='fas fa-star' key={i}></i>)}
+                                            {[...Array(5 - review.rating)].map((e, i) => <i className='fas fa-star' id="clear-star" key={i}></i>)}
+                                        </div>
+                                        <div className="rating-numbers">Overall {review.rating}</div>
+                                        <div className="review-text">{review.body}</div>
+                                    </div>
+                                </div>
+                            ))}
+
+
+                        </div>
                     </div>
                  
                     
@@ -407,7 +406,7 @@ class RestaurantShow extends React.Component {
                 </div>
                     
 
-                    {/* <footer className="show-footer">
+                    <footer className="show-footer">
                         <div className="footer-text">
                             <div className="mock-opentable">
                                 Mock OpenTable by Andrew Zessar, using Ruby, Rails, JS, React/Redux
@@ -416,7 +415,7 @@ class RestaurantShow extends React.Component {
                                 <a href="https://www.opentable.com/" target="_blank">Click here for the real OpenTable website</a>
                             </div>
                         </div>
-                    </footer> */}
+                    </footer>
                     
                 
                 

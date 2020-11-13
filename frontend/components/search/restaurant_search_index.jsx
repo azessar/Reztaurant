@@ -367,6 +367,7 @@ class RestaurantSearchIndex extends React.Component {
 
                 </div>
                 
+                
             </div>
 
         )
