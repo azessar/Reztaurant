@@ -50,3 +50,9 @@ export const deleteReview = id => dispatch => (
             err => dispatch(receiveReviewErrors(err.responseJSON))
         )
 );
+
+export const fetchReviews = () => dispatch => (
+    APIUtil.fetchReviews().then(reviews =>
+        (dispatch(receiveReviews(reviews))),
+        err => (dispatch(receiveReviewErrors(err.responseJSON))))
+);

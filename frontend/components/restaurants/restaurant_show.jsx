@@ -182,10 +182,6 @@ class RestaurantShow extends React.Component {
         const restaurantReviews = reviews.filter(review => 
             review.restaurant_id === restaurant.id
         )
-        console.log(reviews)
-        console.log(this.avgRating())
-        console.log(this.avgRating().toFixed(0))
-        console.log(5 - this.avgRating().toFixed(0))
         return(
             <div>
                 <div className="restaurant-header-loc">

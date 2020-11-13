@@ -4,10 +4,18 @@ import { Route, Redirect, Switch, Link, HashRouter, withRouter } from 'react-rou
 class RestaurantIndex extends React.Component {
     constructor(props) {
         super(props);
+
+        this.avgRating = this.avgRating.bind(this);
+        this.totalReviews = this.totalReviews.bind(this);
+        this.totalReservations = this.totalReservations.bind(this);
+
     }
 
     componentDidMount() {
         this.props.fetchRestaurants();
+        this.props.fetchReviews();
+        this.props.requestAllReservations();
+
     }
 
     priceConversion(price) {
@@ -22,6 +30,26 @@ class RestaurantIndex extends React.Component {
         }
     }
 
+    avgRating(restaurantId) {
+        const restaurantReviews = this.props.reviews.filter(review =>
+            review.restaurant_id === restaurantId
+        )
+        let totalScore = 0
+        restaurantReviews.forEach(review => totalScore += review.rating)
+        return (totalScore / restaurantReviews.length) ? totalScore / restaurantReviews.length : 1
+    }
+
+    totalReviews(restaurantId){
+        return this.props.reviews.filter(review =>
+            review.restaurant_id === restaurantId
+        )
+    }
+    totalReservations(restaurantId) {
+        return this.props.reservations.filter(reservation =>
+            reservation.restaurant_id === restaurantId
+        )
+    }
+
     render() {
         const restaurantArray = this.props.restaurants;
         const restaurantEvens = [];
@@ -29,7 +57,7 @@ class RestaurantIndex extends React.Component {
         restaurantArray.forEach(res => 
             parseInt(res.id) % 2 === 0 ? restaurantEvens.push(res) : restaurantOdds.push(res)
         )
-        console.log(this.props.reviews)
+        console.log(this.props.reservations)
         return (
             <div>
                 <div className="restaurant-cards">
@@ -45,15 +73,13 @@ class RestaurantIndex extends React.Component {
                                         <div className="card-name">{restaurant.name}</div>
                                         <div className="card-reviews-and-stars">
                                             <div className="stars">
-                                                <img className="star" src={window.star} />
-                                                <img className="star" src={window.star} />
-                                                <img className="star" src={window.star} />
-                                                <img className="star" src={window.star} />
+                                                {[...Array(parseInt(this.avgRating(restaurant.id).toFixed(0)))].map((e, i) => <i className='fas fa-star' key={i}></i>)}
+                                                {[...Array(parseInt(5 - this.avgRating(restaurant.id).toFixed(0)))].map((e, i) => <i className='fas fa-star' id="clear-star" key={i}></i>)}
                                             </div>
-                                            <div className="reviews">6651 reviews</div>
+                                            <div className="reviews">{this.totalReviews(restaurant.id).length} Reviews</div>
                                         </div>
                                         <div className="cuisine-price-area">{restaurant.cuisine} - {this.priceConversion(restaurant.avg_price)} - {restaurant.city}, {restaurant.state}</div>
-                                        <div className="booked-times">Booked 115 times today</div>
+                                        <div className="booked-times">Booked {this.totalReservations(restaurant.id).length} times</div>
                                     </div>
                                 </div>
                             </Link>
@@ -72,15 +98,13 @@ class RestaurantIndex extends React.Component {
                                         <div className="card-name">{restaurant.name}</div>
                                         <div className="card-reviews-and-stars">
                                             <div className="stars">
-                                                <img className="star" src={window.star} />
-                                                <img className="star" src={window.star} />
-                                                <img className="star" src={window.star} />
-                                                <img className="star" src={window.star} />
+                                                {[...Array(parseInt(this.avgRating(restaurant.id).toFixed(0)))].map((e, i) => <i className='fas fa-star' key={i}></i>)}
+                                                {[...Array(parseInt(5 - this.avgRating(restaurant.id).toFixed(0)))].map((e, i) => <i className='fas fa-star' id="clear-star" key={i}></i>)}
                                             </div>
-                                            <div className="reviews">6651 reviews</div>
+                                            <div className="reviews">{this.totalReviews(restaurant.id).length} Reviews</div>
                                         </div>
                                         <div className="cuisine-price-area">{restaurant.cuisine} - {this.priceConversion(restaurant.avg_price)} - {restaurant.city}, {restaurant.state}</div>
-                                        <div className="booked-times">Booked 115 times today</div>
+                                        <div className="booked-times">Booked {this.totalReservations(restaurant.id).length} times</div>
                                     </div>
                                 </div>
                             </Link>
