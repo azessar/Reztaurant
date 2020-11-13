@@ -152,7 +152,7 @@ class RestaurantShow extends React.Component {
         )
         let totalScore = 0
         restaurantReviews.forEach(review => totalScore += review.rating)
-        return (totalScore / restaurantReviews.length)
+        return (totalScore / restaurantReviews.length) ? totalScore / restaurantReviews.length : 1
     }
 
     render(){
