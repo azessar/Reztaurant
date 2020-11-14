@@ -163,4 +163,6 @@ rev12 = Review.create!(user_id: 10, restaurant_id: 8, body: 'Doh!', rating: 4)
 rev13 = Review.create!(user_id: 12, restaurant_id: 10, body: 'The dumb kid wouldn\' give me a free banana after I DAZZLED him with my mind-blowing illusions', rating: 2)
 rev14 = Review.create!(user_id: 13, restaurant_id: 11, body: 'I have frequented this location in the past, and while the food mediocre and the service pedestrian, I was relieved that the clientele allowed me, a bit of a local star, to dine in peace. You may have seen me as Dr. Clara Mandrake in the The Crows Have Eyes III: The Crowening.', rating: 3)
 rev15 = Review.create!(user_id: 14, restaurant_id: 12, body: 'Yeah, I don\'t think this is a real place.', rating: 1)
+rev16 = Review.create!(user_id: 3, restaurant_id: 1, body: 'The doughnut of a cashier had the bleakest look on his face. Only saving grace of this godforsaken place was the so-called Krabby Patty.', rating: 4)
+rev17 = Review.create!(user_id: 3, restaurant_id: 3, body: 'The service staff here consisted of an illiterate manchild, a narcissistic weirdo, a man who was hell-bent on giving me an "ocular patdown", and a bird lady.', rating: 1)
 

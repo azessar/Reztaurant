@@ -32,10 +32,15 @@ class RestaurantShow extends React.Component {
         this.reshowButton = this.reshowButton.bind(this);
 
         this.update = this.update.bind(this);
+
         this.reviewUser = this.reviewUser.bind(this);
+        this.reviewFN = this.reviewFN.bind(this);
+        this.reviewLN = this.reviewLN.bind(this);
+        this.reviewPDL = this.reviewPDL.bind(this);
+
         this.avgRating = this.avgRating.bind(this);
         this.totalUserReviews = this.totalUserReviews.bind(this);
-
+        this.handleCancel = this.handleCancel.bind(this);
     }
 
     componentDidMount() {
@@ -144,8 +149,22 @@ class RestaurantShow extends React.Component {
     reviewUser(userId, column){
         const users = this.props.users;
         var userData = users.find(user => user.id === userId)
-        // console.log("hey", userId, userData)
         return userData[column]
+    }
+    reviewFN(userId) {
+        const users = this.props.users;
+        var userData = users.find(user => user.id === userId)
+        return userData.first_name
+    }
+    reviewLN(userId) {
+        const users = this.props.users;
+        var userData = users.find(user => user.id === userId)
+        return userData.last_name
+    }
+    reviewPDL(userId) {
+        const users = this.props.users;
+        var userData = users.find(user => user.id === userId)
+        return userData.primary_dining_location
     }
 
     avgRating(){
@@ -162,6 +181,15 @@ class RestaurantShow extends React.Component {
         return this.props.reviews.filter(review =>
             review.user_id === userId
         ).length
+    }
+
+    handleCancel(e) {
+        e.preventDefault();
+        const { deleteReview } = this.props;
+        const review = this.props.reviews[parseInt(e.target.id) - 1];
+        deleteReview(review.id);
+        console.log("deleted")
+        window.location.reload();
     }
 
     render(){
@@ -370,7 +398,8 @@ class RestaurantShow extends React.Component {
                             {restaurantReviews.map((review, i) => (
                                 <div className="review-card" key={i}>
                                     <div className="icon-name">
-                                        {(currentUser && review.user_id === currentUser.id) ?
+                                        {
+                                            (currentUser && review.user_id === currentUser.id) ?
                                             <div className="user-initials">{this.reviewUser(review.user_id, "first_name").slice(0, 1).toUpperCase()}{this.reviewUser(review.user_id, "last_name").slice(0, 1).toUpperCase()}</div>
                                             :
                                             <div className="non-user-initials">{this.reviewUser(review.user_id, "first_name").slice(0, 1).toUpperCase()}{this.reviewUser(review.user_id, "last_name").slice(0, 1).toUpperCase()}</div>
@@ -384,6 +413,24 @@ class RestaurantShow extends React.Component {
                                                 :
                                                 <div className="user-count">{this.totalUserReviews(review.user_id)} reviews</div>
                                         }
+
+                                        {/* {
+                                            (currentUser && review.user_id === currentUser.id) ?
+                                                <div className="user-initials">{this.reviewFN(review.user_id).slice(0, 1).toUpperCase()}{this.reviewLN(review.user_id).slice(0, 1).toUpperCase()}</div>
+                                                :
+                                                <div className="non-user-initials">{this.reviewFN(review.user_id).slice(0, 1).toUpperCase()}{this.reviewLN(review.user_id).slice(0, 1).toUpperCase()}</div>
+                                        }
+                                        <div className="user-name">{this.reviewFN(review.user_id).slice(0, 1).toUpperCase() + this.reviewFN(review.user_id).slice(1)}{this.reviewLN(review.user_id).slice(0, 1).toUpperCase()}</div>
+                                        <div className="user-city">{this.reviewPDL(review.user_id)}</div>
+                                        {
+                                            this.totalUserReviews(review.user_id) === 1
+                                                ?
+                                                <div className="user-count">{this.totalUserReviews(review.user_id)} review</div>
+                                                :
+                                                <div className="user-count">{this.totalUserReviews(review.user_id)} reviews</div>
+                                        } */}
+
+
                                     </div>
                                     <div className="rating-and-text">
                                         <div className="rating-stars">
@@ -392,6 +439,11 @@ class RestaurantShow extends React.Component {
                                         </div>
                                         <div className="rating-numbers">Overall {review.rating}</div>
                                         <div className="review-text">{review.body}</div>
+                                        {currentUser && review.user_id === currentUser.id ?
+                                            <div id={parseInt(review.id)} onClick={this.handleCancel} className="delete-review">
+                                                Delete review
+                                            </div>
+                                            : null}
                                     </div>
                                 </div>
                             ))}

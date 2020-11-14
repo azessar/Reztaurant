@@ -520,19 +520,21 @@
     color: white;
 }
 .scroll-holder-1 {
-    width: 92%;
+    width: 94%;
     display: flex;
     justify-content: space-between;
     position: absolute;
     top: 715px;
+    left: 34px;
 }
 
 .scroll-holder-2 {
-    width: 92%;
+    width: 94%;
     display: flex;
     justify-content: space-between;
     position: absolute;
     top: 1090px;
+    left: 34px;
 }
 .scroll-button:hover, .scroll-back:hover {
     border:2px solid white;
@@ -563,4 +565,15 @@
     margin-top: 590px;
     margin-left: 115px;
     width: 585px;
+}
+
+.delete-review {
+    margin-top: 15px;
+    font-size: 12px;
+    text-align: right;
+    color: red;
+}
+.delete-review:hover {
+    color: navy;
+    cursor: pointer;
 }
