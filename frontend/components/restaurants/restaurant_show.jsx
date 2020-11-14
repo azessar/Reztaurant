@@ -148,7 +148,8 @@ class RestaurantShow extends React.Component {
 
     reviewUser(userId, column){
         const users = this.props.users;
-        var userData = users.find(user => user.id === userId)
+        var userData = users.find(user => user.id === userId) ? users.find(user => user.id === userId) : {first_name: "unknown", last_name: "unknown", primary_dining_location: "unknown"}
+        console.log(typeof userData)
         return userData[column]
     }
     reviewFN(userId) {
@@ -183,13 +184,18 @@ class RestaurantShow extends React.Component {
         ).length
     }
 
-    handleCancel(e) {
-        e.preventDefault();
-        const { deleteReview } = this.props;
-        const review = this.props.reviews[parseInt(e.target.id) - 1];
-        deleteReview(review.id);
-        console.log("deleted")
-        window.location.reload();
+    handleCancel(reviewId) {
+        return e => {
+            e.preventDefault();
+            this.props.deleteReview(reviewId);
+            window.location.reload();
+        };
+        // e.preventDefault();
+        // const { deleteReview } = this.props;
+        // const review = this.props.reviews[parseInt(e.target.id) - 1];
+        // deleteReview(review.id);
+        // console.log("deleted")
+        // window.location.reload();
     }
 
     render(){
@@ -440,7 +446,7 @@ class RestaurantShow extends React.Component {
                                         <div className="rating-numbers">Overall {review.rating}</div>
                                         <div className="review-text">{review.body}</div>
                                         {currentUser && review.user_id === currentUser.id ?
-                                            <div id={parseInt(review.id)} onClick={this.handleCancel} className="delete-review">
+                                            <div id={parseInt(review.id)} onClick={this.handleCancel(review.id)} className="delete-review">
                                                 Delete review
                                             </div>
                                             : null}

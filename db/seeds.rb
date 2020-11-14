@@ -165,4 +165,11 @@ rev14 = Review.create!(user_id: 13, restaurant_id: 11, body: 'I have frequented 
 rev15 = Review.create!(user_id: 14, restaurant_id: 12, body: 'Yeah, I don\'t think this is a real place.', rating: 1)
 rev16 = Review.create!(user_id: 3, restaurant_id: 1, body: 'The doughnut of a cashier had the bleakest look on his face. Only saving grace of this godforsaken place was the so-called Krabby Patty.', rating: 4)
 rev17 = Review.create!(user_id: 3, restaurant_id: 3, body: 'The service staff here consisted of an illiterate manchild, a narcissistic weirdo, a man who was hell-bent on giving me an "ocular patdown", and a bird lady.', rating: 1)
+rev18 = Review.create!(user_id: 3, restaurant_id: 3, body: 'The service staff here consisted of an illiterate manchild, a narcissistic weirdo, a man who was hell-bent on giving me an "ocular patdown", and a bird lady.', rating: 1)
+rev19 = Review.create!(user_id: 3, restaurant_id: 3, body: 'The service staff here consisted of an illiterate manchild, a narcissistic weirdo, a man who was hell-bent on giving me an "ocular patdown", and a bird lady.', rating: 1)
+rev20 = Review.create!(user_id: 3, restaurant_id: 3, body: 'The service staff here consisted of an illiterate manchild, a narcissistic weirdo, a man who was hell-bent on giving me an "ocular patdown", and a bird lady.', rating: 1)
+rev21 = Review.create!(user_id: 3, restaurant_id: 3, body: 'The service staff here consisted of an illiterate manchild, a narcissistic weirdo, a man who was hell-bent on giving me an "ocular patdown", and a bird lady.', rating: 1)
+rev22 = Review.create!(user_id: 3, restaurant_id: 3, body: 'The service staff here consisted of an illiterate manchild, a narcissistic weirdo, a man who was hell-bent on giving me an "ocular patdown", and a bird lady.', rating: 1)
+rev23 = Review.create!(user_id: 3, restaurant_id: 3, body: 'The service staff here consisted of an illiterate manchild, a narcissistic weirdo, a man who was hell-bent on giving me an "ocular patdown", and a bird lady.', rating: 1)
+rev24 = Review.create!(user_id: 3, restaurant_id: 3, body: 'The service staff here consisted of an illiterate manchild, a narcissistic weirdo, a man who was hell-bent on giving me an "ocular patdown", and a bird lady.', rating: 1)
 
