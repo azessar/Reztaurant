@@ -62,7 +62,7 @@ class SignupModal extends React.Component {
     render(){
         return (
             <div className="signup-form-modal" onClick={this.closeForm}>
-                <h1 className="welcome">Welcome to OpenTable!</h1>
+                <h1 className="welcome">Welcome to Reztaurant!</h1>
                 <div>{this.renderErrors()}</div>
                 <form className="signup-form" onSubmit={this.handleSubmit}>
                     <input type="text" value={this.state.first_name} placeholder="First Name *" onChange={this.update('first_name')}></input>
