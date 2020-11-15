@@ -40,6 +40,7 @@ class RestaurantShow extends React.Component {
         this.reshowButton = this.reshowButton.bind(this);
 
         this.update = this.update.bind(this);
+        this.updateText = this.updateText.bind(this);
 
         this.reviewUser = this.reviewUser.bind(this);
         this.reviewFN = this.reviewFN.bind(this);
@@ -76,7 +77,15 @@ class RestaurantShow extends React.Component {
             return {resDate: document.getElementById("date-select").value,
                     resTime: document.getElementById("time-select").value,
                     partySize: document.getElementById("party-select").value,
-                    body: document.getElementById("body-text").value,
+            }
+        });
+    }
+
+    updateText(e) {
+        e.preventDefault();
+        this.setState((state) => {
+            return {
+                body: document.getElementById("body-text").value,
             }
         });
     }
@@ -624,7 +633,7 @@ class RestaurantShow extends React.Component {
                                 </div>
                             </div>
                             
-                            <textarea id = "body-text" placeholder="Tell us your thoughts..." onChange={this.update}></textarea>
+                            <textarea id = "body-text" placeholder="Tell us your thoughts..." onChange={this.updateText}></textarea>
                             <button>Submit</button>
                         </form>
                         : <h1 className="sign-in-to-review">Please signin to leave a review</h1>
