@@ -636,7 +636,7 @@ class RestaurantShow extends React.Component {
                             <textarea id = "body-text" placeholder="Tell us your thoughts..." onChange={this.updateText}></textarea>
                             <button>Submit</button>
                         </form>
-                        : <h1 className="sign-in-to-review">Please signin to leave a review</h1>
+                        : <h1 className="sign-in-to-review">Please sign in to leave a review</h1>
                     }
                  
                     
