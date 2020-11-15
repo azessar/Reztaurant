@@ -277,7 +277,7 @@ class RestaurantSearchIndex extends React.Component {
                             </select>
                         </div>
                     </div>
-                    <input className="search-page-search-bar" id="search-page-search-bar" placeholder="Search a restaurant name, location, or cuisine"
+                    <input className="search-page-search-bar" id="search-page-search-bar" placeholder="Search a name, location, or cuisine, e.g.: 'New York'"
                         defaultValue={this.state.searchWord}
                         >    
                     </input>

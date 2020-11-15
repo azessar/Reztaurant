@@ -86,7 +86,7 @@ class MainSearch extends React.Component {
                     </div>
                     <div className="main-search-input">
                         <input className="location-restaurant-cuisine" 
-                            id="main-search-bar" placeholder="Location, Restaurant, or Cuisine" 
+                            id="main-search-bar" placeholder="Location, Restaurant, or Cuisine; try 'burgers'" 
                             defaultValue={this.state.searchWord}
                             onChange={this.update}
                             >

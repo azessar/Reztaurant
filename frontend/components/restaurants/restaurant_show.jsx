@@ -24,6 +24,11 @@ class RestaurantShow extends React.Component {
             resTime: '7:00 PM',
             partySize: '2',
             stateResTimes: [],
+            color1: "gray",
+            color2: "gray",
+            color3: "gray",
+            color4: "gray",
+            color5: "gray",
         }
 
         this.makeResTimes = this.makeResTimes.bind(this);
@@ -41,6 +46,11 @@ class RestaurantShow extends React.Component {
         this.avgRating = this.avgRating.bind(this);
         this.totalUserReviews = this.totalUserReviews.bind(this);
         this.handleCancel = this.handleCancel.bind(this);
+        this.changeColor1 = this.changeColor1.bind(this);
+        this.changeColor2 = this.changeColor2.bind(this);
+        this.changeColor3 = this.changeColor3.bind(this);
+        this.changeColor4 = this.changeColor4.bind(this);
+        this.changeColor5 = this.changeColor5.bind(this);
     }
 
     componentDidMount() {
@@ -190,12 +200,77 @@ class RestaurantShow extends React.Component {
             this.props.deleteReview(reviewId);
             window.location.reload();
         };
-        // e.preventDefault();
-        // const { deleteReview } = this.props;
-        // const review = this.props.reviews[parseInt(e.target.id) - 1];
-        // deleteReview(review.id);
-        // console.log("deleted")
-        // window.location.reload();
+    }
+
+    changeColor1(){
+        this.state.color1 === "gray" ?
+        this.setState({
+            color1: "yellow"
+        })
+        :
+        this.setState({
+            color1: "gray"
+        })
+    }
+    changeColor2() {
+        this.state.color2 === "gray" ?
+            this.setState({
+                color1: "yellow",
+                color2: "yellow",
+            })
+            :
+            this.setState({
+                color1: "gray",
+                color2: "gray",
+            })
+    }
+    changeColor3() {
+        this.state.color3 === "gray" ?
+            this.setState({
+                color1: "yellow",
+                color2: "yellow",
+                color3: "yellow",
+            })
+            :
+            this.setState({
+                color1: "gray",
+                color2: "gray",
+                color3: "gray",
+            })
+    }
+    changeColor4() {
+        this.state.color4 === "gray" ?
+            this.setState({
+                color1: "yellow",
+                color2: "yellow",
+                color3: "yellow",
+                color4: "yellow",
+            })
+            :
+            this.setState({
+                color1: "gray",
+                color2: "gray",
+                color3: "gray",
+                color4: "gray",
+            })
+    }
+    changeColor5() {
+        this.state.color5 === "gray" ?
+            this.setState({
+                color1: "yellow",
+                color2: "yellow",
+                color3: "yellow",
+                color4: "yellow",
+                color5: "yellow",
+            })
+            :
+            this.setState({
+                color1: "gray",
+                color2: "gray",
+                color3: "gray",
+                color4: "gray",
+                color5: "gray",
+            })
     }
 
     render(){
@@ -457,6 +532,25 @@ class RestaurantShow extends React.Component {
 
                         </div>
                     </div>
+                    {currentUser ? 
+                        <form className="review-form">
+                            <h1>Leave a review</h1>
+                            <div className="rating-stars-form">
+                                <div className="review-rating-title">Rating:</div>
+                                <div className="stars-form">
+                                    <i className='fas fa-star' id="star-1" style={{ color: this.state.color1 }} onMouseEnter={this.changeColor1} onMouseLeave={this.changeColor1}></i>
+                                    <i className='fas fa-star' id="star-2" style={{ color: this.state.color2 }} onMouseEnter={this.changeColor2} onMouseLeave={this.changeColor2}></i>
+                                    <i className='fas fa-star' id="star-3" style={{ color: this.state.color3 }} onMouseEnter={this.changeColor3} onMouseLeave={this.changeColor3}></i>
+                                    <i className='fas fa-star' id="star-4" style={{ color: this.state.color4 }} onMouseEnter={this.changeColor4} onMouseLeave={this.changeColor4}></i>
+                                    <i className='fas fa-star' id="star-5" style={{ color: this.state.color5 }} onMouseEnter={this.changeColor5} onMouseLeave={this.changeColor5}></i>
+                                </div>
+                            </div>
+                            
+                            <textarea placeholder="Tell us your thoughts..."></textarea>
+                            <button>Submit</button>
+                        </form>
+                        : null
+                    }
                  
                     
                         
