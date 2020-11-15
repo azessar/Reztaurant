@@ -47,7 +47,6 @@ class ReservationForm extends React.Component {
         const date = this.props.location.state ? this.dateConvert(this.props.location.state.resDate) : this.dateConvert(this.state.resDate);
         const time = this.props.location.state ? this.props.location.state.resTime : "7:00 PM"
         const party_size = this.props.location.state ? this.props.location.state.partySize : 2;
-        console.log(user_id, restaurant_id, date, time, party_size)
         createReservation({ user_id, restaurant_id, date, time, party_size });
         this.setState({
             resMade: true,

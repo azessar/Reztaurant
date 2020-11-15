@@ -31,6 +31,7 @@ class RestaurantShow extends React.Component {
             color5: "gray",
             formRating: 1,
             formClicked: false,
+            body: '',
         }
 
         this.makeResTimes = this.makeResTimes.bind(this);
@@ -53,12 +54,13 @@ class RestaurantShow extends React.Component {
         this.changeColor3 = this.changeColor3.bind(this);
         this.changeColor4 = this.changeColor4.bind(this);
         this.changeColor5 = this.changeColor5.bind(this);
-        this.stateClicked = this.stateClicked.bind(this);
         this.clickColor1 = this.clickColor1.bind(this);
         this.clickColor2 = this.clickColor2.bind(this);
         this.clickColor3 = this.clickColor3.bind(this);
         this.clickColor4 = this.clickColor4.bind(this);
         this.clickColor5 = this.clickColor5.bind(this);
+
+        this.handleReview = this.handleReview.bind(this);
     }
 
     componentDidMount() {
@@ -74,6 +76,7 @@ class RestaurantShow extends React.Component {
             return {resDate: document.getElementById("date-select").value,
                     resTime: document.getElementById("time-select").value,
                     partySize: document.getElementById("party-select").value,
+                    body: document.getElementById("body-text").value,
             }
         });
     }
@@ -167,7 +170,6 @@ class RestaurantShow extends React.Component {
     reviewUser(userId, column){
         const users = this.props.users;
         var userData = users.find(user => user.id === userId) ? users.find(user => user.id === userId) : {first_name: "unknown", last_name: "unknown", primary_dining_location: "unknown"}
-        console.log(typeof userData)
         return userData[column]
     }
     reviewFN(userId) {
@@ -288,7 +290,8 @@ class RestaurantShow extends React.Component {
             color3: "gray",
             color4: "gray",
             color5: "gray",
-            formClicked: true
+            formClicked: true,
+            formRating: 1
         })
     }
     clickColor2() {
@@ -298,7 +301,8 @@ class RestaurantShow extends React.Component {
             color3: "gray",
             color4: "gray",
             color5: "gray",
-            formClicked: true
+            formClicked: true,
+            formRating: 2
         })
     }
     clickColor3() {
@@ -308,7 +312,9 @@ class RestaurantShow extends React.Component {
             color3: "red",
             color4: "gray",
             color5: "gray",
-            formClicked: true
+            formClicked: true,
+            formRating: 3
+
         })
     }
     clickColor4() {
@@ -318,7 +324,8 @@ class RestaurantShow extends React.Component {
             color3: "red",
             color4: "red",
             color5: "gray",
-            formClicked: true
+            formClicked: true,
+            formRating: 4
         })
     }
     clickColor5() {
@@ -328,14 +335,20 @@ class RestaurantShow extends React.Component {
             color3: "red",
             color4: "red",
             color5: "red",
-            formClicked: true
+            formClicked: true,
+            formRating: 5
         })
     }
 
-    stateClicked(){
-        this.setState({
-            formClicked: true
-        })
+    handleReview(e) {
+        e.preventDefault();
+        const { createReview } = this.props;
+        const user_id = this.props.currentUser.id;
+        const restaurant_id = this.props.restaurant.id;
+        const rating = this.state.formRating;
+        const body = this.state.body;
+        createReview({ user_id, restaurant_id, body, rating });
+        window.location.reload();
     }
 
     render(){
@@ -598,7 +611,7 @@ class RestaurantShow extends React.Component {
                         </div>
                     </div>
                     {currentUser ? 
-                        <form className="review-form">
+                        <form className="review-form" onSubmit={this.handleReview}>
                             <h1>Leave a review</h1>
                             <div className="rating-stars-form">
                                 <div className="review-rating-title">Rating:</div>
@@ -611,10 +624,10 @@ class RestaurantShow extends React.Component {
                                 </div>
                             </div>
                             
-                            <textarea placeholder="Tell us your thoughts..."></textarea>
+                            <textarea id = "body-text" placeholder="Tell us your thoughts..." onChange={this.update}></textarea>
                             <button>Submit</button>
                         </form>
-                        : null
+                        : <h1 className="sign-in-to-review">Please signin to leave a review</h1>
                     }
                  
                     

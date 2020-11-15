@@ -568,10 +568,11 @@
 }
 
 .delete-review {
-    margin-top: 15px;
+    margin-top: 35px;
     font-size: 12px;
     text-align: right;
     color: red;
+    width: 400px;
 }
 .delete-review:hover {
     color: navy;
@@ -623,4 +624,10 @@
 }
 .review-form button:hover {
     background-color: rgb(7, 182, 7)
+}
+
+.sign-in-to-review {
+    margin-left: 115px;
+    margin-top: 20px;
+    font-size: 20px;
 }
