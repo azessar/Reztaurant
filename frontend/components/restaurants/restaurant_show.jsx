@@ -29,6 +29,8 @@ class RestaurantShow extends React.Component {
             color3: "gray",
             color4: "gray",
             color5: "gray",
+            formRating: 1,
+            formClicked: false,
         }
 
         this.makeResTimes = this.makeResTimes.bind(this);
@@ -51,6 +53,12 @@ class RestaurantShow extends React.Component {
         this.changeColor3 = this.changeColor3.bind(this);
         this.changeColor4 = this.changeColor4.bind(this);
         this.changeColor5 = this.changeColor5.bind(this);
+        this.stateClicked = this.stateClicked.bind(this);
+        this.clickColor1 = this.clickColor1.bind(this);
+        this.clickColor2 = this.clickColor2.bind(this);
+        this.clickColor3 = this.clickColor3.bind(this);
+        this.clickColor4 = this.clickColor4.bind(this);
+        this.clickColor5 = this.clickColor5.bind(this);
     }
 
     componentDidMount() {
@@ -205,7 +213,7 @@ class RestaurantShow extends React.Component {
     changeColor1(){
         this.state.color1 === "gray" ?
         this.setState({
-            color1: "yellow"
+            color1: "red"
         })
         :
         this.setState({
@@ -215,8 +223,8 @@ class RestaurantShow extends React.Component {
     changeColor2() {
         this.state.color2 === "gray" ?
             this.setState({
-                color1: "yellow",
-                color2: "yellow",
+                color1: "red",
+                color2: "red",
             })
             :
             this.setState({
@@ -227,9 +235,9 @@ class RestaurantShow extends React.Component {
     changeColor3() {
         this.state.color3 === "gray" ?
             this.setState({
-                color1: "yellow",
-                color2: "yellow",
-                color3: "yellow",
+                color1: "red",
+                color2: "red",
+                color3: "red",
             })
             :
             this.setState({
@@ -241,10 +249,10 @@ class RestaurantShow extends React.Component {
     changeColor4() {
         this.state.color4 === "gray" ?
             this.setState({
-                color1: "yellow",
-                color2: "yellow",
-                color3: "yellow",
-                color4: "yellow",
+                color1: "red",
+                color2: "red",
+                color3: "red",
+                color4: "red",
             })
             :
             this.setState({
@@ -257,11 +265,11 @@ class RestaurantShow extends React.Component {
     changeColor5() {
         this.state.color5 === "gray" ?
             this.setState({
-                color1: "yellow",
-                color2: "yellow",
-                color3: "yellow",
-                color4: "yellow",
-                color5: "yellow",
+                color1: "red",
+                color2: "red",
+                color3: "red",
+                color4: "red",
+                color5: "red",
             })
             :
             this.setState({
@@ -271,6 +279,63 @@ class RestaurantShow extends React.Component {
                 color4: "gray",
                 color5: "gray",
             })
+    }
+
+    clickColor1() {
+        this.setState({
+            color1: "red",
+            color2: "gray",
+            color3: "gray",
+            color4: "gray",
+            color5: "gray",
+            formClicked: true
+        })
+    }
+    clickColor2() {
+        this.setState({
+            color1: "red",
+            color2: "red",
+            color3: "gray",
+            color4: "gray",
+            color5: "gray",
+            formClicked: true
+        })
+    }
+    clickColor3() {
+        this.setState({
+            color1: "red",
+            color2: "red",
+            color3: "red",
+            color4: "gray",
+            color5: "gray",
+            formClicked: true
+        })
+    }
+    clickColor4() {
+        this.setState({
+            color1: "red",
+            color2: "red",
+            color3: "red",
+            color4: "red",
+            color5: "gray",
+            formClicked: true
+        })
+    }
+    clickColor5() {
+        this.setState({
+            color1: "red",
+            color2: "red",
+            color3: "red",
+            color4: "red",
+            color5: "red",
+            formClicked: true
+        })
+    }
+
+    stateClicked(){
+        this.setState({
+            formClicked: true
+        })
     }
 
     render(){
@@ -538,11 +603,11 @@ class RestaurantShow extends React.Component {
                             <div className="rating-stars-form">
                                 <div className="review-rating-title">Rating:</div>
                                 <div className="stars-form">
-                                    <i className='fas fa-star' id="star-1" style={{ color: this.state.color1 }} onMouseEnter={this.changeColor1} onMouseLeave={this.changeColor1}></i>
-                                    <i className='fas fa-star' id="star-2" style={{ color: this.state.color2 }} onMouseEnter={this.changeColor2} onMouseLeave={this.changeColor2}></i>
-                                    <i className='fas fa-star' id="star-3" style={{ color: this.state.color3 }} onMouseEnter={this.changeColor3} onMouseLeave={this.changeColor3}></i>
-                                    <i className='fas fa-star' id="star-4" style={{ color: this.state.color4 }} onMouseEnter={this.changeColor4} onMouseLeave={this.changeColor4}></i>
-                                    <i className='fas fa-star' id="star-5" style={{ color: this.state.color5 }} onMouseEnter={this.changeColor5} onMouseLeave={this.changeColor5}></i>
+                                    <i className='fas fa-star' id="star-1" style={{ color: this.state.color1 }} onClick={this.clickColor1} onMouseEnter={this.state.formClicked ? null : this.changeColor1} onMouseLeave={this.state.formClicked ? null : this.changeColor1}></i>
+                                    <i className='fas fa-star' id="star-2" style={{ color: this.state.color2 }} onClick={this.clickColor2} onMouseEnter={this.state.formClicked ? null : this.changeColor2} onMouseLeave={this.state.formClicked ? null : this.changeColor2}></i>
+                                    <i className='fas fa-star' id="star-3" style={{ color: this.state.color3 }} onClick={this.clickColor3} onMouseEnter={this.state.formClicked ? null : this.changeColor3} onMouseLeave={this.state.formClicked ? null : this.changeColor3}></i>
+                                    <i className='fas fa-star' id="star-4" style={{ color: this.state.color4 }} onClick={this.clickColor4} onMouseEnter={this.state.formClicked ? null : this.changeColor4} onMouseLeave={this.state.formClicked ? null : this.changeColor4}></i>
+                                    <i className='fas fa-star' id="star-5" style={{ color: this.state.color5 }} onClick={this.clickColor5} onMouseEnter={this.state.formClicked ? null : this.changeColor5} onMouseLeave={this.state.formClicked ? null : this.changeColor5}></i>
                                 </div>
                             </div>
                             
