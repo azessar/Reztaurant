@@ -65,6 +65,7 @@ class RestaurantShow extends React.Component {
     }
 
     componentDidMount() {
+        window.scrollTo(0, 0);
         this.props.fetchRestaurant(this.props.match.params.restaurantId);
         this.props.fetchRestaurantReviews(this.props.match.params.restaurantId);
         this.props.fetchUsers();
