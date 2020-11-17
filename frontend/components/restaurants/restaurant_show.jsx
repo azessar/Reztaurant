@@ -60,6 +60,7 @@ class RestaurantShow extends React.Component {
         this.clickColor3 = this.clickColor3.bind(this);
         this.clickColor4 = this.clickColor4.bind(this);
         this.clickColor5 = this.clickColor5.bind(this);
+        this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
 
         this.handleReview = this.handleReview.bind(this);
     }
@@ -69,6 +70,15 @@ class RestaurantShow extends React.Component {
         this.props.fetchRestaurant(this.props.match.params.restaurantId);
         this.props.fetchRestaurantReviews(this.props.match.params.restaurantId);
         this.props.fetchUsers();
+    }
+
+    handleDemoSubmit(e) {
+        e.preventDefault();
+        const { signin } = this.props;
+        const { first_name, last_name, email, password, primary_dining_location } = this.state;
+        const demoUser = { first_name: "Gordon", last_name: "Ramsay", email: "gramsay@gmail.com", password: "rubbish", primary_dining_location: "London" }
+        signin(demoUser);
+        e.target.reset();
     }
 
     update(e) {
@@ -637,7 +647,17 @@ class RestaurantShow extends React.Component {
                             <textarea id = "body-text" placeholder="Tell us your thoughts..." onChange={this.updateText}></textarea>
                             <button>Submit</button>
                         </form>
-                        : <h1 className="sign-in-to-review">Please sign in to leave a review</h1>
+                        : 
+                        // <h1 className="sign-in-to-review">Please sign in to leave a review</h1> 
+                        <div className="guest-form-buttons-review">
+                            <div>Please</div>
+                            <button className="signup-button" onClick={() => this.props.openModal('signup')}>Sign up</button>
+                            <div>,</div>
+                            <button className="signin-button" onClick={() => this.props.openModal('signin')}>Sign in</button>
+                            <div>, or</div>
+                            <button className="demo-signin-button" onClick={this.handleDemoSubmit}>Demo sign in</button>
+                            <div>to leave a review.</div>
+                        </div>
                     }
                  
                     
