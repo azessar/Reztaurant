@@ -16,9 +16,12 @@ class RestaurantSearchIndex extends React.Component {
             $$$$: 'off',
             regions: [],
             cuisines: [],
-            partySize: '2',
-            resDate: year + '-' + month + '-' + date,
-            resTime: '7:00 PM',
+            // partySize: '2',
+            partySize: '',
+            // resDate: year + '-' + month + '-' + date,
+            resDate: '',
+            // resTime: '7:00 PM',
+            resTime: '',
             filtered: false,
             filterClicked: 0
         };
@@ -174,6 +177,7 @@ class RestaurantSearchIndex extends React.Component {
 
 
     render() {
+        console.log(this.state)
         let searchedRestaurantArray = 
             (this.state.$ === "off" && this.state.$$ === "off" && this.state.$$$ === "off" && this.state.$$$$ === "off") 
             ?
@@ -350,9 +354,9 @@ class RestaurantSearchIndex extends React.Component {
                                                 <Link to={{
                                                     pathname: `/restaurants/${restaurant.id}/reservation_form`,
                                                     state: {
-                                                        resDate: this.state.resDate,
-                                                        resTime: time,
-                                                        partySize: this.state.partySize,
+                                                        resDate: this.props.location.state ? this.props.location.state.resDate : this.state.resDate,
+                                                        resTime: this.props.location.state ? this.props.location.state.resTime : time, 
+                                                        partySize: this.props.location.state ? this.props.location.state.partySize : this.state.partySize,
                                                     },
                                                 }} key={i} className="res-time-link" >
                                                     <button className="res-time" >{time}</button>
