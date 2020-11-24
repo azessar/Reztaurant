@@ -20,6 +20,9 @@ const App = () => (
     <div>
         <div className="top-line">
             <div className="top-line-social">
+                <a href="https://azessar.github.io" target="_blank">Portfolio</a>
+            </div>
+            <div className="top-line-social">
                 <a href="https://www.linkedin.com/in/andrew-zessar-93067192/" target="_blank">LinkedIn</a>
             </div>
             <div className="top-line-social">
